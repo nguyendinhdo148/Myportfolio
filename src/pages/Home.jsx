@@ -1,6 +1,6 @@
 import { ThemeToggle } from "@/component/ThemeToggle";
 import { StarBackground } from "@/component/StarBackground";
-import { Navbar } from "@/component/navbar";
+import { Navbar } from "@/component/Navbar";
 import { Introduce } from "@/component/Introduce";
 import { Skills } from "@/component/Skills";
 import { Project } from "@/component/Project";
