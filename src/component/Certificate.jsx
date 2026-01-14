@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
-import { Download, Eye, Calendar, Award, Sparkles, ArrowUp, Clock, Users, Trophy, Star, Maximize2, FileCheck, UserCheck, Brain, Target, Filter, Search, X, Layers, GraduationCap, Briefcase, Zap } from "lucide-react";
+import { Download, Eye, Calendar, Award, Sparkles, ArrowUp, Clock, Users, Trophy, Star, Maximize2, FileCheck, UserCheck, Brain, Target, X, GraduationCap, Briefcase, Zap } from "lucide-react";
 
 // Enhanced Image Modal với Preloading
 const EnhancedImageModal = ({ isOpen, onClose, imageUrl, title, issuer, details }) => {
@@ -47,14 +47,14 @@ const EnhancedImageModal = ({ isOpen, onClose, imageUrl, title, issuer, details 
           <X className="w-6 h-6 group-hover:rotate-90 transition-transform duration-300" />
         </button>
 
-        <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-2xl h-full flex flex-col">
-          <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+        <div className="bg-background rounded-2xl overflow-hidden shadow-2xl h-full flex flex-col border">
+          <div className="p-6 border-b">
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{title}</h3>
+              <h3 className="text-2xl font-bold text-foreground mb-2">{title}</h3>
               <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                <span className="text-sm text-gray-600 dark:text-gray-400">Cấp bởi: {issuer}</span>
+                <span className="text-sm text-muted-foreground">Cấp bởi: {issuer}</span>
                 {details?.issueDate && (
-                  <span className="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400">
+                  <span className="flex items-center gap-1 text-sm text-muted-foreground">
                     <Calendar className="w-4 h-4" />
                     {details.issueDate}
                   </span>
@@ -63,10 +63,10 @@ const EnhancedImageModal = ({ isOpen, onClose, imageUrl, title, issuer, details 
             </div>
           </div>
 
-          <div className="flex-1 relative overflow-hidden p-4 bg-gray-50 dark:bg-gray-900">
+          <div className="flex-1 relative overflow-hidden p-4 bg-muted/50">
             {!isImageLoaded && (
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin"></div>
+                <div className="w-16 h-16 border-4 border-primary/20 border-t-primary rounded-full animate-spin"></div>
               </div>
             )}
             
@@ -82,11 +82,11 @@ const EnhancedImageModal = ({ isOpen, onClose, imageUrl, title, issuer, details 
             </div>
           </div>
 
-          <div className="p-6 border-t border-gray-200 dark:border-gray-700">
+          <div className="p-6 border-t">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div className="flex flex-wrap gap-2">
                 {details?.skills?.slice(0, 3).map((skill, index) => (
-                  <span key={index} className="px-3 py-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm rounded-lg">
+                  <span key={index} className="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-lg">
                     {skill}
                   </span>
                 ))}
@@ -94,7 +94,7 @@ const EnhancedImageModal = ({ isOpen, onClose, imageUrl, title, issuer, details 
               <a
                 href={imageUrl}
                 download
-                className="group inline-flex items-center gap-3 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all hover:shadow-lg active:scale-95"
+                className="group inline-flex items-center gap-3 px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-lg transition-all hover:shadow-lg active:scale-95"
               >
                 <Download className="w-5 h-5" />
                 <span>Tải ảnh gốc</span>
@@ -143,28 +143,28 @@ const CVPreviewModal = ({ isOpen, onClose, cvData }) => {
           <X className="w-6 h-6 group-hover:rotate-90 transition-transform duration-300" />
         </button>
 
-        <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-2xl h-full flex flex-col">
-          <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+        <div className="bg-background rounded-2xl overflow-hidden shadow-2xl h-full flex flex-col border">
+          <div className="p-6 border-b">
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Xem trước CV</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <h3 className="text-2xl font-bold text-foreground mb-2">Xem trước CV</h3>
+              <p className="text-sm text-muted-foreground">
                 Phiên bản CV mới nhất cập nhật tháng 12, 2024
               </p>
             </div>
           </div>
 
           <div className="flex-1 overflow-hidden">
-           <iframe
-  src="https://drive.google.com/file/d/1MChc_8u8wOE9gQRZxKS68vVMUPGp1ZkZ/preview"
-  className="w-full h-full border-0"
-  allow="autoplay"
-  title="CV Preview"
-/>
+            <iframe
+              src="https://drive.google.com/file/d/1MChc_8u8wOE9gQRZxKS68vVMUPGp1ZkZ/preview"
+              className="w-full h-full border-0"
+              allow="autoplay"
+              title="CV Preview"
+            />
           </div>
 
-          <div className="p-6 border-t border-gray-200 dark:border-gray-700">
+          <div className="p-6 border-t">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="text-sm text-gray-600 dark:text-gray-400">
+              <div className="text-sm text-muted-foreground">
                 CV được thiết kế chuyên nghiệp cho vị trí Business Analyst
               </div>
               <div className="flex gap-3">
@@ -172,7 +172,7 @@ const CVPreviewModal = ({ isOpen, onClose, cvData }) => {
                   href={cvData.viewUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 px-6 py-3 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-medium rounded-lg transition-all hover:shadow-lg active:scale-95"
+                  className="inline-flex items-center gap-3 px-6 py-3 bg-muted hover:bg-muted/80 text-foreground font-medium rounded-lg transition-all hover:shadow-lg active:scale-95"
                 >
                   <Eye className="w-5 h-5" />
                   <span>Xem trên Google Drive</span>
@@ -180,7 +180,7 @@ const CVPreviewModal = ({ isOpen, onClose, cvData }) => {
                 <a
                   href={cvData.downloadUrl}
                   download="CV-Nguyen-Dinh-Do.pdf"
-                  className="inline-flex items-center gap-3 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all hover:shadow-lg active:scale-95"
+                  className="inline-flex items-center gap-3 px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-lg transition-all hover:shadow-lg active:scale-95"
                 >
                   <Download className="w-5 h-5" />
                   <span>Tải CV (PDF)</span>
@@ -211,12 +211,12 @@ const OptimizedImage = ({ src, alt, className, onLoad, priority = false }) => {
   return (
     <div className={`relative overflow-hidden ${className}`}>
       {!isLoaded && !hasError && (
-        <div className="absolute inset-0 bg-gray-100 dark:bg-gray-800 animate-pulse"></div>
+        <div className="absolute inset-0 bg-muted animate-pulse"></div>
       )}
       
       {hasError ? (
-        <div className="w-full h-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
-          <span className="text-gray-400 text-sm">Không thể tải ảnh</span>
+        <div className="w-full h-full bg-muted flex items-center justify-center">
+          <span className="text-muted-foreground text-sm">Không thể tải ảnh</span>
         </div>
       ) : (
         <img
@@ -242,7 +242,6 @@ const OptimizedImage = ({ src, alt, className, onLoad, priority = false }) => {
 const EnhancedCertificateCard = ({ item, isRecognition = false, onClick }) => {
   const cardRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [, setIsHovered] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -296,12 +295,10 @@ const EnhancedCertificateCard = ({ item, isRecognition = false, onClick }) => {
       style={{
         transitionDelay: isVisible ? '0ms' : '100ms'
       }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300">
+      <div className="bg-card rounded-xl overflow-hidden border shadow-sm hover:shadow-md transition-all duration-300">
         {/* Image Container */}
-        <div className="relative h-48 overflow-hidden bg-gray-50 dark:bg-gray-900">
+        <div className="relative h-48 overflow-hidden bg-muted/50">
           <OptimizedImage
             src={item.imageUrl}
             alt={item.title}
@@ -330,10 +327,10 @@ const EnhancedCertificateCard = ({ item, isRecognition = false, onClick }) => {
         {/* Content */}
         <div className="p-4">
           <div className="mb-3">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-2">
+            <h3 className="text-lg font-bold text-foreground mb-2 line-clamp-2">
               {item.title}
             </h3>
-            <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Briefcase className="w-3 h-3 flex-shrink-0" />
               <span className="truncate">{item.issuer}</span>
               <span className="mx-1">•</span>
@@ -342,13 +339,13 @@ const EnhancedCertificateCard = ({ item, isRecognition = false, onClick }) => {
             </div>
           </div>
           
-          <p className="text-gray-600 dark:text-gray-300 text-sm mb-3 line-clamp-2">
+          <p className="text-muted-foreground text-sm mb-3 line-clamp-2">
             {item.description}
           </p>
 
           {isRecognition && item.achievement && (
             <div className="mb-3">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-sm font-medium rounded-lg">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-500/10 text-green-600 dark:text-green-400 text-sm font-medium rounded-lg">
                 <Sparkles className="w-3 h-3" />
                 <span>{item.achievement}</span>
               </div>
@@ -361,7 +358,7 @@ const EnhancedCertificateCard = ({ item, isRecognition = false, onClick }) => {
               {item.skills.slice(0, 3).map((skill, index) => (
                 <span
                   key={index}
-                  className="px-2.5 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs font-medium rounded"
+                  className="px-2.5 py-1 bg-muted text-foreground/80 text-xs font-medium rounded"
                 >
                   {skill}
                 </span>
@@ -373,7 +370,7 @@ const EnhancedCertificateCard = ({ item, isRecognition = false, onClick }) => {
           <div className="flex gap-2">
             <button
               onClick={onClick}
-              className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-300 active:scale-95"
+              className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-lg transition-all duration-300 active:scale-95"
             >
               <Maximize2 className="w-4 h-4" />
               <span>Xem ảnh</span>
@@ -382,7 +379,7 @@ const EnhancedCertificateCard = ({ item, isRecognition = false, onClick }) => {
             <a
               href={item.imageUrl}
               download
-              className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-medium rounded-lg transition-all duration-300 active:scale-95"
+              className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 bg-muted hover:bg-muted/80 text-foreground font-medium rounded-lg transition-all duration-300 active:scale-95"
             >
               <Download className="w-4 h-4" />
               <span>Tải về</span>
@@ -400,27 +397,26 @@ const CVSection = ({ cvData, onPreviewCV }) => {
 
   return (
     <div className="mb-12">
-      <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
+      <div className="bg-card rounded-xl p-6 border shadow-sm">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* CV Preview Image */}
           <div className="lg:w-2/5">
             <div className="mb-4">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Hồ sơ CV</h3>
-              <p className="text-gray-600 dark:text-gray-400 mt-1">
+              <h3 className="text-2xl font-bold text-foreground">Hồ sơ CV</h3>
+              <p className="text-muted-foreground mt-1">
                 Phiên bản mới nhất - {cvData.lastUpdated}
               </p>
             </div>
             
-            <div className="relative bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700">
+            <div className="relative bg-muted/50 rounded-lg overflow-hidden border">
               <div className="aspect-[3/4] relative">
                 {!imageLoaded && (
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-800 dark:to-gray-900 animate-pulse"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5 animate-pulse"></div>
                 )}
                 
                 {/* CV Preview Image */}
                 <img
                   src="https://drive.google.com/thumbnail?id=1MChc_8u8wOE9gQRZxKS68vVMUPGp1ZkZ&sz=w1000"
-
                   alt="CV Preview"
                   className={`w-full h-full object-cover transition-opacity duration-500 ${
                     imageLoaded ? 'opacity-100' : 'opacity-0'
@@ -445,10 +441,10 @@ const CVSection = ({ cvData, onPreviewCV }) => {
               <div className="p-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <FileCheck className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                    <span className="font-medium text-gray-900 dark:text-white">CV.pdf</span>
+                    <FileCheck className="w-5 h-5 text-primary" />
+                    <span className="font-medium text-foreground">CV.pdf</span>
                   </div>
-                  <span className="text-sm text-gray-500">2 MB</span>
+                  <span className="text-sm text-muted-foreground">2 MB</span>
                 </div>
               </div>
             </div>
@@ -457,56 +453,56 @@ const CVSection = ({ cvData, onPreviewCV }) => {
           {/* CV Info */}
           <div className="lg:w-3/5">
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
-                <FileCheck className="w-6 h-6 text-white" />
+              <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/80 rounded-xl flex items-center justify-center">
+                <FileCheck className="w-6 h-6 text-primary-foreground" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                <h3 className="text-xl font-bold text-foreground">
                   CV Chuyên nghiệp
                 </h3>
                 <div className="flex flex-wrap gap-2 mt-2">
-                  <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-medium rounded-full">
+                  <span className="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">
                     Business Analyst
                   </span>
-                  <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-sm font-medium rounded-full">
+                  <span className="px-3 py-1 bg-purple-500/10 text-purple-600 dark:text-purple-400 text-sm font-medium rounded-full">
                     Data Analyst
                   </span>
                 </div>
               </div>
             </div>
             
-            <p className="text-gray-700 dark:text-gray-300 mb-6">
+            <p className="text-foreground/80 mb-6">
               CV được thiết kế chuyên nghiệp với đầy đủ thông tin về kỹ năng, kinh nghiệm và thành tích. 
               Tối ưu hóa cho các vị trí Business Analyst và Data Analyst.
             </p>
             
             <div className="grid grid-cols-2 gap-4 mb-8">
-              <div className="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-900 rounded-lg">
-                <UserCheck className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+              <div className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
+                <UserCheck className="w-5 h-5 text-primary" />
                 <div>
-                  <div className="font-medium text-gray-900 dark:text-white">Chuyên nghiệp</div>
-                  <div className="text-sm text-gray-500">Thiết kế hiện đại</div>
+                  <div className="font-medium text-foreground">Chuyên nghiệp</div>
+                  <div className="text-sm text-muted-foreground">Thiết kế hiện đại</div>
                 </div>
               </div>
-              <div className="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-900 rounded-lg">
-                <Target className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+              <div className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
+                <Target className="w-5 h-5 text-purple-500" />
                 <div>
-                  <div className="font-medium text-gray-900 dark:text-white">Mục tiêu rõ ràng</div>
-                  <div className="text-sm text-gray-500">Định hướng BA/DA</div>
+                  <div className="font-medium text-foreground">Mục tiêu rõ ràng</div>
+                  <div className="text-sm text-muted-foreground">Định hướng BA/DA</div>
                 </div>
               </div>
-              <div className="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-900 rounded-lg">
-                <Brain className="w-5 h-5 text-green-600 dark:text-green-400" />
+              <div className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
+                <Brain className="w-5 h-5 text-green-500" />
                 <div>
-                  <div className="font-medium text-gray-900 dark:text-white">Tư duy phân tích</div>
-                  <div className="text-sm text-gray-500">Problem-solving</div>
+                  <div className="font-medium text-foreground">Tư duy phân tích</div>
+                  <div className="text-sm text-muted-foreground">Problem-solving</div>
                 </div>
               </div>
-              <div className="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-900 rounded-lg">
-                <Users className="w-5 h-5 text-orange-600 dark:text-orange-400" />
+              <div className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
+                <Users className="w-5 h-5 text-orange-500" />
                 <div>
-                  <div className="font-medium text-gray-900 dark:text-white">Teamwork</div>
-                  <div className="text-sm text-gray-500">Collaboration</div>
+                  <div className="font-medium text-foreground">Teamwork</div>
+                  <div className="text-sm text-muted-foreground">Collaboration</div>
                 </div>
               </div>
             </div>
@@ -514,7 +510,7 @@ const CVSection = ({ cvData, onPreviewCV }) => {
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={onPreviewCV}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all hover:shadow-lg active:scale-95"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-lg transition-all hover:shadow-lg active:scale-95"
               >
                 <Eye className="w-5 h-5" />
                 <span>Xem trước CV</span>
@@ -523,7 +519,7 @@ const CVSection = ({ cvData, onPreviewCV }) => {
                 href={cvData.viewUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-medium rounded-lg border border-gray-300 dark:border-gray-600 transition-all hover:shadow-lg active:scale-95"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-muted hover:bg-muted/80 text-foreground font-medium rounded-lg border transition-all hover:shadow-lg active:scale-95"
               >
                 <Eye className="w-5 h-5" />
                 <span>Xem trên Drive</span>
@@ -729,8 +725,7 @@ export const Certificate = () => {
   const currentData = activeSection === "certificates" ? certificatesData : recognitionsData;
 
   return (
-    <div className="min-h-screen text-foreground bg-transparent">
-
+    <div className="min-h-screen">
       <EnhancedImageModal
         isOpen={modalState.isOpen}
         onClose={closeImageModal}
@@ -750,7 +745,7 @@ export const Certificate = () => {
       {showBackToTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-50 w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 md:bottom-8 md:right-8"
+          className="fixed bottom-6 right-6 z-50 w-12 h-12 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 md:bottom-8 md:right-8"
           aria-label="Back to top"
         >
           <ArrowUp className="w-5 h-5" />
@@ -758,14 +753,14 @@ export const Certificate = () => {
       )}
 
       {/* Header */}
-      <header className="sticky top-0 z-40  backdrop-blur-sm border-b border-gray-200 dark:border-gray-700">
+      <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
-              <h1 className="text-2xl md:text-3xl font-bold text-foreground/80">
+              <h1 className="text-2xl md:text-3xl font-bold text-foreground">
                 Chứng chỉ & Giấy chứng nhận
               </h1>
-              <p className="text-gray-600 dark:text-gray-400 mt-1 text-sm md:text-base">
+              <p className="text-muted-foreground mt-1 text-sm md:text-base">
                 Hồ sơ năng lực, bằng cấp và thành tích chuyên môn
               </p>
             </div>
@@ -773,7 +768,7 @@ export const Certificate = () => {
             <div className="flex items-center gap-3">
               <button
                 onClick={openCVPreview}
-                className="inline-flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all hover:shadow-lg active:scale-95 text-sm md:text-base"
+                className="inline-flex items-center gap-2 px-4 py-2.5 bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-lg transition-all hover:shadow-lg active:scale-95 text-sm md:text-base"
               >
                 <Eye className="w-4 h-4" />
                 <span>Xem CV</span>
@@ -787,71 +782,71 @@ export const Certificate = () => {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Hero Section */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full mb-6">
-            <Award className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-6">
+            <Award className="w-8 h-8 text-primary" />
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Bằng cấp & Thành tích
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Bộ sưu tập các chứng chỉ chuyên môn và giấy chứng nhận đạt được
           </p>
         </div>
 
         {/* Stats Overview */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+          <div className="bg-card rounded-lg p-4 border shadow-sm">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
-                <Award className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+              <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                <Award className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                <div className="text-2xl font-bold text-foreground">
                   {totalCertificates}
                 </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Chứng chỉ</div>
+                <div className="text-sm text-muted-foreground">Chứng chỉ</div>
               </div>
             </div>
           </div>
           
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+          <div className="bg-card rounded-lg p-4 border shadow-sm">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-purple-500/10 rounded-lg flex items-center justify-center">
                 <Trophy className="w-5 h-5 text-purple-600 dark:text-purple-400" />
               </div>
               <div>
-                <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                <div className="text-2xl font-bold text-foreground">
                   {totalRecognitions}
                 </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Giấy chứng nhận</div>
+                <div className="text-sm text-muted-foreground">Giấy chứng nhận</div>
               </div>
             </div>
           </div>
           
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+          <div className="bg-card rounded-lg p-4 border shadow-sm">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-green-500/10 rounded-lg flex items-center justify-center">
                 <GraduationCap className="w-5 h-5 text-green-600 dark:text-green-400" />
               </div>
               <div>
-                <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                <div className="text-2xl font-bold text-foreground">
                   {languageCerts}
                 </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Ngôn ngữ</div>
+                <div className="text-sm text-muted-foreground">Ngôn ngữ</div>
               </div>
             </div>
           </div>
           
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+          <div className="bg-card rounded-lg p-4 border shadow-sm">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-orange-500/10 rounded-lg flex items-center justify-center">
                 <Zap className="w-5 h-5 text-orange-600 dark:text-orange-400" />
               </div>
               <div>
-                <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                <div className="text-2xl font-bold text-foreground">
                   {cvData.experience}
                 </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Kinh nghiệm</div>
+                <div className="text-sm text-muted-foreground">Kinh nghiệm</div>
               </div>
             </div>
           </div>
@@ -867,8 +862,8 @@ export const Certificate = () => {
               onClick={() => setActiveSection("certificates")}
               className={`px-6 py-3 rounded-lg font-medium transition-all flex items-center gap-2 ${
                 activeSection === "certificates"
-                  ? "bg-blue-600 text-white shadow-sm"
-                  : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700"
+                  ? "bg-primary text-primary-foreground shadow-sm"
+                  : "bg-card text-foreground hover:bg-muted border"
               }`}
             >
               <Award className="w-4 h-4" />
@@ -878,8 +873,8 @@ export const Certificate = () => {
               onClick={() => setActiveSection("recognitions")}
               className={`px-6 py-3 rounded-lg font-medium transition-all flex items-center gap-2 ${
                 activeSection === "recognitions"
-                  ? "bg-blue-600 text-white shadow-sm"
-                  : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700"
+                  ? "bg-primary text-primary-foreground shadow-sm"
+                  : "bg-card text-foreground hover:bg-muted border"
               }`}
             >
               <Trophy className="w-4 h-4" />
@@ -891,11 +886,11 @@ export const Certificate = () => {
         {/* Certificates Grid */}
         <section id="certificates-section">
           <div className="mb-8">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+            <h3 className="text-2xl font-bold text-foreground mb-2 flex items-center gap-2">
               {activeSection === "certificates" ? <Award className="w-6 h-6" /> : <Trophy className="w-6 h-6" />}
               {activeSection === "certificates" ? "Chứng chỉ Chính thức" : "Giấy chứng nhận & Thành tích"}
             </h3>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-muted-foreground">
               {activeSection === "certificates" 
                 ? "Các chứng chỉ ngôn ngữ và kỹ năng chuyên môn từ các tổ chức giáo dục"
                 : "Các giấy chứng nhận tham gia, giải thưởng và thành tích đạt được"}
@@ -904,13 +899,13 @@ export const Certificate = () => {
           
           {currentData.length === 0 ? (
             <div className="text-center py-12">
-              <div className="w-24 h-24 mx-auto bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-6">
-                <Award className="w-12 h-12 text-gray-400 dark:text-gray-600" />
+              <div className="w-24 h-24 mx-auto bg-card rounded-full flex items-center justify-center mb-6">
+                <Award className="w-12 h-12 text-muted-foreground" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              <h3 className="text-xl font-bold text-foreground mb-2">
                 Không tìm thấy
               </h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="text-muted-foreground">
                 Hiện không có dữ liệu thuộc loại này.
               </p>
             </div>
