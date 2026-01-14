@@ -1,33 +1,70 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Github, Globe, Smartphone, Cpu, Database, Shield, SmartphoneIcon, Lock, ArrowUp } from "lucide-react";
+import { Github, Globe, Smartphone, Cpu, Database, Shield, SmartphoneIcon, Lock, ArrowUp, ExternalLink, Award } from "lucide-react";
+
+// Component cho mobile skeleton
+const MobileSkeleton = () => (
+  <div className="md:hidden space-y-4">
+    {[1, 2, 3].map((item) => (
+      <div key={item} className="bg-card rounded-xl border overflow-hidden shadow-sm animate-pulse">
+        <div className="h-48 bg-muted"></div>
+        <div className="p-4">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 bg-muted rounded-lg"></div>
+            <div className="flex-1">
+              <div className="h-5 bg-muted rounded w-3/4 mb-2"></div>
+              <div className="h-4 bg-muted rounded w-1/2"></div>
+            </div>
+          </div>
+          <div className="space-y-2 mb-4">
+            <div className="h-4 bg-muted rounded w-full"></div>
+            <div className="h-4 bg-muted rounded w-2/3"></div>
+          </div>
+          <div className="flex gap-2">
+            <div className="flex-1 h-10 bg-muted rounded-lg"></div>
+            <div className="flex-1 h-10 bg-muted rounded-lg"></div>
+            <div className="flex-1 h-10 bg-muted rounded-lg"></div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+);
 
 export const Project = () => {
   const [activeTab, setActiveTab] = useState("all");
-  
-  // Thêm state cho nút back to top
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Thêm event listener để hiển thị nút back to top
   React.useEffect(() => {
     const handleScroll = () => {
       setShowBackToTop(window.scrollY > 300);
     };
+    
+    // Simulate loading for mobile
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+    
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(timer);
+    };
   }, []);
 
   // Project data với 3 project đầy đủ
   const projectData = [
     {
       id: "job-portal-web",
-      title: "Job Portal - Website",
+      title: "VieJobs - Website tìm kiếm việc làm",
       category: "Web Application",
       status: "Live",
       year: "2024",
       description: "Ứng dụng web tìm kiếm việc làm với AI matching từ OpenAI/Gemini, real-time notifications và Cloudinary media hosting.",
       longDescription: "Job Portal là nền tảng tìm kiếm việc làm thế hệ mới sử dụng MERN stack với AI integration từ OpenAI và Gemini. Hệ thống hỗ trợ real-time notifications, advanced search với filter đa chiều, Cloudinary cho media upload, và hệ thống tracking ứng tuyển từ A đến Z.",
-      imageUrl: "https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      imageUrl: "/posterViejob-web.jpg",
       videoDemo: "/WebsiteFindJob.mp4",
       liveUrl: "https://vie-jobs.vercel.app/",
       repoUrl: "https://github.com/nguyendinhdo148/Nhom3-DACS-CNPM-WebsiteTimKiemViecLam",
@@ -58,13 +95,13 @@ export const Project = () => {
     },
     {
       id: "job-portal-mobile",
-      title: "Job Portal - Mobile App",
+      title: "VieJobs - Ứng dụng tìm kiếm việc làm",
       category: "Mobile Application",
       status: "In Development",
       year: "2024",
       description: "Ứng dụng di động tìm việc làm với Flutter, tích hợp AI recommendations, geolocation và push notifications.",
       longDescription: "Mobile application built với Flutter và Dart, kết nối với MERN backend. Ứng dụng hỗ trợ location-based job search, push notifications, offline mode, và AI chat assistant. Tích hợp OpenAI và Gemini AI cho personalized job recommendations.",
-      imageUrl: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      imageUrl: "/mobieHome.jpg",
       videoDemo: "/videos/job-portal-mobile-demo.mp4",
       liveUrl: "https://expo.dev/@yourusername/job-portal-mobile",
       repoUrl: "https://github.com/username/job-portal-mobile-flutter",
@@ -75,7 +112,6 @@ export const Project = () => {
         { name: "Node.js", icon: "🟢", color: "bg-green-100 dark:bg-green-900/30" },
         { name: "OpenAI API", icon: "🧠", color: "bg-purple-100 dark:bg-purple-900/30" },
         { name: "Gemini AI", icon: "🌟", color: "bg-yellow-100 dark:bg-yellow-900/30" },
-        { name: "Firebase", icon: "🔥", color: "bg-orange-100 dark:bg-orange-900/30" }
       ],
       features: [
         "Location-based search",
@@ -95,13 +131,13 @@ export const Project = () => {
     },
     {
       id: "p2p-file-share",
-      title: "P2P Secure File Sharing",
-      category: "Enterprise Web Application",
+      title: "VieCloud - Lưu trữ và chia sẻ file P2P",
+      category: "Web Application",
       status: "Live",
       year: "2024",
       description: "Nền tảng chia sẻ file peer-to-peer với end-to-end encryption, Java Spring Boot backend và React frontend.",
-      longDescription: "Platform chia sẻ file sử dụng WebRTC cho direct P2P connections, với Spring Boot backend và React frontend. Hệ thống hỗ trợ end-to-end encryption, blockchain-based file verification, và real-time transfer tracking.",
-      imageUrl: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      longDescription: "Platform chia sẻ file sử dụng WebRTC cho direct P2P connections, với Spring Boot backend và React frontend. Hệ thống hỗ trợ end-to-end encryption, và real-time transfer tracking.",
+      imageUrl: "/dashViecloud.jpg",
       videoDemo: "/videos/p2p-file-share-demo.mp4",
       liveUrl: "https://p2p-fileshare-demo.vercel.app",
       repoUrl: "https://github.com/username/p2p-file-share-system",
@@ -111,7 +147,6 @@ export const Project = () => {
         { name: "React", icon: "⚛️", color: "bg-blue-100 dark:bg-blue-900/30" },
         { name: "Node.js", icon: "🟢", color: "bg-green-100 dark:bg-green-900/30" },
         { name: "WebRTC", icon: "📡", color: "bg-purple-100 dark:bg-purple-900/30" },
-        { name: "AES-256", icon: "🔒", color: "bg-gray-100 dark:bg-gray-800" },
         { name: "MongoDB", icon: "🍃", color: "bg-emerald-100 dark:bg-emerald-900/30" }
       ],
       features: [
@@ -155,11 +190,127 @@ export const Project = () => {
 
   // Hàm scroll đến projects section
   const scrollToProjects = () => {
-    const projectsSection = document.getElementById('projects');
+    const projectsSection = document.getElementById('projects-section');
     if (projectsSection) {
       projectsSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  // Component cho Project Card trên mobile
+  const MobileProjectCard = ({ project }) => (
+    <div className="mb-6 bg-card rounded-xl border overflow-hidden shadow-sm">
+      {/* Project Image */}
+      <div className="relative h-48">
+        <img 
+          src={project.imageUrl} 
+          alt={project.title}
+          className="w-full h-full object-cover"
+          loading="lazy"
+        />
+        <div className="absolute top-3 right-3">
+          <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
+            project.status === 'Live' 
+              ? 'bg-green-500 text-white' 
+              : 'bg-yellow-500 text-white'
+          }`}>
+            {project.status === 'Live' ? '🚀 Live' : '🛠️ In Progress'}
+          </span>
+        </div>
+        <div className="absolute top-3 left-3">
+          <span className="px-2 py-1 bg-primary/90 text-primary-foreground text-xs font-semibold rounded-full flex items-center gap-1">
+            {project.platform === 'Mobile' ? '📱 Mobile' : '💻 Web'}
+          </span>
+        </div>
+      </div>
+
+      {/* Project Content */}
+      <div className="p-4">
+        <div className="flex items-center gap-3 mb-3">
+          <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
+            {project.icon}
+          </div>
+          <div>
+            <h3 className="font-bold text-foreground">{project.title}</h3>
+            <div className="flex items-center gap-1 mt-1">
+              <span className="text-xs text-muted-foreground">{project.category}</span>
+              <span className="text-muted-foreground mx-1">•</span>
+              <span className="text-xs text-muted-foreground">{project.year}</span>
+            </div>
+          </div>
+        </div>
+
+        <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
+
+        {/* Tech Stack cho mobile */}
+        <div className="mb-4">
+          <div className="flex flex-wrap gap-1">
+            {project.techStack.slice(0, 3).map((tech, index) => (
+              <span 
+                key={index}
+                className="px-2 py-1 bg-muted text-xs rounded flex items-center gap-1"
+              >
+                <span>{tech.icon}</span>
+                <span>{tech.name}</span>
+              </span>
+            ))}
+            {project.techStack.length > 3 && (
+              <span className="px-2 py-1 bg-muted text-xs text-muted-foreground rounded">
+                +{project.techStack.length - 3}
+              </span>
+            )}
+          </div>
+        </div>
+
+        {/* Features Preview cho mobile */}
+        <div className="mb-4">
+          <div className="flex flex-wrap gap-1">
+            {project.features.slice(0, 2).map((feature, index) => (
+              <span 
+                key={index}
+                className="px-2 py-1 bg-primary/10 text-primary text-xs rounded flex items-center gap-1"
+              >
+                <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                {feature}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Action Buttons cho mobile */}
+        <div className="flex gap-2">
+          <a 
+            href={project.repoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 inline-flex items-center justify-center gap-1 px-3 py-2.5 bg-muted text-foreground text-sm rounded-lg transition-all active:scale-95"
+          >
+            <Github className="w-4 h-4" />
+            <span>Code</span>
+          </a>
+          
+          {project.liveUrl && (
+            <a 
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 inline-flex items-center justify-center gap-1 px-3 py-2.5 bg-primary text-primary-foreground text-sm rounded-lg transition-all active:scale-95"
+            >
+              <Globe className="w-4 h-4" />
+              <span>Demo</span>
+            </a>
+          )}
+          
+          <Link 
+            to={`/project-detail/${project.id}`}
+            className="flex-1 inline-flex items-center justify-center gap-1 px-3 py-2.5 bg-accent text-foreground text-sm rounded-lg transition-all active:scale-95"
+          >
+            <ExternalLink className="w-4 h-4" />
+            <span>Details</span>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-background">
@@ -177,32 +328,32 @@ export const Project = () => {
       {/* Header với section ID để có thể scroll từ navbar */}
       <section id="projects" className="scroll-mt-20">
         <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-md border-b">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div>
-                <h1 className="text-3xl md:text-4xl font-bold text-foreground">
+                <h1 className="text-2xl md:text-4xl font-bold text-foreground">
                   My Projects
                 </h1>
-                <p className="text-muted-foreground mt-2">
+                <p className="text-sm md:text-base text-muted-foreground mt-1 md:mt-2">
                   Full-stack applications với modern technologies 
                 </p>
               </div>
               
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
                 <button
                   onClick={scrollToProjects}
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-muted hover:bg-muted/80 text-foreground font-medium rounded-lg transition-all hover:shadow-lg active:scale-95"
+                  className="inline-flex items-center gap-2 px-3 py-2 md:px-4 md:py-2 bg-muted hover:bg-muted/80 text-foreground text-sm md:text-base font-medium rounded-lg transition-all hover:shadow-lg active:scale-95"
                 >
-                  <span>Jump to Projects</span>
+                  <span>View Projects</span>
                 </button>
                 <a 
                   href="https://github.com/yourusername"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-lg transition-all hover:shadow-lg active:scale-95"
+                  className="inline-flex items-center gap-2 px-3 py-2 md:px-4 md:py-2 bg-primary hover:bg-primary/90 text-primary-foreground text-sm md:text-base font-medium rounded-lg transition-all hover:shadow-lg active:scale-95"
                 >
                   <Github className="w-4 h-4" />
-                  <span>GitHub Profile</span>
+                  <span className="hidden sm:inline">GitHub</span>
                 </a>
               </div>
             </div>
@@ -211,58 +362,58 @@ export const Project = () => {
       </section>
 
       {/* Hero Section - Giới thiệu */}
-      <section className="py-12   from-background to-muted/20">
+      <section className="py-8 md:py-12 from-background to-muted/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <div className="text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 md:mb-4">
               Crafting Digital Experiences
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-muted-foreground max-w-3xl mx-auto">
               Explore my portfolio of full-stack applications built with modern technologies,
               featuring AI integration, real-time features, and scalable architectures.
             </p>
           </div>
 
-          {/* Stats Overview */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <div className="bg-card rounded-xl p-6 border shadow-sm hover:shadow-lg transition-all duration-300">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <Cpu className="w-6 h-6 text-primary" />
+          {/* Stats Overview - Responsive grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-12">
+            <div className="bg-card rounded-xl p-4 md:p-6 border shadow-sm hover:shadow-lg transition-all duration-300">
+              <div className="flex items-center gap-3 md:gap-4">
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Cpu className="w-5 h-5 md:w-6 md:h-6 text-primary" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-foreground">
+                  <div className="text-xl md:text-2xl font-bold text-foreground">
                     {liveProjectsCount}
                   </div>
-                  <div className="text-muted-foreground">Live Projects</div>
+                  <div className="text-sm md:text-base text-muted-foreground">Live Projects</div>
                 </div>
               </div>
             </div>
             
-            <div className="bg-card rounded-xl p-6 border shadow-sm hover:shadow-lg transition-all duration-300">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center">
-                  <Database className="w-6 h-6 text-green-500" />
+            <div className="bg-card rounded-xl p-4 md:p-6 border shadow-sm hover:shadow-lg transition-all duration-300">
+              <div className="flex items-center gap-3 md:gap-4">
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-green-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Database className="w-5 h-5 md:w-6 md:h-6 text-green-500" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-foreground">
+                  <div className="text-xl md:text-2xl font-bold text-foreground">
                     {webProjectsCount}
                   </div>
-                  <div className="text-muted-foreground">Web Applications</div>
+                  <div className="text-sm md:text-base text-muted-foreground">Web Applications</div>
                 </div>
               </div>
             </div>
             
-            <div className="bg-card rounded-xl p-6 border shadow-sm hover:shadow-lg transition-all duration-300">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center">
-                  <Shield className="w-6 h-6 text-purple-500" />
+            <div className="bg-card rounded-xl p-4 md:p-6 border shadow-sm hover:shadow-lg transition-all duration-300 sm:col-span-2 lg:col-span-1">
+              <div className="flex items-center gap-3 md:gap-4">
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-purple-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Shield className="w-5 h-5 md:w-6 md:h-6 text-purple-500" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-foreground">
+                  <div className="text-xl md:text-2xl font-bold text-foreground">
                     {mobileProjectsCount}
                   </div>
-                  <div className="text-muted-foreground">Mobile Applications</div>
+                  <div className="text-sm md:text-base text-muted-foreground">Mobile Applications</div>
                 </div>
               </div>
             </div>
@@ -271,42 +422,42 @@ export const Project = () => {
       </section>
 
       {/* Filter Section */}
-      <section className="py-8 bg-background border-y">
+      <section className="py-6 md:py-8 bg-background border-y">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-8">
-            <h3 className="text-2xl font-bold text-foreground mb-4">Filter by Category</h3>
-            <div className="flex flex-wrap gap-2 mb-6">
+          <div className="mb-6 md:mb-8">
+            <h3 className="text-lg md:text-2xl font-bold text-foreground mb-3 md:mb-4">Filter by Category</h3>
+            <div className="flex flex-wrap gap-2 mb-4 md:mb-6 overflow-x-auto pb-2">
               <button
                 onClick={() => setActiveTab("all")}
-                className={`px-6 py-3 rounded-lg font-medium transition-all ${
+                className={`px-4 py-2 md:px-6 md:py-3 rounded-lg text-sm md:text-base font-medium transition-all flex-shrink-0 ${
                   activeTab === "all"
                     ? "bg-primary text-primary-foreground shadow-lg"
                     : "bg-muted text-muted-foreground hover:bg-muted/80"
                 }`}
               >
-                All Projects ({projectData.length})
+                All ({projectData.length})
               </button>
               <button
                 onClick={() => setActiveTab("web")}
-                className={`px-6 py-3 rounded-lg font-medium transition-all flex items-center gap-2 ${
+                className={`px-4 py-2 md:px-6 md:py-3 rounded-lg text-sm md:text-base font-medium transition-all flex-shrink-0 flex items-center gap-2 ${
                   activeTab === "web"
                     ? "bg-primary text-primary-foreground shadow-lg"
                     : "bg-muted text-muted-foreground hover:bg-muted/80"
                 }`}
               >
                 <Globe className="w-4 h-4" />
-                Web Applications ({webProjectsCount})
+                <span>Web ({webProjectsCount})</span>
               </button>
               <button
                 onClick={() => setActiveTab("mobile")}
-                className={`px-6 py-3 rounded-lg font-medium transition-all flex items-center gap-2 ${
+                className={`px-4 py-2 md:px-6 md:py-3 rounded-lg text-sm md:text-base font-medium transition-all flex-shrink-0 flex items-center gap-2 ${
                   activeTab === "mobile"
                     ? "bg-primary text-primary-foreground shadow-lg"
                     : "bg-muted text-muted-foreground hover:bg-muted/80"
                 }`}
               >
                 <SmartphoneIcon className="w-4 h-4" />
-                Mobile Applications ({mobileProjectsCount})
+                <span>Mobile ({mobileProjectsCount})</span>
               </button>
             </div>
           </div>
@@ -314,32 +465,32 @@ export const Project = () => {
       </section>
 
       {/* Main Content - Projects Grid */}
-      <section className="py-12">
+      <section id="projects-section" className="py-8 md:py-12 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Message khi không có project nào */}
           {filteredProjects.length === 0 ? (
-            <div className="text-center py-12">
-              <div className="w-24 h-24 mx-auto bg-muted rounded-full flex items-center justify-center mb-6">
-                <SmartphoneIcon className="w-12 h-12 text-muted-foreground" />
+            <div className="text-center py-8 md:py-12">
+              <div className="w-16 h-16 md:w-24 md:h-24 mx-auto bg-muted rounded-full flex items-center justify-center mb-4 md:mb-6">
+                <SmartphoneIcon className="w-8 h-8 md:w-12 md:h-12 text-muted-foreground" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">
+              <h3 className="text-lg md:text-xl font-bold text-foreground mb-2">
                 No Mobile Projects Available
               </h3>
-              <p className="text-muted-foreground mb-6 max-w-md mx-auto">
+              <p className="text-sm md:text-base text-muted-foreground mb-4 md:mb-6 max-w-md mx-auto">
                 Currently, there are no mobile projects in the portfolio. 
                 Check back later for new additions!
               </p>
               <button
                 onClick={() => setActiveTab("all")}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-lg transition-all"
+                className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-primary hover:bg-primary/90 text-primary-foreground text-sm md:text-base font-medium rounded-lg transition-all"
               >
                 View All Projects
               </button>
             </div>
           ) : (
             <>
-              {/* Projects Grid - Desktop view */}
-              <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Desktop view - Projects Grid */}
+              <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                 {filteredProjects.map((project) => (
                   <div key={project.id} className="group relative bg-card rounded-2xl overflow-hidden border shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                     {/* Project Header */}
@@ -422,7 +573,7 @@ export const Project = () => {
                         <div className="space-y-2">
                           {project.features.slice(0, 3).map((feature, index) => (
                             <div key={index} className="flex items-start gap-2">
-                              <div className="w-5 h-5 bg-primary/10 rounded flex items-center justify-center   mt-0.5">
+                              <div className="w-5 h-5 bg-primary/10 rounded flex items-center justify-center mt-0.5">
                                 <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
                               </div>
                               <span className="text-sm text-muted-foreground">{feature}</span>
@@ -474,213 +625,16 @@ export const Project = () => {
 
               {/* Mobile view cho Project Cards */}
               <div className="md:hidden">
-                {filteredProjects.map((project) => (
-                  <div key={project.id} className="mb-6 bg-card rounded-xl border overflow-hidden shadow-sm">
-                    {/* Project Image */}
-                    <div className="relative h-48">
-                      <img 
-                        src={project.imageUrl} 
-                        alt={project.title}
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                      />
-                      <div className="absolute top-3 right-3">
-                        <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                          project.status === 'Live' 
-                            ? 'bg-green-500 text-white' 
-                            : 'bg-yellow-500 text-white'
-                        }`}>
-                          {project.status === 'Live' ? '🚀 Live' : '🛠️ In Progress'}
-                        </span>
-                      </div>
-                      <div className="absolute top-3 left-3">
-                        <span className="px-2 py-1 bg-primary/90 text-primary-foreground text-xs font-semibold rounded-full flex items-center gap-1">
-                          {project.platform === 'Mobile' ? '📱 Mobile' : '💻 Web'}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Project Content */}
-                    <div className="p-4">
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
-                          {project.icon}
-                        </div>
-                        <div>
-                          <h3 className="font-bold text-foreground">{project.title}</h3>
-                          <p className="text-xs text-muted-foreground">{project.category} • {project.year}</p>
-                        </div>
-                      </div>
-
-                      <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
-
-                      {/* Tech Stack (hiển thị rút gọn trên mobile) */}
-                      <div className="mb-4">
-                        <div className="flex flex-wrap gap-1">
-                          {project.techStack.slice(0, 3).map((tech, index) => (
-                            <span 
-                              key={index}
-                              className="px-2 py-1 bg-muted text-xs rounded"
-                            >
-                              {tech.name}
-                            </span>
-                          ))}
-                          {project.techStack.length > 3 && (
-                            <span className="px-2 py-1 bg-muted text-xs text-muted-foreground rounded">
-                              +{project.techStack.length - 3}
-                            </span>
-                          )}
-                        </div>
-                      </div>
-
-                      {/* Action Buttons cho mobile */}
-                      <div className="flex gap-2">
-                        <a 
-                          href={project.repoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex-1 inline-flex items-center justify-center gap-1 px-3 py-2 bg-muted text-foreground text-sm rounded-lg"
-                        >
-                          <Github className="w-3 h-3" />
-                          <span>Code</span>
-                        </a>
-                        
-                        {project.liveUrl && (
-                          <a 
-                            href={project.liveUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex-1 inline-flex items-center justify-center gap-1 px-3 py-2 bg-primary text-primary-foreground text-sm rounded-lg"
-                          >
-                            <Globe className="w-3 h-3" />
-                            <span>Demo</span>
-                          </a>
-                        )}
-                        
-                        <Link 
-                          to={`/project-detail/${project.id}`}
-                          className="flex-1 inline-flex items-center justify-center gap-1 px-3 py-2 bg-accent text-foreground text-sm rounded-lg"
-                        >
-                          <span>Details</span>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+                {isLoading ? (
+                  <MobileSkeleton />
+                ) : (
+                  filteredProjects.map((project) => (
+                    <MobileProjectCard key={project.id} project={project} />
+                  ))
+                )}
               </div>
             </>
           )}
-        </div>
-      </section>
-
-      {/* Comparison Table Section */}
-      {projectData.length > 0 && (
-        <section className="py-16 bg-muted/20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">
-              Project Comparison
-            </h2>
-            
-            <div className="overflow-x-auto rounded-xl border bg-card">
-              <table className="min-w-full divide-y">
-                <thead className="bg-muted">
-                  <tr>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Project</th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Platform</th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Status</th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Main Tech</th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Key Features</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y bg-card">
-                  {projectData.map((project) => (
-                    <tr key={project.id} className="hover:bg-accent/50 transition-colors">
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
-                            {project.icon}
-                          </div>
-                          <div>
-                            <div className="font-medium text-foreground">{project.title}</div>
-                            <div className="text-sm text-muted-foreground">{project.category}</div>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium ${
-                          project.platform === 'Mobile' 
-                            ? 'bg-blue-500/10 text-blue-700 dark:text-blue-400' 
-                            : 'bg-green-500/10 text-green-700 dark:text-green-400'
-                        }`}>
-                          {project.platform === 'Mobile' ? '📱 Mobile' : '💻 Web'}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="flex items-center gap-2">
-                          <div className={`w-2 h-2 rounded-full ${
-                            project.status === 'Live' ? 'bg-green-500 animate-pulse' : 'bg-yellow-500'
-                          }`}></div>
-                          <span className="text-sm text-foreground">{project.status}</span>
-                        </div>
-                      </td>
-                      <td className="px-6 py-4">
-                        <div className="flex flex-wrap gap-2">
-                          {project.techStack.slice(0, 2).map((tech, index) => (
-                            <span key={index} className="text-sm text-muted-foreground">
-                              {tech.name}
-                            </span>
-                          ))}
-                        </div>
-                      </td>
-                      <td className="px-6 py-4">
-                        <div className="text-sm text-muted-foreground">
-                          {project.features.slice(0, 2).join(', ')}...
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Call to Action Section */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-card rounded-2xl p-8 border shadow-sm text-center">
-            <h3 className="text-2xl font-bold text-foreground mb-4">
-              Interested in Collaboration?
-            </h3>
-            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Have a project in mind or want to discuss potential opportunities? 
-              I'm always open to discussing new projects and opportunities.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <a 
-                href="mailto:your.email@example.com"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-lg transition-all hover:shadow-lg hover:shadow-primary/25 active:scale-95"
-              >
-                Contact Me
-              </a>
-              <a 
-                href="https://github.com/yourusername"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-muted hover:bg-muted/80 text-foreground font-medium rounded-lg transition-all hover:shadow-lg active:scale-95"
-              >
-                <Github className="w-5 h-5" />
-                View GitHub
-              </a>
-              <button
-                onClick={scrollToProjects}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-accent hover:bg-accent/80 text-foreground font-medium rounded-lg transition-all hover:shadow-lg active:scale-95"
-              >
-                View Projects
-              </button>
-            </div>
-          </div>
         </div>
       </section>
     </div>

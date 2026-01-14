@@ -47,9 +47,17 @@ export const Navbar = () => {
             alt="Logo Nguyễn Đình Đô"
             className="w-8 h-8 rounded-full object-cover"
           />
-          <span className="text-xl font-bold text-glow">
-            Nguyễn Đình Đô
-          </span>
+          <span
+  className={cn(
+    "px-3 py-1 rounded-lg text-xl font-bold text-glow transition-all",
+    isScrolled
+      ? "bg-white/10 backdrop-blur-sm"
+      : "bg-black/10 backdrop-blur-sm"
+  )}
+>
+  Nguyễn Đình Đô
+</span>
+
         </a>
 
         {/* Mobile Menu Button */}

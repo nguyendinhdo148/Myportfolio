@@ -77,7 +77,7 @@ export const Introduce = () => {
             <span className="text-primary font-semibold mx-1 md:mx-2">
               Business Analyst
             </span>
-            chuyên nghiệp
+            Intern
           </p>
           <div className="text-base md:text-lg text-foreground/80 space-y-1">
             <div>
@@ -131,9 +131,9 @@ export const Introduce = () => {
 
         {/* Additional Info */}
         <div className="mt-6 md:mt-8 text-xs md:text-sm text-foreground/60 space-y-1">
-          <p>✓ 5+ năm kinh nghiệm trong phân tích nghiệp vụ</p>
-          <p>✓ Đã thực hiện 20+ dự án thành công</p>
-          <p>✓ Chuyên gia về Agile & Scrum</p>
+          <p>✓ Đại học Công Nghệ Thành Phố Hồ Chí Minh</p>
+          <p>✓ Khoa Công Nghệ Thông Tin</p>
+          <p>✓ GPA 3.24</p>
         </div>
       </div>
     </section>
