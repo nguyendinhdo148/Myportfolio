@@ -1,48 +1,391 @@
-import React, { useState, useEffect } from "react";
-import { Download, Eye, ExternalLink, Calendar, Award, FileText, BookOpen, Sparkles, ChevronRight, ArrowUp, Clock, Users, Trophy, Star, Maximize2, FileCheck, UserCheck, Brain, Target } from "lucide-react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
+import { Download, Eye, Calendar, Award, Sparkles, ArrowUp, Clock, Users, Trophy, Star, Maximize2, FileCheck, UserCheck, Brain, Target, Filter, Search, X, Layers, GraduationCap, Briefcase, Zap } from "lucide-react";
 
-// Modal component for image preview
-const ImageModal = ({ isOpen, onClose, imageUrl, title, issuer }) => {
+// Enhanced Image Modal với Preloading
+const EnhancedImageModal = ({ isOpen, onClose, imageUrl, title, issuer, details }) => {
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const modalRef = useRef(null);
+
+  useEffect(() => {
+    if (isOpen && imageUrl) {
+      const img = new Image();
+      img.src = imageUrl;
+      img.onload = () => setIsImageLoaded(true);
+    }
+  }, [isOpen, imageUrl]);
+
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+      setIsImageLoaded(false);
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm">
-      <div className="relative max-w-4xl max-h-[90vh] w-full">
+    <div 
+      ref={modalRef}
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/95 backdrop-blur-lg transition-all duration-300"
+      onClick={(e) => e.target === modalRef.current && onClose()}
+    >
+      <div className="relative max-w-6xl max-h-[90vh] w-full h-full">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 p-2 bg-black/50 text-white rounded-full hover:bg-black/70 transition-colors"
+          className="absolute top-6 right-6 z-20 p-3 bg-white/10 hover:bg-white/20 text-white rounded-lg backdrop-blur-sm transition-all hover:scale-110 active:scale-95 group"
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
+          <X className="w-6 h-6 group-hover:rotate-90 transition-transform duration-300" />
         </button>
-        
-        <div className="bg-card rounded-xl overflow-hidden">
-          <div className="p-4 border-b">
-            <h3 className="text-lg font-semibold text-foreground">{title}</h3>
-            <p className="text-sm text-muted-foreground">Cấp bởi: {issuer}</p>
+
+        <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-2xl h-full flex flex-col">
+          <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{title}</h3>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                <span className="text-sm text-gray-600 dark:text-gray-400">Cấp bởi: {issuer}</span>
+                {details?.issueDate && (
+                  <span className="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400">
+                    <Calendar className="w-4 h-4" />
+                    {details.issueDate}
+                  </span>
+                )}
+              </div>
+            </div>
           </div>
-          
-          <div className="relative h-[70vh] overflow-auto">
-            <img
-              src={imageUrl}
-              alt={title}
-              className="w-full h-auto object-contain"
-              onClick={(e) => e.stopPropagation()}
-            />
+
+          <div className="flex-1 relative overflow-hidden p-4 bg-gray-50 dark:bg-gray-900">
+            {!isImageLoaded && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-16 h-16 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin"></div>
+              </div>
+            )}
+            
+            <div className={`w-full h-full flex items-center justify-center transition-opacity duration-500 ${
+              isImageLoaded ? 'opacity-100' : 'opacity-0'
+            }`}>
+              <img
+                src={imageUrl}
+                alt={title}
+                className="max-w-full max-h-full object-contain rounded-lg shadow-lg"
+                style={{ imageRendering: 'auto' }}
+              />
+            </div>
           </div>
+
+          <div className="p-6 border-t border-gray-200 dark:border-gray-700">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="flex flex-wrap gap-2">
+                {details?.skills?.slice(0, 3).map((skill, index) => (
+                  <span key={index} className="px-3 py-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm rounded-lg">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+              <a
+                href={imageUrl}
+                download
+                className="group inline-flex items-center gap-3 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all hover:shadow-lg active:scale-95"
+              >
+                <Download className="w-5 h-5" />
+                <span>Tải ảnh gốc</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// CV Preview Modal
+const CVPreviewModal = ({ isOpen, onClose, cvData }) => {
+  const modalRef = useRef(null);
+
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen, onClose]);
+
+  if (!isOpen) return null;
+
+  return (
+    <div 
+      ref={modalRef}
+      className="fixed inset-0 z-[10000] flex items-center justify-center p-4 bg-black/95 backdrop-blur-lg transition-all duration-300"
+      onClick={(e) => e.target === modalRef.current && onClose()}
+    >
+      <div className="relative max-w-6xl w-full h-[90vh]">
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-20 p-3 bg-white/10 hover:bg-white/20 text-white rounded-lg backdrop-blur-sm transition-all hover:scale-110 active:scale-95 group"
+        >
+          <X className="w-6 h-6 group-hover:rotate-90 transition-transform duration-300" />
+        </button>
+
+        <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-2xl h-full flex flex-col">
+          <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Xem trước CV</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                Phiên bản CV mới nhất cập nhật tháng 12, 2024
+              </p>
+            </div>
+          </div>
+
+          <div className="flex-1 overflow-hidden">
+           <iframe
+  src="https://drive.google.com/file/d/1MChc_8u8wOE9gQRZxKS68vVMUPGp1ZkZ/preview"
+  className="w-full h-full border-0"
+  allow="autoplay"
+  title="CV Preview"
+/>
+          </div>
+
+          <div className="p-6 border-t border-gray-200 dark:border-gray-700">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="text-sm text-gray-600 dark:text-gray-400">
+                CV được thiết kế chuyên nghiệp cho vị trí Business Analyst
+              </div>
+              <div className="flex gap-3">
+                <a
+                  href={cvData.viewUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 px-6 py-3 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-medium rounded-lg transition-all hover:shadow-lg active:scale-95"
+                >
+                  <Eye className="w-5 h-5" />
+                  <span>Xem trên Google Drive</span>
+                </a>
+                <a
+                  href={cvData.downloadUrl}
+                  download="CV-Nguyen-Dinh-Do.pdf"
+                  className="inline-flex items-center gap-3 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all hover:shadow-lg active:scale-95"
+                >
+                  <Download className="w-5 h-5" />
+                  <span>Tải CV (PDF)</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Optimized Image Component
+const OptimizedImage = ({ src, alt, className, onLoad, priority = false }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
+
+  const handleLoad = useCallback(() => {
+    setIsLoaded(true);
+    onLoad?.();
+  }, [onLoad]);
+
+  const handleError = useCallback(() => {
+    setHasError(true);
+  }, []);
+
+  return (
+    <div className={`relative overflow-hidden ${className}`}>
+      {!isLoaded && !hasError && (
+        <div className="absolute inset-0 bg-gray-100 dark:bg-gray-800 animate-pulse"></div>
+      )}
+      
+      {hasError ? (
+        <div className="w-full h-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+          <span className="text-gray-400 text-sm">Không thể tải ảnh</span>
+        </div>
+      ) : (
+        <img
+          src={src}
+          alt={alt}
+          className={`w-full h-full object-cover transition-all duration-500 ${
+            isLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
+          loading={priority ? "eager" : "lazy"}
+          decoding="async"
+          onLoad={handleLoad}
+          onError={handleError}
+          style={{
+            contentVisibility: 'auto'
+          }}
+        />
+      )}
+    </div>
+  );
+};
+
+// Enhanced Certificate Card với Intersection Observer
+const EnhancedCertificateCard = ({ item, isRecognition = false, onClick }) => {
+  const cardRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '50px'
+      }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current);
+      }
+    };
+  }, []);
+
+  const levelColors = {
+    Excellence: "bg-gradient-to-r from-yellow-500 to-orange-500",
+    Advanced: "bg-gradient-to-r from-blue-500 to-cyan-500",
+    B2: "bg-gradient-to-r from-green-500 to-emerald-500",
+    Completion: "bg-gradient-to-r from-purple-500 to-pink-500",
+    Participation: "bg-gradient-to-r from-gray-500 to-slate-600",
+    Participant: "bg-gradient-to-r from-blue-400 to-cyan-400",
+  };
+
+  const typeIcons = {
+    certificate: <Award className="w-4 h-4" />,
+    award: <Trophy className="w-4 h-4" />,
+    workshop: <Users className="w-4 h-4" />,
+    competition: <Star className="w-4 h-4" />,
+    language: <GraduationCap className="w-4 h-4" />,
+    'soft-skill': <Brain className="w-4 h-4" />,
+  };
+
+  return (
+    <div
+      ref={cardRef}
+      className={`group transition-all duration-500 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+      }`}
+      style={{
+        transitionDelay: isVisible ? '0ms' : '100ms'
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300">
+        {/* Image Container */}
+        <div className="relative h-48 overflow-hidden bg-gray-50 dark:bg-gray-900">
+          <OptimizedImage
+            src={item.imageUrl}
+            alt={item.title}
+            className="w-full h-full"
+            priority={false}
+          />
           
-          <div className="p-4 border-t flex justify-between items-center">
-            <span className="text-sm text-muted-foreground">
-              Click vào ảnh để xem chi tiết
+          {/* Badges */}
+          <div className="absolute top-3 left-3 flex flex-col gap-2">
+            <span className={`px-3 py-1.5 rounded-full text-xs font-semibold text-white ${
+              levelColors[item.level] || levelColors.Participation
+            }`}>
+              {typeIcons[item.type] || typeIcons.certificate}
+              <span className="ml-1">{item.type.charAt(0).toUpperCase() + item.type.slice(1)}</span>
             </span>
+          </div>
+          
+          <div className="absolute bottom-3 left-3">
+            <span className="px-3 py-1.5 bg-black/70 text-white text-xs font-medium rounded-full flex items-center gap-1.5">
+              <Clock className="w-3 h-3" />
+              {item.duration}
+            </span>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="p-4">
+          <div className="mb-3">
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-2">
+              {item.title}
+            </h3>
+            <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+              <Briefcase className="w-3 h-3 flex-shrink-0" />
+              <span className="truncate">{item.issuer}</span>
+              <span className="mx-1">•</span>
+              <Calendar className="w-3 h-3 flex-shrink-0" />
+              <span>{item.issueDate}</span>
+            </div>
+          </div>
+          
+          <p className="text-gray-600 dark:text-gray-300 text-sm mb-3 line-clamp-2">
+            {item.description}
+          </p>
+
+          {isRecognition && item.achievement && (
+            <div className="mb-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-sm font-medium rounded-lg">
+                <Sparkles className="w-3 h-3" />
+                <span>{item.achievement}</span>
+              </div>
+            </div>
+          )}
+
+          {/* Skills */}
+          <div className="mb-4">
+            <div className="flex flex-wrap gap-2">
+              {item.skills.slice(0, 3).map((skill, index) => (
+                <span
+                  key={index}
+                  className="px-2.5 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs font-medium rounded"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex gap-2">
+            <button
+              onClick={onClick}
+              className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-300 active:scale-95"
+            >
+              <Maximize2 className="w-4 h-4" />
+              <span>Xem ảnh</span>
+            </button>
+            
             <a
-              href={imageUrl}
+              href={item.imageUrl}
               download
-              className="inline-flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground text-sm font-medium rounded-lg transition-colors"
+              className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-medium rounded-lg transition-all duration-300 active:scale-95"
             >
               <Download className="w-4 h-4" />
-              Tải ảnh
+              <span>Tải về</span>
             </a>
           </div>
         </div>
@@ -51,100 +394,217 @@ const ImageModal = ({ isOpen, onClose, imageUrl, title, issuer }) => {
   );
 };
 
-// Mobile Skeleton Component
-const MobileSkeleton = () => (
-  <div className="md:hidden space-y-4">
-    {[1, 2, 3].map((item) => (
-      <div key={item} className="bg-card rounded-xl border overflow-hidden shadow-sm animate-pulse">
-        <div className="h-48 bg-muted"></div>
-        <div className="p-4">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 bg-muted rounded-lg"></div>
-            <div className="flex-1">
-              <div className="h-5 bg-muted rounded w-3/4 mb-2"></div>
-              <div className="h-4 bg-muted rounded w-1/2"></div>
+// CV Section Component với Preview
+const CVSection = ({ cvData, onPreviewCV }) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  return (
+    <div className="mb-12">
+      <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* CV Preview Image */}
+          <div className="lg:w-2/5">
+            <div className="mb-4">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Hồ sơ CV</h3>
+              <p className="text-gray-600 dark:text-gray-400 mt-1">
+                Phiên bản mới nhất - {cvData.lastUpdated}
+              </p>
+            </div>
+            
+            <div className="relative bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700">
+              <div className="aspect-[3/4] relative">
+                {!imageLoaded && (
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-800 dark:to-gray-900 animate-pulse"></div>
+                )}
+                
+                {/* CV Preview Image */}
+                <img
+                  src="https://drive.google.com/thumbnail?id=1MChc_8u8wOE9gQRZxKS68vVMUPGp1ZkZ&sz=w1000"
+
+                  alt="CV Preview"
+                  className={`w-full h-full object-cover transition-opacity duration-500 ${
+                    imageLoaded ? 'opacity-100' : 'opacity-0'
+                  }`}
+                  onLoad={() => setImageLoaded(true)}
+                />
+                
+                {/* Preview Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <button
+                    onClick={onPreviewCV}
+                    className="transform -translate-y-4 group"
+                  >
+                    <div className="bg-white/20 backdrop-blur-sm rounded-full p-4 mb-3 group-hover:scale-110 transition-transform">
+                      <Eye className="w-8 h-8 text-white" />
+                    </div>
+                    <span className="text-white font-medium text-sm">Xem trước CV</span>
+                  </button>
+                </div>
+              </div>
+              
+              <div className="p-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <FileCheck className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                    <span className="font-medium text-gray-900 dark:text-white">CV.pdf</span>
+                  </div>
+                  <span className="text-sm text-gray-500">2 MB</span>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="space-y-2 mb-4">
-            <div className="h-4 bg-muted rounded w-full"></div>
-            <div className="h-4 bg-muted rounded w-2/3"></div>
-          </div>
-          <div className="flex gap-2">
-            <div className="flex-1 h-10 bg-muted rounded-lg"></div>
-            <div className="flex-1 h-10 bg-muted rounded-lg"></div>
+          
+          {/* CV Info */}
+          <div className="lg:w-3/5">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
+                <FileCheck className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                  CV Chuyên nghiệp
+                </h3>
+                <div className="flex flex-wrap gap-2 mt-2">
+                  <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-medium rounded-full">
+                    Business Analyst
+                  </span>
+                  <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-sm font-medium rounded-full">
+                    Data Analyst
+                  </span>
+                </div>
+              </div>
+            </div>
+            
+            <p className="text-gray-700 dark:text-gray-300 mb-6">
+              CV được thiết kế chuyên nghiệp với đầy đủ thông tin về kỹ năng, kinh nghiệm và thành tích. 
+              Tối ưu hóa cho các vị trí Business Analyst và Data Analyst.
+            </p>
+            
+            <div className="grid grid-cols-2 gap-4 mb-8">
+              <div className="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-900 rounded-lg">
+                <UserCheck className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                <div>
+                  <div className="font-medium text-gray-900 dark:text-white">Chuyên nghiệp</div>
+                  <div className="text-sm text-gray-500">Thiết kế hiện đại</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-900 rounded-lg">
+                <Target className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                <div>
+                  <div className="font-medium text-gray-900 dark:text-white">Mục tiêu rõ ràng</div>
+                  <div className="text-sm text-gray-500">Định hướng BA/DA</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-900 rounded-lg">
+                <Brain className="w-5 h-5 text-green-600 dark:text-green-400" />
+                <div>
+                  <div className="font-medium text-gray-900 dark:text-white">Tư duy phân tích</div>
+                  <div className="text-sm text-gray-500">Problem-solving</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-900 rounded-lg">
+                <Users className="w-5 h-5 text-orange-600 dark:text-orange-400" />
+                <div>
+                  <div className="font-medium text-gray-900 dark:text-white">Teamwork</div>
+                  <div className="text-sm text-gray-500">Collaboration</div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row gap-3">
+              <button
+                onClick={onPreviewCV}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all hover:shadow-lg active:scale-95"
+              >
+                <Eye className="w-5 h-5" />
+                <span>Xem trước CV</span>
+              </button>
+              <a 
+                href={cvData.viewUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-medium rounded-lg border border-gray-300 dark:border-gray-600 transition-all hover:shadow-lg active:scale-95"
+              >
+                <Eye className="w-5 h-5" />
+                <span>Xem trên Drive</span>
+              </a>
+              <a 
+                href={cvData.downloadUrl}
+                download="CV-Nguyen-Dinh-Do.pdf"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition-all hover:shadow-lg active:scale-95"
+              >
+                <Download className="w-5 h-5" />
+                <span>Tải CV</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    ))}
-  </div>
-);
+    </div>
+  );
+};
 
+// Main Component
 export const Certificate = () => {
-  const [isLoading, setIsLoading] = useState(true);
   const [showBackToTop, setShowBackToTop] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState({});
   const [activeSection, setActiveSection] = useState("certificates");
   const [modalState, setModalState] = useState({
     isOpen: false,
     imageUrl: "",
     title: "",
-    issuer: ""
+    issuer: "",
+    details: null
   });
+  const [showCVPreview, setShowCVPreview] = useState(false);
 
-  // Simulate loading for mobile
+  // Back to top với throttle
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1500);
-    return () => clearTimeout(timer);
-  }, []);
-
-  // Thêm event listener để hiển thị nút back to top
-  useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      setShowBackToTop(window.scrollY > 300);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setShowBackToTop(window.scrollY > 300);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Hàm scroll về đầu trang
-  const scrollToTop = () => {
+  const scrollToTop = useCallback(() => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
-  };
+  }, []);
 
-  // Hàm scroll đến sections
-  const scrollToSection = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  // Handle image load
-  const handleImageLoad = (id) => {
-    setImageLoaded(prev => ({ ...prev, [id]: true }));
-  };
-
-  // Open image modal
-  const openImageModal = (imageUrl, title, issuer) => {
+  const openImageModal = useCallback((imageUrl, title, issuer, details) => {
     setModalState({
       isOpen: true,
       imageUrl,
       title,
-      issuer
+      issuer,
+      details
     });
-  };
+  }, []);
 
-  // Close image modal
-  const closeImageModal = () => {
+  const closeImageModal = useCallback(() => {
     setModalState(prev => ({ ...prev, isOpen: false }));
-  };
+  }, []);
 
-  // Data chứng chỉ chính thức
+  const openCVPreview = useCallback(() => {
+    setShowCVPreview(true);
+  }, []);
+
+  const closeCVPreview = useCallback(() => {
+    setShowCVPreview(false);
+  }, []);
+
+  // Data chứng chỉ
   const certificatesData = [
     {
       id: "english-b2",
@@ -172,7 +632,7 @@ export const Certificate = () => {
     }
   ];
 
-  // Data giấy chứng nhận (workshops, training, awards)
+  // Data giấy chứng nhận
   const recognitionsData = [
     {
       id: "full-business-analyst",
@@ -254,596 +714,220 @@ export const Certificate = () => {
     }
   ];
 
-  // CV Data với Google Drive link
   const cvData = {
-    viewUrl: "https://drive.google.com/file/d/1MChc_8u8wOE9gQRZxKS68vVMUPGp1ZkZ/view?usp=drive_link",
+    previewUrl: "https://drive.google.com/file/d/1MChc_8u8wOE9gQRZxKS68vVMUPGp1ZkZ/preview",
     downloadUrl: "https://drive.google.com/uc?export=download&id=1MChc_8u8wOE9gQRZxKS68vVMUPGp1ZkZ",
     lastUpdated: "Tháng 12, 2024",
     experience: "< 1 năm",
     skills: ["Business Analysis", "Data Analysis", "Project Management", "Team Collaboration"]
   };
 
-  // Thống kê
   const totalCertificates = certificatesData.length;
   const totalRecognitions = recognitionsData.length;
   const languageCerts = certificatesData.filter(c => c.type === "language").length;
 
-  // Component cho Certificate Card
-  const CertificateCard = ({ item, isRecognition = false }) => (
-    <div className="group bg-card rounded-2xl overflow-hidden border shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-      {/* Certificate Image */}
-      <div className="relative h-48 overflow-hidden">
-        {!imageLoaded[item.id] && (
-          <div className="absolute inset-0 bg-muted animate-pulse"></div>
-        )}
-        <img 
-          src={item.imageUrl} 
-          alt={item.title}
-          className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 ${
-            !imageLoaded[item.id] ? 'opacity-0' : 'opacity-100'
-          }`}
-          loading="lazy"
-          onLoad={() => handleImageLoad(item.id)}
-        />
-        <div className="absolute inset-0 from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-        
-        {/* Level Badge */}
-        <div className="absolute top-4 right-4">
-          <span className={`px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm ${
-            item.level === 'Excellence' || item.level === 'First Prize' ? 'bg-purple-500/90 text-white' :
-            item.level === 'Advanced' || item.level === 'B2' ? 'bg-blue-500/90 text-white' :
-            item.level === 'Completion' ? 'bg-green-500/90 text-white' :
-            'bg-yellow-500/90 text-white'
-          }`}>
-            {item.level}
-          </span>
-        </div>
-
-        {/* Type Badge */}
-        <div className="absolute top-4 left-4">
-          <span className="px-3 py-1 bg-primary/90 text-primary-foreground text-xs font-semibold rounded-full backdrop-blur-sm">
-            {isRecognition ? (
-              item.type === 'certificate' ? '📜 Chứng nhận' :
-              item.type === 'award' ? '🏆 Giải thưởng' :
-              item.type === 'workshop' ? '🎯 Workshop' :
-              item.type === 'competition' ? '🥇 Cuộc thi' :
-              '📚 Đào tạo'
-            ) : (
-              item.type === 'language' ? '🌐 Ngôn ngữ' :
-              item.type === 'soft-skill' ? '🤝 Kỹ năng mềm' :
-              '💻 Kỹ thuật'
-            )}
-          </span>
-        </div>
-
-        {/* Duration/Info */}
-        <div className="absolute bottom-4 left-4">
-          <span className="px-3 py-1 bg-black/60 text-white text-xs font-medium rounded-full backdrop-blur-sm flex items-center gap-1">
-            <Clock className="w-3 h-3" />
-            {item.duration}
-          </span>
-        </div>
-      </div>
-
-      {/* Certificate Content */}
-      <div className="p-6">
-        <div className="flex items-start justify-between mb-4">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-              {isRecognition ? (
-                item.type === 'award' ? <Trophy className="w-5 h-5 text-primary" /> :
-                item.type === 'competition' ? <Star className="w-5 h-5 text-primary" /> :
-                item.type === 'workshop' ? <Users className="w-5 h-5 text-primary" /> :
-                <Award className="w-5 h-5 text-primary" />
-              ) : (
-                item.type === 'language' ? <BookOpen className="w-5 h-5 text-primary" /> :
-                <Users className="w-5 h-5 text-primary" />
-              )}
-            </div>
-            <div>
-              <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
-                {item.title}
-              </h3>
-              <div className="flex items-center gap-2 mt-1">
-                <span className="text-sm text-muted-foreground">{item.issuer}</span>
-                <span className="text-muted-foreground">•</span>
-                <span className="text-sm text-muted-foreground">{item.issueDate}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <p className="text-foreground/80 mb-6 leading-relaxed line-clamp-3">
-          {item.description}
-        </p>
-
-        {/* Achievement for recognitions */}
-        {isRecognition && item.achievement && (
-          <div className="mb-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-500/10 text-green-600 dark:text-green-400 text-sm font-medium rounded-lg">
-              <Sparkles className="w-4 h-4" />
-              <span>{item.achievement}</span>
-            </div>
-          </div>
-        )}
-
-        {/* Skills */}
-        <div className="mb-6">
-          <h4 className="text-sm font-semibold text-foreground mb-3">Kỹ năng liên quan</h4>
-          <div className="flex flex-wrap gap-2">
-            {item.skills.slice(0, 4).map((skill, index) => (
-              <span 
-                key={index}
-                className="px-3 py-1.5 bg-muted text-muted-foreground text-xs font-medium rounded-lg"
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Action Buttons */}
-        <div className="flex gap-3">
-          
-          
-          <a 
-            href={item.imageUrl}
-            download
-            className="flex-1 group/download inline-flex items-center justify-center gap-2 px-4 py-3 bg-muted hover:bg-muted/80 text-foreground font-medium rounded-lg border transition-all duration-300 hover:shadow-lg active:scale-95"
-          >
-            <Download className="w-4 h-4 transition-transform group-hover/download:scale-110" />
-            <span>Tải về</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  );
-
-  // Component cho Mobile Certificate Card
-  const MobileCertificateCard = ({ item, isRecognition = false }) => (
-    <div className="mb-6 bg-card rounded-xl border overflow-hidden shadow-sm">
-      {/* Certificate Image với skeleton */}
-      <div className="relative h-48">
-        {!imageLoaded[item.id] && (
-          <div className="absolute inset-0 bg-muted animate-pulse"></div>
-        )}
-        <img 
-          src={item.imageUrl} 
-          alt={item.title}
-          className={`w-full h-full object-cover ${
-            !imageLoaded[item.id] ? 'opacity-0' : 'opacity-100 transition-opacity duration-300'
-          }`}
-          loading="lazy"
-          onLoad={() => handleImageLoad(item.id)}
-        />
-        <div className="absolute top-3 right-3">
-          <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
-            item.level === 'Excellence' || item.level === 'First Prize' ? 'bg-purple-500 text-white' :
-            item.level === 'Advanced' || item.level === 'B2' ? 'bg-blue-500 text-white' :
-            'bg-green-500 text-white'
-          }`}>
-            {item.level}
-          </span>
-        </div>
-      </div>
-
-      {/* Certificate Content */}
-      <div className="p-4">
-        <div className="flex items-center gap-3 mb-3">
-          <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
-            {isRecognition ? (
-              item.type === 'award' ? <Trophy className="w-4 h-4 text-primary" /> :
-              item.type === 'competition' ? <Star className="w-4 h-4 text-primary" /> :
-              item.type === 'workshop' ? <Users className="w-4 h-4 text-primary" /> :
-              <Award className="w-4 h-4 text-primary" />
-            ) : (
-              item.type === 'language' ? <BookOpen className="w-4 h-4 text-primary" /> :
-              <Users className="w-4 h-4 text-primary" />
-            )}
-          </div>
-          <div>
-            <h3 className="font-bold text-foreground">{item.title}</h3>
-            <div className="flex items-center gap-1 mt-1">
-              <span className="text-xs text-muted-foreground">{item.issuer}</span>
-              <span className="text-muted-foreground mx-1">•</span>
-              <Calendar className="w-3 h-3 text-muted-foreground" />
-              <span className="text-xs text-muted-foreground ml-1">{item.issueDate}</span>
-            </div>
-          </div>
-        </div>
-
-        <p className="text-sm text-foreground/80 mb-4">{item.description}</p>
-
-        {/* Achievement for recognitions */}
-        {isRecognition && item.achievement && (
-          <div className="mb-3">
-            <div className="inline-flex items-center gap-1 px-2 py-1 bg-green-500/10 text-green-600 dark:text-green-400 text-xs font-medium rounded">
-              <Sparkles className="w-3 h-3" />
-              <span>{item.achievement}</span>
-            </div>
-          </div>
-        )}
-
-        {/* Skills */}
-        <div className="mb-4">
-          <div className="flex flex-wrap gap-1">
-            {item.skills.slice(0, 3).map((skill, index) => (
-              <span 
-                key={index}
-                className="px-2 py-1 bg-muted text-xs text-muted-foreground rounded"
-              >
-                {skill}
-              </span>
-            ))}
-            {item.skills.length > 3 && (
-              <span className="px-2 py-1 bg-muted text-xs text-muted-foreground rounded">
-                +{item.skills.length - 3}
-              </span>
-            )}
-          </div>
-        </div>
-
-        {/* Action Buttons cho mobile */}
-        <div className="flex gap-3">
-          <button
-            onClick={() => openImageModal(item.imageUrl, item.title, item.issuer)}
-            className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 bg-primary hover:bg-primary/90 text-primary-foreground text-sm font-medium rounded-lg transition-all active:scale-95"
-          >
-            <Maximize2 className="w-4 h-4" />
-            <span className="truncate">Phóng to</span>
-          </button>
-          
-          <a 
-            href={item.imageUrl}
-            download
-            className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 bg-muted hover:bg-muted/80 text-foreground text-sm font-medium rounded-lg transition-all active:scale-95"
-          >
-            <Download className="w-4 h-4" />
-            <span className="truncate">Tải</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  );
+  const currentData = activeSection === "certificates" ? certificatesData : recognitionsData;
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Image Modal */}
-      <ImageModal
+    <div className="min-h-screen text-foreground bg-transparent">
+
+      <EnhancedImageModal
         isOpen={modalState.isOpen}
         onClose={closeImageModal}
         imageUrl={modalState.imageUrl}
         title={modalState.title}
         issuer={modalState.issuer}
+        details={modalState.details}
       />
 
-      {/* Nút Back to Top */}
+      <CVPreviewModal
+        isOpen={showCVPreview}
+        onClose={closeCVPreview}
+        cvData={cvData}
+      />
+
+      {/* Back to Top Button */}
       {showBackToTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 w-12 h-12 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95"
+          className="fixed bottom-6 right-6 z-50 w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 md:bottom-8 md:right-8"
           aria-label="Back to top"
         >
-          <ArrowUp className="w-6 h-6" />
+          <ArrowUp className="w-5 h-5" />
         </button>
       )}
 
-      {/* Header với section ID */}
-      <section id="certificates" className="scroll-mt-20">
-        <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-md border-b">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <div>
-                <h1 className="text-3xl md:text-4xl font-bold text-foreground">
-                  Chứng chỉ & Giấy chứng nhận
-                </h1>
-                <p className="text-muted-foreground mt-2">
-                  Hồ sơ năng lực, bằng cấp và thành tích chuyên môn
-                </p>
+      {/* Header */}
+      <header className="sticky top-0 z-40  backdrop-blur-sm border-b border-gray-200 dark:border-gray-700">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div>
+              <h1 className="text-2xl md:text-3xl font-bold text-foreground/80">
+                Chứng chỉ & Giấy chứng nhận
+              </h1>
+              <p className="text-gray-600 dark:text-gray-400 mt-1 text-sm md:text-base">
+                Hồ sơ năng lực, bằng cấp và thành tích chuyên môn
+              </p>
+            </div>
+            
+            <div className="flex items-center gap-3">
+              <button
+                onClick={openCVPreview}
+                className="inline-flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all hover:shadow-lg active:scale-95 text-sm md:text-base"
+              >
+                <Eye className="w-4 h-4" />
+                <span>Xem CV</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Hero Section */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full mb-6">
+            <Award className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            Bằng cấp & Thành tích
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            Bộ sưu tập các chứng chỉ chuyên môn và giấy chứng nhận đạt được
+          </p>
+        </div>
+
+        {/* Stats Overview */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
+                <Award className="w-5 h-5 text-blue-600 dark:text-blue-400" />
               </div>
-              
-              <div className="flex items-center gap-3">
-                <button
-                  onClick={() => scrollToSection('certificates-section')}
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-muted hover:bg-muted/80 text-foreground font-medium rounded-lg transition-all hover:shadow-lg active:scale-95"
-                >
-                  <span>Xem Chứng chỉ</span>
-                </button>
-                <a 
-                  href={cvData.downloadUrl}
-                  download
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-lg transition-all hover:shadow-lg active:scale-95"
-                >
-                  <Download className="w-4 h-4" />
-                  <span>Tải CV</span>
-                </a>
+              <div>
+                <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                  {totalCertificates}
+                </div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Chứng chỉ</div>
               </div>
             </div>
           </div>
-        </header>
-      </section>
-
-      {/* Hero Section */}
-      <section className="py-12 from-background to-muted/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-6">
-              <Award className="w-8 h-8 text-primary" />
+          
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
+                <Trophy className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                  {totalRecognitions}
+                </div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Giấy chứng nhận</div>
+              </div>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Bằng cấp & Thành tích
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Bộ sưu tập các chứng chỉ chuyên môn và giấy chứng nhận đạt được, 
-              phản ánh quá trình học tập và rèn luyện không ngừng.
+          </div>
+          
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center">
+                <GraduationCap className="w-5 h-5 text-green-600 dark:text-green-400" />
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                  {languageCerts}
+                </div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Ngôn ngữ</div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center">
+                <Zap className="w-5 h-5 text-orange-600 dark:text-orange-400" />
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                  {cvData.experience}
+                </div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Kinh nghiệm</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* CV Section với Preview */}
+        <CVSection cvData={cvData} onPreviewCV={openCVPreview} />
+
+        {/* Navigation Tabs */}
+        <div className="mb-8">
+          <div className="flex flex-wrap gap-2">
+            <button
+              onClick={() => setActiveSection("certificates")}
+              className={`px-6 py-3 rounded-lg font-medium transition-all flex items-center gap-2 ${
+                activeSection === "certificates"
+                  ? "bg-blue-600 text-white shadow-sm"
+                  : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700"
+              }`}
+            >
+              <Award className="w-4 h-4" />
+              <span className="whitespace-nowrap">Chứng chỉ ({totalCertificates})</span>
+            </button>
+            <button
+              onClick={() => setActiveSection("recognitions")}
+              className={`px-6 py-3 rounded-lg font-medium transition-all flex items-center gap-2 ${
+                activeSection === "recognitions"
+                  ? "bg-blue-600 text-white shadow-sm"
+                  : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700"
+              }`}
+            >
+              <Trophy className="w-4 h-4" />
+              <span className="whitespace-nowrap">Giấy chứng nhận ({totalRecognitions})</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Certificates Grid */}
+        <section id="certificates-section">
+          <div className="mb-8">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+              {activeSection === "certificates" ? <Award className="w-6 h-6" /> : <Trophy className="w-6 h-6" />}
+              {activeSection === "certificates" ? "Chứng chỉ Chính thức" : "Giấy chứng nhận & Thành tích"}
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400">
+              {activeSection === "certificates" 
+                ? "Các chứng chỉ ngôn ngữ và kỹ năng chuyên môn từ các tổ chức giáo dục"
+                : "Các giấy chứng nhận tham gia, giải thưởng và thành tích đạt được"}
             </p>
           </div>
-
-          {/* Stats Overview */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
-            <div className="bg-card rounded-xl p-6 border shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <Award className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-foreground">
-                    {totalCertificates}
-                  </div>
-                  <div className="text-muted-foreground">Chứng chỉ chính thức</div>
-                </div>
+          
+          {currentData.length === 0 ? (
+            <div className="text-center py-12">
+              <div className="w-24 h-24 mx-auto bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-6">
+                <Award className="w-12 h-12 text-gray-400 dark:text-gray-600" />
               </div>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                Không tìm thấy
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400">
+                Hiện không có dữ liệu thuộc loại này.
+              </p>
             </div>
-            
-            <div className="bg-card rounded-xl p-6 border shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
-                  <Trophy className="w-6 h-6 text-blue-500" />
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-foreground">
-                    {totalRecognitions}
-                  </div>
-                  <div className="text-muted-foreground">Giấy chứng nhận</div>
-                </div>
-              </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {currentData.map((item) => (
+                <EnhancedCertificateCard
+                  key={item.id}
+                  item={item}
+                  isRecognition={activeSection === "recognitions"}
+                  onClick={() => openImageModal(item.imageUrl, item.title, item.issuer, item)}
+                />
+              ))}
             </div>
-            
-            <div className="bg-card rounded-xl p-6 border shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center">
-                  <BookOpen className="w-6 h-6 text-green-500" />
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-foreground">
-                    {languageCerts}
-                  </div>
-                  <div className="text-muted-foreground">Chứng chỉ Ngôn ngữ</div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-card rounded-xl p-6 border shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center">
-                  <Calendar className="w-6 h-6 text-purple-500" />
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-foreground">
-                    {cvData.experience}
-                  </div>
-                  <div className="text-muted-foreground">Kinh nghiệm</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* CV Section được làm ngầu hơn */}
-          <div className="mb-8">
-            <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-2xl p-8 border shadow-lg hover:shadow-xl transition-all duration-500">
-              <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-                <div className="flex-1">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="w-14 h-14 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center shadow-lg">
-                      <FileCheck className="w-7 h-7 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl md:text-3xl font-bold text-foreground">
-                        Hồ sơ CV Chuyên nghiệp
-                      </h3>
-                      <div className="flex items-center gap-2 mt-2">
-                        <span className="px-3 py-1 bg-primary/20 text-primary text-sm font-medium rounded-full">
-                          Business Analyst
-                        </span>
-                        <span className="px-3 py-1 bg-blue-500/20 text-blue-600 dark:text-blue-400 text-sm font-medium rounded-full">
-                          Data Analyst
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <p className="text-foreground/80 mb-6 leading-relaxed">
-                    CV chi tiết thể hiện kiến thức, kỹ năng và quá trình học tập trong lĩnh vực 
-                    phân tích nghiệp vụ và công nghệ thông tin. Được cập nhật mới nhất vào <span className="font-semibold text-primary">{cvData.lastUpdated}</span>.
-                  </p>
-                  
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
-                    <div className="flex items-center gap-2 p-3 bg-white/50 dark:bg-black/20 rounded-lg">
-                      <UserCheck className="w-4 h-4 text-primary" />
-                      <span className="text-sm font-medium">Chuyên nghiệp</span>
-                    </div>
-                    <div className="flex items-center gap-2 p-3 bg-white/50 dark:bg-black/20 rounded-lg">
-                      <Target className="w-4 h-4 text-blue-500" />
-                      <span className="text-sm font-medium">Mục tiêu rõ ràng</span>
-                    </div>
-                    <div className="flex items-center gap-2 p-3 bg-white/50 dark:bg-black/20 rounded-lg">
-                      <Brain className="w-4 h-4 text-green-500" />
-                      <span className="text-sm font-medium">Tư duy phân tích</span>
-                    </div>
-                    <div className="flex items-center gap-2 p-3 bg-white/50 dark:bg-black/20 rounded-lg">
-                      <Users className="w-4 h-4 text-purple-500" />
-                      <span className="text-sm font-medium">Teamwork</span>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="flex flex-col gap-3">
-                  <a 
-                    href={cvData.viewUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-primary/90 text-primary-foreground font-medium rounded-lg transition-all hover:shadow-lg hover:shadow-primary/25 active:scale-95 overflow-hidden"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                    <Eye className="w-5 h-5 relative z-10" />
-                    <span className="relative z-10">Xem CV trực tuyến</span>
-                  </a>
-                  <a 
-                    href={cvData.downloadUrl}
-                    download="CV-Nguyen-Dinh-Do.pdf"
-                    className="group relative inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/10 dark:bg-black/20 backdrop-blur-sm border border-primary/20 text-foreground font-medium rounded-lg transition-all hover:shadow-lg active:scale-95 overflow-hidden"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                    <Download className="w-5 h-5 relative z-10" />
-                    <span className="relative z-10">Tải CV (PDF)</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Navigation Tabs - Được di chuyển xuống dưới CV section */}
-          <div className="mb-12">
-            <div className="flex flex-wrap gap-2 justify-center">
-              <button
-                onClick={() => setActiveSection("certificates")}
-                className={`px-6 py-3 rounded-lg font-medium transition-all flex items-center gap-2 ${
-                  activeSection === "certificates"
-                    ? "bg-primary text-primary-foreground shadow-lg"
-                    : "bg-muted text-muted-foreground hover:bg-muted/80"
-                }`}
-              >
-                <Award className="w-4 h-4" />
-                Chứng chỉ Chính thức ({totalCertificates})
-              </button>
-              <button
-                onClick={() => setActiveSection("recognitions")}
-                className={`px-6 py-3 rounded-lg font-medium transition-all flex items-center gap-2 ${
-                  activeSection === "recognitions"
-                    ? "bg-primary text-primary-foreground shadow-lg"
-                    : "bg-muted text-muted-foreground hover:bg-muted/80"
-                }`}
-              >
-                <Trophy className="w-4 h-4" />
-                Giấy chứng nhận ({totalRecognitions})
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Certificates Grid Section */}
-      <section id="certificates-section" className="py-12 scroll-mt-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Chứng chỉ Chính thức */}
-          {activeSection === "certificates" && (
-            <>
-              <div className="mb-8">
-                <h3 className="text-2xl font-bold text-foreground mb-2 flex items-center gap-2">
-                  <Award className="w-6 h-6" />
-                  Chứng chỉ Chính thức ({totalCertificates})
-                </h3>
-                <p className="text-muted-foreground">
-                  Các chứng chỉ ngôn ngữ và kỹ năng chuyên môn từ các tổ chức giáo dục
-                </p>
-              </div>
-              
-              {certificatesData.length === 0 ? (
-                <div className="text-center py-12">
-                  <div className="w-24 h-24 mx-auto bg-muted rounded-full flex items-center justify-center mb-6">
-                    <Award className="w-12 h-12 text-muted-foreground" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-2">
-                    Không tìm thấy chứng chỉ
-                  </h3>
-                  <p className="text-muted-foreground mb-6">
-                    Hiện không có chứng chỉ nào thuộc loại này.
-                  </p>
-                </div>
-              ) : (
-                <>
-                  {/* Desktop view */}
-                  <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-                    {certificatesData.map((cert) => (
-                      <CertificateCard key={cert.id} item={cert} />
-                    ))}
-                  </div>
-
-                  {/* Mobile view */}
-                  <div className="md:hidden">
-                    {isLoading ? (
-                      <MobileSkeleton />
-                    ) : (
-                      certificatesData.map((cert) => (
-                        <MobileCertificateCard key={cert.id} item={cert} />
-                      ))
-                    )}
-                  </div>
-                </>
-              )}
-            </>
           )}
-
-          {/* Giấy chứng nhận */}
-          {activeSection === "recognitions" && (
-            <>
-              <div className="mb-8">
-                <h3 className="text-2xl font-bold text-foreground mb-2 flex items-center gap-2">
-                  <Trophy className="w-6 h-6" />
-                  Giấy chứng nhận & Thành tích ({totalRecognitions})
-                </h3>
-                <p className="text-muted-foreground">
-                  Các giấy chứng nhận tham gia, giải thưởng và thành tích đạt được trong học tập và hoạt động
-                </p>
-              </div>
-              
-              {recognitionsData.length === 0 ? (
-                <div className="text-center py-12">
-                  <div className="w-24 h-24 mx-auto bg-muted rounded-full flex items-center justify-center mb-6">
-                    <Trophy className="w-12 h-12 text-muted-foreground" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-2">
-                    Không tìm thấy giấy chứng nhận
-                  </h3>
-                  <p className="text-muted-foreground mb-6">
-                    Hiện không có giấy chứng nhận nào thuộc loại này.
-                  </p>
-                </div>
-              ) : (
-                <>
-                  {/* Desktop view */}
-                  <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {recognitionsData.map((rec) => (
-                      <CertificateCard key={rec.id} item={rec} isRecognition={true} />
-                    ))}
-                  </div>
-
-                  {/* Mobile view */}
-                  <div className="md:hidden">
-                    {isLoading ? (
-                      <MobileSkeleton />
-                    ) : (
-                      recognitionsData.map((rec) => (
-                        <MobileCertificateCard key={rec.id} item={rec} isRecognition={true} />
-                      ))
-                    )}
-                  </div>
-                </>
-              )}
-            </>
-          )}
-        </div>
-      </section>
+        </section>
+      </main>
     </div>
   );
 };

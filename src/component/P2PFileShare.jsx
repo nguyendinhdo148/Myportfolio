@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   ArrowLeft,
   Github,
@@ -19,6 +19,11 @@ import { Link } from "react-router-dom";
 
 export const P2PFileShare = () => {
   const [activeTab, setActiveTab] = useState("overview");
+  
+  // Tự động cuộn lên đầu trang khi component mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const project = {
     id: "p2p-file-share",
@@ -32,7 +37,8 @@ export const P2PFileShare = () => {
       "Platform chia sẻ file sử dụng WebRTC cho direct P2P connections, với Spring Boot backend và React frontend. Hệ thống hỗ trợ end-to-end encryption, blockchain-based file verification, và real-time transfer tracking. Tính năng security bao gồm military-grade encryption, digital signatures, và tamper-proof audit logs. MERN stack cho frontend và admin dashboard với enterprise-grade security protocols.",
     imageUrl:
       "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    videoDemo: "/videos/p2p-file-share-demo.mp4",
+    // Sử dụng Google Drive embed URL
+    videoDemo: "https://drive.google.com/file/d/1nidcukXGAEE2VXYitfgHK8PyYuL9kAel/preview",
     liveUrl: "https://p2p-fileshare-demo.vercel.app",
     repoUrl: "https://github.com/username/p2p-file-share-system",
     techStack: [
@@ -397,27 +403,17 @@ export const P2PFileShare = () => {
 
           {/* Right Column - Video Demo */}
           <div className="space-y-6">
-            {/* Video Player */}
+            {/* Video Player - Sử dụng Google Drive embed */}
             <div className="bg-gray-900 rounded-2xl overflow-hidden aspect-video border-2 border-gray-800 dark:border-gray-700 shadow-2xl">
               <div className="relative w-full h-full">
-                <div className="absolute inset-0 flex items-center justify-center   from-blue-600/20 to-purple-600/20">
-                  <div className="text-center p-8">
-                    <div className="w-20 h-20   from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <Play className="w-10 h-10 text-white" fill="white" />
-                    </div>
-                    <h3 className="text-xl font-semibold text-white mb-2">
-                      P2P File Sharing Demo
-                    </h3>
-                    <p className="text-white/70 mb-4">
-                      Secure File Transfer Platform Preview
-                    </p>
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg">
-                      <span className="text-white/80 text-sm">
-                        Demo video available soon
-                      </span>
-                    </div>
-                  </div>
-                </div>
+                <iframe
+                  src={project.videoDemo}
+                  className="w-full h-full"
+                  allow="autoplay"
+                  referrerPolicy="no-referrer"
+                  title="P2P Secure File Sharing Demo"
+                  allowFullScreen
+                ></iframe>
               </div>
             </div>
 
@@ -434,22 +430,39 @@ export const P2PFileShare = () => {
                 {/* Demo Video Card */}
                 <div className="group relative">
                   <div className="absolute inset-0   from-blue-500 to-purple-600 rounded-lg opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-                  <div className="relative flex items-center justify-between p-4 bg-white dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600">
+                  <a
+                    href={project.videoDemo.replace('/preview', '/view')}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative flex items-center justify-between p-4 bg-white dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600 hover:border-blue-500 dark:hover:border-blue-500 transition-all group-hover:shadow-lg"
+                  >
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12   from-blue-100 to-blue-200 dark:from-blue-900/30 dark:to-blue-800/30 rounded-lg flex items-center justify-center">
+                      <div className="w-12 h-12   from-blue-100 to-blue-200 dark:from-blue-900/30 dark:to-blue-800/30 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
                         <Play className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                       </div>
                       <div>
                         <div className="font-semibold text-gray-900 dark:text-white">
-                          Demo Video
+                          Watch Demo
                         </div>
                         <div className="text-sm text-gray-500 dark:text-gray-400">
-                          Secure transfer demo coming soon
+                          View secure file sharing demo on Google Drive
                         </div>
                       </div>
                     </div>
-                    <Download className="w-5 h-5 text-gray-400" />
-                  </div>
+                    <svg
+                      className="w-5 h-5 text-gray-400 group-hover:text-blue-500 transition-colors"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
+                    </svg>
+                  </a>
                 </div>
 
                 {/* GitHub Repository Card */}

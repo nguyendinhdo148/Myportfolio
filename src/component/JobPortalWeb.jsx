@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   ArrowLeft,
   Github,
@@ -18,6 +18,11 @@ import { Link } from "react-router-dom";
 
 export const JobPortalWeb = () => {
   const [activeTab, setActiveTab] = useState("overview");
+  
+  // Tự động cuộn lên đầu trang khi component mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const project = {
     id: "job-portal-web",
@@ -31,7 +36,8 @@ export const JobPortalWeb = () => {
       "Job Portal là nền tảng tìm kiếm việc làm thế hệ mới sử dụng MERN stack với AI integration từ OpenAI và Gemini. Hệ thống hỗ trợ real-time notifications, advanced search với filter đa chiều, Cloudinary cho media upload, và hệ thống tracking ứng tuyển từ A đến Z. Tính năng nổi bật bao gồm AI-powered job recommendations, interview simulation với chatbot AI, và advanced analytics dashboard.",
     imageUrl:
       "https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    videoDemo: "/WebsiteFindJob.mp4",
+    // Sử dụng Google Drive embed URL
+    videoDemo: "https://drive.google.com/file/d/1dmzEUhyC3s2gzhfqtxQH1577Ygt_ryI4/preview",
     liveUrl: "https://vie-jobs.vercel.app/",
     repoUrl:
       "https://github.com/nguyendinhdo148/Nhom3-DACS-CNPM-WebsiteTimKiemViecLam",
@@ -171,7 +177,7 @@ export const JobPortalWeb = () => {
         description: "Complete user profile với application tracking",
       },
       {
-        url: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        url: "https://images.unsplash.com/phone-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
         title: "Company Dashboard",
         description:
           "Company interface cho job posting và applicant management",
@@ -406,17 +412,17 @@ export const JobPortalWeb = () => {
 
           {/* Right Column - Video Demo */}
           <div className="space-y-6">
-            {/* Video Player */}
+            {/* Video Player - Sử dụng Google Drive embed */}
             <div className="bg-gray-900 rounded-2xl overflow-hidden aspect-video border-2 border-gray-800 dark:border-gray-700 shadow-2xl">
               <div className="relative w-full h-full">
-                <video
-                  controls
-                  className="w-full h-full object-cover"
-                  poster="/posterViejob-web.jpg"
-                >
-                  <source src="/WebsiteFindJob.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                <iframe
+                  src={project.videoDemo}
+                  className="w-full h-full"
+                  allow="autoplay"
+                  referrerPolicy="no-referrer"
+                  title="Job Portal Website Demo"
+                  allowFullScreen
+                ></iframe>
               </div>
             </div>
 
@@ -434,8 +440,9 @@ export const JobPortalWeb = () => {
                 <div className="group relative">
                   <div className="absolute inset-0   from-blue-500 to-purple-600 rounded-lg opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
                   <a
-                    href={project.videoDemo}
-                    download
+                    href={project.videoDemo.replace('/preview', '/view')}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="relative flex items-center justify-between p-4 bg-white dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600 hover:border-blue-500 dark:hover:border-blue-500 transition-all group-hover:shadow-lg"
                   >
                     <div className="flex items-center gap-4">
@@ -444,14 +451,26 @@ export const JobPortalWeb = () => {
                       </div>
                       <div>
                         <div className="font-semibold text-gray-900 dark:text-white">
-                          Demo Video
+                          Watch Demo
                         </div>
                         <div className="text-sm text-gray-500 dark:text-gray-400">
-                          Download full project demo (MP4)
+                          View full project demo on Google Drive
                         </div>
                       </div>
                     </div>
-                    <Download className="w-5 h-5 text-gray-400 group-hover:text-blue-500 transition-colors" />
+                    <svg
+                      className="w-5 h-5 text-gray-400 group-hover:text-blue-500 transition-colors"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
+                    </svg>
                   </a>
                 </div>
 
@@ -781,7 +800,7 @@ export const JobPortalWeb = () => {
           {activeTab === "screenshots" && (
             <div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
-                Project Screenshots
+                Usecase + Sequenct Screenshots
               </h3>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {project.screenshots.map((screenshot, index) => (
@@ -803,9 +822,7 @@ export const JobPortalWeb = () => {
                           {screenshot.description}
                         </div>
                       </div>
-                      <button className="px-4 py-2 bg-white text-gray-900 font-medium rounded-lg hover:bg-gray-100 transition-colors">
-                        View Full Size
-                      </button>
+                      
                     </div>
                   </div>
                 ))}
