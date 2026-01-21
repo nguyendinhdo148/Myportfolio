@@ -133,7 +133,7 @@ export const Project = () => {
       id: "p2p-file-share",
       title: "VieCloud - Lưu trữ và chia sẻ file P2P",
       category: "Ứng dụng Web",
-      status: "Đang hoạt động",
+      status: "Tạm dừng",
       year: "2024",
       description: "Nền tảng chia sẻ file peer-to-peer với mã hóa end-to-end, Java Spring Boot backend và React frontend.",
       longDescription: "Nền tảng chia sẻ file sử dụng WebRTC cho kết nối P2P trực tiếp, với Spring Boot backend và React frontend. Hệ thống hỗ trợ mã hóa end-to-end và theo dõi chuyển dữ liệu thời gian thực.",

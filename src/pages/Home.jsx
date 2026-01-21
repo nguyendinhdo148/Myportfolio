@@ -6,6 +6,7 @@ import { Skills } from "@/component/Skills";
 import { Project } from "@/component/Project";
 import { useEffect } from "react";
 import Certificate from "../component/Certificate";
+import WorkExperience from "../component/WorkExperience";
 
 export const Home = () => {
   useEffect(() => {
@@ -36,6 +37,7 @@ export const Home = () => {
         <Skills />
         <Project />
         <Certificate/>
+        <WorkExperience />
       </main>
 
       {/* Footer */}

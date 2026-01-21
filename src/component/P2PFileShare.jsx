@@ -27,10 +27,10 @@ export const P2PFileShare = () => {
 
   const project = {
     id: "p2p-file-share",
-    title: "P2P Secure File Sharing",
+    title: "VieCloud - Lưu trữ và chia sẻ file P2P",
     category: "Enterprise Web Application",
-    status: "Live",
-    year: "2024",
+    status: "Pause",
+    year: "2025",
     description:
       "Nền tảng chia sẻ file peer-to-peer với end-to-end encryption, Java Spring Boot backend và React frontend.",
     longDescription:
@@ -361,7 +361,7 @@ export const P2PFileShare = () => {
               <div className="flex items-center gap-2 mb-4">
                 <Cpu className="w-5 h-5 text-gray-500 dark:text-gray-400" />
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                  Security Architecture
+                  Kiến trúc hệ thống 
                 </h3>
               </div>
               <div className="grid grid-cols-2 gap-4">
@@ -421,7 +421,7 @@ export const P2PFileShare = () => {
               <div className="flex items-center gap-2 mb-6">
                 <Download className="w-5 h-5 text-gray-500 dark:text-gray-400" />
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                  Project Resources
+                  Tài nguyên
                 </h3>
               </div>
 
@@ -441,10 +441,10 @@ export const P2PFileShare = () => {
                       </div>
                       <div>
                         <div className="font-semibold text-gray-900 dark:text-white">
-                          Watch Demo
+                          Video Demo
                         </div>
                         <div className="text-sm text-gray-500 dark:text-gray-400">
-                          View secure file sharing demo on Google Drive
+                          Xem video demo trên Google Drive
                         </div>
                       </div>
                     </div>
@@ -517,11 +517,9 @@ export const P2PFileShare = () => {
                       </div>
                       <div>
                         <div className="font-semibold text-gray-900 dark:text-white">
-                          Live Demo
+                          Live Demo (Đang phát triển)
                         </div>
-                        <div className="text-sm text-gray-500 dark:text-gray-400">
-                          Visit secure file sharing platform
-                        </div>
+                        
                       </div>
                     </div>
                     <svg
@@ -540,29 +538,7 @@ export const P2PFileShare = () => {
                   </a>
                 </div>
               </div>
-            </div>
-
-            {/* Key Achievements */}
-            <div className="  from-green-50 to-white dark:from-green-900/10 dark:to-gray-900 rounded-xl p-6 border border-green-100 dark:border-green-900/30">
-              <div className="flex items-center gap-2 mb-4">
-                <Shield className="w-5 h-5 text-green-500 dark:text-green-400" />
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                  Security Achievements
-                </h3>
-              </div>
-              <div className="space-y-3">
-                {project.achievements.map((achievement, index) => (
-                  <div key={index} className="flex items-start gap-3">
-                    <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center   mt-0.5">
-                      <div className="w-2 h-2 bg-green-600 dark:bg-green-400 rounded-full"></div>
-                    </div>
-                    <span className="text-sm text-gray-700 dark:text-gray-300">
-                      {achievement}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
+            </div>     
           </div>
         </div>
 
@@ -570,11 +546,10 @@ export const P2PFileShare = () => {
         <div className="border-b border-gray-200 dark:border-gray-800 mb-8">
           <nav className="flex flex-wrap gap-4 sm:gap-8">
             {[
-              { id: "overview", label: "Overview", icon: "📋" },
-              { id: "features", label: "Features", icon: "✨" },
-              { id: "challenges", label: "Challenges", icon: "⚡" },
-              { id: "screenshots", label: "Screenshots", icon: "🖼️" },
-              { id: "architecture", label: "Architecture", icon: "🏗️" },
+              { id: "overview", label: "Tổng quan", icon: "📋" },
+              { id: "features", label: "Chức năng", icon: "✨" },
+              { id: "screenshots", label: "Ảnh hệ thống", icon: "🖼️" },
+              { id: "architecture", label: "Kiến trúc hệ thống", icon: "🏗️" },
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -594,273 +569,266 @@ export const P2PFileShare = () => {
 
         {/* Tab Content */}
         <div className="mb-16">
-          {/* Overview Tab */}
-          {activeTab === "overview" && (
-            <div className="space-y-8">
-              <div className="prose prose-lg dark:prose-invert max-w-none">
+    {/* Tab Tổng Quan */}
+    {activeTab === "overview" && (
+        <div className="space-y-8">
+            <div className="prose prose-lg dark:prose-invert max-w-none">
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                  Secure P2P File Sharing Overview
+                    Tổng Quan Chia Sẻ Tệp P2P Bảo Mật
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
-                  {project.longDescription}
+                    {project.longDescription}
                 </p>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="  from-blue-50 to-white dark:from-blue-900/10 dark:to-gray-800 rounded-xl p-6 border border-blue-100 dark:border-blue-900/30">
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                    Key Objectives
-                  </h4>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center   mt-0.5">
-                        <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
-                      </div>
-                      <span className="text-gray-700 dark:text-gray-300">
-                        Implement military-grade end-to-end encryption cho
-                        secure file transfers
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center   mt-0.5">
-                        <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
-                      </div>
-                      <span className="text-gray-700 dark:text-gray-300">
-                        Create reliable P2P connections với WebRTC và NAT
-                        traversal solutions
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center   mt-0.5">
-                        <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
-                      </div>
-                      <span className="text-gray-700 dark:text-gray-300">
-                        Develop blockchain-based verification cho file integrity
-                        và authenticity
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center   mt-0.5">
-                        <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
-                      </div>
-                      <span className="text-gray-700 dark:text-gray-300">
-                        Build scalable enterprise architecture với comprehensive
-                        audit trails
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="  from-green-50 to-white dark:from-green-900/10 dark:to-gray-800 rounded-xl p-6 border border-green-100 dark:border-green-900/30">
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                    Security Technology Highlights
-                  </h4>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center   mt-0.5">
-                        <div className="w-2 h-2 bg-green-600 dark:bg-green-400 rounded-full"></div>
-                      </div>
-                      <span className="text-gray-700 dark:text-gray-300">
-                        Java Spring Boot backend với enterprise-grade security
-                        protocols
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center   mt-0.5">
-                        <div className="w-2 h-2 bg-green-600 dark:bg-green-400 rounded-full"></div>
-                      </div>
-                      <span className="text-gray-700 dark:text-gray-300">
-                        WebRTC P2P connections với AES-256 end-to-end encryption
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center   mt-0.5">
-                        <div className="w-2 h-2 bg-green-600 dark:bg-green-400 rounded-full"></div>
-                      </div>
-                      <span className="text-gray-700 dark:text-gray-300">
-                        Blockchain integration cho immutable file verification
-                        và audit logs
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center   mt-0.5">
-                        <div className="w-2 h-2 bg-green-600 dark:bg-green-400 rounded-full"></div>
-                      </div>
-                      <span className="text-gray-700 dark:text-gray-300">
-                        Zero-knowledge architecture đảm bảo complete data
-                        privacy
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
             </div>
-          )}
 
-          {/* Features Tab */}
-          {activeTab === "features" && (
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
-                Security Features
-              </h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                {project.features.map((feature, index) => (
-                  <div
-                    key={index}
-                    className="group   from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-lg"
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className="  w-12 h-12   from-blue-100 to-blue-200 dark:from-blue-900/30 dark:to-blue-800/30 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <span className="text-2xl">{feature.icon}</span>
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                          {feature.title}
-                        </h4>
-                        <p className="text-gray-600 dark:text-gray-400">
-                          {feature.description}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Challenges Tab */}
-          {activeTab === "challenges" && (
-            <div className="space-y-8">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Security & P2P Challenges & Solutions
-              </h3>
-
-              <div className="space-y-6">
-                {project.challenges.map((challenge, index) => (
-                  <div
-                    key={index}
-                    className="group   from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300"
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className="  w-12 h-12   from-red-100 to-red-200 dark:from-red-900/30 dark:to-red-800/30 rounded-lg flex items-center justify-center">
-                        <span className="text-red-600 dark:text-red-400 font-bold text-xl">
-                          !
-                        </span>
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-4">
-                          <span className="px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-sm font-medium rounded-full">
-                            Challenge {index + 1}
-                          </span>
-                        </div>
-
-                        <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                          {challenge.title}
-                        </h4>
-
-                        <div className="mb-4 p-4 bg-gray-100 dark:bg-gray-800/50 rounded-lg">
-                          <div className="text-sm text-gray-500 dark:text-gray-400 mb-1">
-                            Challenge Description:
-                          </div>
-                          <p className="text-gray-700 dark:text-gray-300">
-                            {challenge.description}
-                          </p>
-                        </div>
-
-                        <div className="p-4   from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-lg border border-blue-100 dark:border-blue-900/30">
-                          <div className="flex items-center gap-2 mb-2">
-                            <Shield className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                            <div className="text-sm font-medium text-blue-700 dark:text-blue-300">
-                              Solution Implemented:
-                            </div>
-                          </div>
-                          <p className="text-gray-700 dark:text-gray-300">
-                            {challenge.solution}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Screenshots Tab */}
-          {activeTab === "screenshots" && (
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
-                Platform Screenshots
-              </h3>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {project.screenshots.map((screenshot, index) => (
-                  <div
-                    key={index}
-                    className="group relative rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300"
-                  >
-                    <img
-                      src={screenshot.url}
-                      alt={screenshot.title}
-                      className="w-full h-48 sm:h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0   from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-end p-6">
-                      <div className="text-white text-center mb-4">
-                        <div className="font-semibold mb-1">
-                          {screenshot.title}
-                        </div>
-                        <div className="text-sm text-white/70">
-                          {screenshot.description}
-                        </div>
-                      </div>
-                      <button className="px-4 py-2 bg-white text-gray-900 font-medium rounded-lg hover:bg-gray-100 transition-colors">
-                        View Full Size
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Architecture Tab */}
-          {activeTab === "architecture" && (
-            <div className="space-y-8">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Security Architecture
-              </h3>
-
-              <div className="  from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-2xl p-8 border border-gray-200 dark:border-gray-700">
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                  {Object.entries(project.architecture).map(([key, value]) => (
-                    <div key={key} className="text-center">
-                      <div className="text-sm text-gray-500 dark:text-gray-400 mb-2 capitalize">
-                        {key.replace(/([A-Z])/g, " $1")}
-                      </div>
-                      <div className="font-semibold text-gray-900 dark:text-white text-sm">
-                        {value}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="relative h-64   from-blue-500/10 to-purple-500/10 dark:from-blue-500/5 dark:to-purple-500/5 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 flex items-center justify-center">
-                  <div className="text-center p-6">
-                    <div className="w-16 h-16   from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Lock className="w-8 h-8 text-white" />
-                    </div>
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                      Security Architecture Diagram
+            <div className="grid md:grid-cols-2 gap-8">
+                <div className="from-blue-50 to-white dark:from-blue-900/10 dark:to-gray-800 rounded-xl p-6 border border-blue-100 dark:border-blue-900/30">
+                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                        Mục Tiêu Chính
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">
-                      P2P encryption với blockchain verification và enterprise
-                      security
-                    </p>
-                  </div>
+                    <ul className="space-y-3">
+                        <li className="flex items-start gap-3">
+                            <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mt-0.5">
+                                <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
+                            </div>
+                            <span className="text-gray-700 dark:text-gray-300">
+                                Triển khai mã hóa end-to-end cấp độ quân sự cho việc chuyển tệp bảo mật
+                            </span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                            <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mt-0.5">
+                                <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
+                            </div>
+                            <span className="text-gray-700 dark:text-gray-300">
+                                Tạo kết nối P2P đáng tin cậy với WebRTC và giải pháp NAT traversal
+                            </span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                            <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mt-0.5">
+                                <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
+                            </div>
+                            <span className="text-gray-700 dark:text-gray-300">
+                                Phát triển xác minh dựa trên blockchain cho tính toàn vẹn và xác thực tệp
+                            </span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                            <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mt-0.5">
+                                <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
+                            </div>
+                            <span className="text-gray-700 dark:text-gray-300">
+                                Xây dựng kiến trúc doanh nghiệp có khả năng mở rộng với nhật ký kiểm tra toàn diện
+                            </span>
+                        </li>
+                    </ul>
                 </div>
-              </div>
+
+                <div className="from-green-50 to-white dark:from-green-900/10 dark:to-gray-800 rounded-xl p-6 border border-green-100 dark:border-green-900/30">
+                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                        Điểm Nổi Bật Công Nghệ Bảo Mật
+                    </h4>
+                    <ul className="space-y-3">
+                        <li className="flex items-start gap-3">
+                            <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mt-0.5">
+                                <div className="w-2 h-2 bg-green-600 dark:bg-green-400 rounded-full"></div>
+                            </div>
+                            <span className="text-gray-700 dark:text-gray-300">
+                                Backend Java Spring Boot với các giao thức bảo mật cấp doanh nghiệp
+                            </span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                            <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mt-0.5">
+                                <div className="w-2 h-2 bg-green-600 dark:bg-green-400 rounded-full"></div>
+                            </div>
+                            <span className="text-gray-700 dark:text-gray-300">
+                                Kết nối P2P WebRTC với mã hóa end-to-end AES-256
+                            </span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                            <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mt-0.5">
+                                <div className="w-2 h-2 bg-green-600 dark:bg-green-400 rounded-full"></div>
+                            </div>
+                            <span className="text-gray-700 dark:text-gray-300">
+                                Tích hợp blockchain cho xác minh tệp bất biến và nhật ký kiểm tra
+                            </span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                            <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mt-0.5">
+                                <div className="w-2 h-2 bg-green-600 dark:bg-green-400 rounded-full"></div>
+                            </div>
+                            <span className="text-gray-700 dark:text-gray-300">
+                                Kiến trúc zero-knowledge đảm bảo quyền riêng tư dữ liệu hoàn toàn
+                            </span>
+                        </li>
+                    </ul>
+                </div>
             </div>
-          )}
         </div>
+    )}
+
+    {/* Tab Tính Năng */}
+    {/* Tab Tính Năng */}
+{activeTab === "features" && (
+    <div>
+        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
+            Tính Năng Chính
+        </h3>
+        <div className="grid md:grid-cols-2 gap-6">
+            {project.features.map((feature, index) => (
+                <div
+                    key={index}
+                    className="group bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-lg"
+                >
+                    <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <span className="text-xl">{feature.icon}</span>
+                        </div>
+                        <div className="flex-1">
+                            <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                                {feature.title}
+                            </h4>
+                            <p className="text-gray-600 dark:text-gray-400 text-sm">
+                                {feature.description}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+)}
+
+    {/* Tab Thách Thức */}
+    {activeTab === "challenges" && (
+        <div className="space-y-8">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                Thách Thức Bảo Mật & P2P & Giải Pháp
+            </h3>
+
+            <div className="space-y-6">
+                {project.challenges.map((challenge, index) => (
+                    <div
+                        key={index}
+                        className="group from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300"
+                    >
+                        <div className="flex items-start gap-4">
+                            <div className="w-12 h-12 from-red-100 to-red-200 dark:from-red-900/30 dark:to-red-800/30 rounded-lg flex items-center justify-center">
+                                <span className="text-red-600 dark:text-red-400 font-bold text-xl">
+                                    !
+                                </span>
+                            </div>
+                            <div className="flex-1">
+                                <div className="flex items-center gap-3 mb-4">
+                                    <span className="px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-sm font-medium rounded-full">
+                                        Thách Thức {index + 1}
+                                    </span>
+                                </div>
+
+                                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                                    {challenge.title}
+                                </h4>
+
+                                <div className="mb-4 p-4 bg-gray-100 dark:bg-gray-800/50 rounded-lg">
+                                    <div className="text-sm text-gray-500 dark:text-gray-400 mb-1">
+                                        Mô Tả Thách Thức:
+                                    </div>
+                                    <p className="text-gray-700 dark:text-gray-300">
+                                        {challenge.description}
+                                    </p>
+                                </div>
+
+                                <div className="p-4 from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-lg border border-blue-100 dark:border-blue-900/30">
+                                    <div className="flex items-center gap-2 mb-2">
+                                        <Shield className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                                        <div className="text-sm font-medium text-blue-700 dark:text-blue-300">
+                                            Giải Pháp Đã Triển Khai:
+                                        </div>
+                                    </div>
+                                    <p className="text-gray-700 dark:text-gray-300">
+                                        {challenge.solution}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    )}
+
+    {/* Tab Ảnh Chụp Màn Hình */}
+    {activeTab === "screenshots" && (
+        <div>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
+                Ảnh Chụp Màn Hình Nền Tảng
+            </h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {project.screenshots.map((screenshot, index) => (
+                    <div
+                        key={index}
+                        className="group relative rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300"
+                    >
+                        <img
+                            src={screenshot.url}
+                            alt={screenshot.title}
+                            className="w-full h-48 sm:h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-end p-6">
+                            <div className="text-white text-center mb-4">
+                                <div className="font-semibold mb-1">
+                                    {screenshot.title}
+                                </div>
+                                <div className="text-sm text-white/70">
+                                    {screenshot.description}
+                                </div>
+                            </div>
+                            <button className="px-4 py-2 bg-white text-gray-900 font-medium rounded-lg hover:bg-gray-100 transition-colors">
+                                Xem Kích Thước Đầy Đủ
+                            </button>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    )}
+
+    {/* Tab Kiến Trúc */}
+    {activeTab === "architecture" && (
+        <div className="space-y-8">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                Kiến Trúc Bảo Mật
+            </h3>
+
+            <div className="from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-2xl p-8 border border-gray-200 dark:border-gray-700">
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    {Object.entries(project.architecture).map(([key, value]) => (
+                        <div key={key} className="text-center">
+                            <div className="text-sm text-gray-500 dark:text-gray-400 mb-2 capitalize">
+                                {key.replace(/([A-Z])/g, " $1")}
+                            </div>
+                            <div className="font-semibold text-gray-900 dark:text-white text-sm">
+                                {value}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                <div className="relative h-64 from-blue-500/10 to-purple-500/10 dark:from-blue-500/5 dark:to-purple-500/5 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 flex items-center justify-center">
+                    <div className="text-center p-6">
+                        <div className="w-16 h-16 from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <Lock className="w-8 h-8 text-white" />
+                        </div>
+                        <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                            Sơ Đồ Kiến Trúc Bảo Mật
+                        </h4>
+                        <p className="text-gray-600 dark:text-gray-400 text-sm">
+                            Mã hóa P2P với xác minh blockchain và bảo mật doanh nghiệp
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )}
+</div>
       </div>
     </div>
   );

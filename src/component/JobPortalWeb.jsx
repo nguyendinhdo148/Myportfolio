@@ -26,14 +26,14 @@ export const JobPortalWeb = () => {
 
   const project = {
     id: "job-portal-web",
-    title: "Job Portal - Website",
+    title: "VieJobs - Website tìm kiếm việc làm",
     category: "Full-stack Web Application",
     status: "Live",
-    year: "2024",
+    year: "2025",
     description:
       "Nền tảng tìm việc làm thông minh với AI matching từ OpenAI/Gemini, real-time notifications và Cloudinary media hosting.",
     longDescription:
-      "Job Portal là nền tảng tìm kiếm việc làm thế hệ mới sử dụng MERN stack với AI integration từ OpenAI và Gemini. Hệ thống hỗ trợ real-time notifications, advanced search với filter đa chiều, Cloudinary cho media upload, và hệ thống tracking ứng tuyển từ A đến Z. Tính năng nổi bật bao gồm AI-powered job recommendations, interview simulation với chatbot AI, và advanced analytics dashboard.",
+      "VieJobs là nền tảng tìm kiếm việc làm thế hệ mới sử dụng MERN stack với AI integration từ OpenAI và Gemini. Hệ thống hỗ trợ real-time notifications, advanced search với filter đa chiều, Cloudinary cho media upload, và hệ thống tracking ứng tuyển từ A đến Z. Tính năng nổi bật bao gồm AI-powered job recommendations, interview simulation với chatbot AI, và advanced analytics dashboard.",
     imageUrl:
       "https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
     // Sử dụng Google Drive embed URL
@@ -224,7 +224,7 @@ export const JobPortalWeb = () => {
                 className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group"
               >
                 <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
-                <span className="hidden sm:inline">Back to Projects</span>
+                <span className="hidden sm:inline">Trở về</span>
               </Link>
             </div>
 
@@ -236,7 +236,7 @@ export const JobPortalWeb = () => {
                 className="inline-flex items-center gap-2 px-4 py-2   from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium rounded-lg transition-all hover:shadow-lg hover:shadow-blue-500/25 active:scale-95"
               >
                 <Globe className="w-4 h-4" />
-                <span className="hidden sm:inline">Live Demo</span>
+                <span className="hidden sm:inline">Xem trang web trực tiếp</span>
               </a>
 
               <a
@@ -334,7 +334,7 @@ export const JobPortalWeb = () => {
             {/* Tech Stack */}
             <div>
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                Technology Stack
+                Công nghệ sử dụng
               </h3>
               <div className="flex flex-wrap gap-3">
                 {project.techStack.map((tech, index) => (
@@ -370,7 +370,7 @@ export const JobPortalWeb = () => {
               <div className="flex items-center gap-2 mb-4">
                 <Cpu className="w-5 h-5 text-gray-500 dark:text-gray-400" />
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                  System Architecture
+                  Kiến trúc hệ thống
                 </h3>
               </div>
               <div className="grid grid-cols-2 gap-4">
@@ -419,7 +419,7 @@ export const JobPortalWeb = () => {
                 className="absolute top-0 left-0 w-full h-full"
                 allow="autoplay"
                 referrerPolicy="no-referrer"
-                title="Job Portal Website Demo"
+                title="VieJobs Website Demo"
                 allowFullScreen
               />
             </div>
@@ -430,7 +430,7 @@ export const JobPortalWeb = () => {
               <div className="flex items-center gap-2 mb-6">
                 <Download className="w-5 h-5 text-gray-500 dark:text-gray-400" />
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                  Project Resources
+                  Tài nguyên dự án
                 </h3>
               </div>
 
@@ -450,10 +450,10 @@ export const JobPortalWeb = () => {
                       </div>
                       <div>
                         <div className="font-semibold text-gray-900 dark:text-white">
-                          Watch Demo
+                          Xem Demo Dự Án
                         </div>
                         <div className="text-sm text-gray-500 dark:text-gray-400">
-                          View full project demo on Google Drive
+                          Xem video demo trên Google Drive
                         </div>
                       </div>
                     </div>
@@ -526,7 +526,7 @@ export const JobPortalWeb = () => {
                       </div>
                       <div>
                         <div className="font-semibold text-gray-900 dark:text-white">
-                          Live Demo
+                          Xem website trực tiếp
                         </div>
                         <div className="text-sm text-gray-500 dark:text-gray-400">
                           Visit live website
@@ -551,27 +551,6 @@ export const JobPortalWeb = () => {
               </div>
             </div>
 
-            {/* Key Achievements */}
-            <div className="  from-green-50 to-white dark:from-green-900/10 dark:to-gray-900 rounded-xl p-6 border border-green-100 dark:border-green-900/30">
-              <div className="flex items-center gap-2 mb-4">
-                <Shield className="w-5 h-5 text-green-500 dark:text-green-400" />
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                  Key Achievements
-                </h3>
-              </div>
-              <div className="space-y-3">
-                {project.achievements.map((achievement, index) => (
-                  <div key={index} className="flex items-start gap-3">
-                    <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center   mt-0.5">
-                      <div className="w-2 h-2 bg-green-600 dark:bg-green-400 rounded-full"></div>
-                    </div>
-                    <span className="text-sm text-gray-700 dark:text-gray-300">
-                      {achievement}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
 
@@ -579,11 +558,10 @@ export const JobPortalWeb = () => {
         <div className="border-b border-gray-200 dark:border-gray-800 mb-8">
           <nav className="flex flex-wrap gap-4 sm:gap-8">
             {[
-              { id: "overview", label: "Overview", icon: "📋" },
-              { id: "features", label: "Features", icon: "✨" },
-              { id: "challenges", label: "Challenges", icon: "⚡" },
-              { id: "screenshots", label: "Screenshots", icon: "🖼️" },
-              { id: "architecture", label: "Architecture", icon: "🏗️" },
+              { id: "overview", label: "Tổng quan", icon: "📋" },
+              { id: "features", label: "Tính năng", icon: "✨" },
+              { id: "screenshots", label: "Ảnh hệ thống", icon: "🖼️" },
+              { id: "architecture", label: "Kiến trúc hệ thống", icon: "🏗️" },
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -603,270 +581,265 @@ export const JobPortalWeb = () => {
 
         {/* Tab Content */}
         <div className="mb-16">
-          {/* Overview Tab */}
-          {activeTab === "overview" && (
-            <div className="space-y-8">
-              <div className="prose prose-lg dark:prose-invert max-w-none">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                  Project Overview
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
-                  {project.longDescription}
+  {/* Tab Tổng Quan */}
+  {activeTab === "overview" && (
+    <div className="space-y-8">
+      <div className="prose prose-lg dark:prose-invert max-w-none">
+        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+          Tổng Quan Dự Án
+        </h3>
+        <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+          {project.longDescription}
+        </p>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-8">
+        <div className="from-blue-50 to-white dark:from-blue-900/10 dark:to-gray-800 rounded-xl p-6 border border-blue-100 dark:border-blue-900/30">
+          <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+            Mục Tiêu Chính
+          </h4>
+          <ul className="space-y-3">
+            <li className="flex items-start gap-3">
+              <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mt-0.5">
+                <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
+              </div>
+              <span className="text-gray-700 dark:text-gray-300">
+                Tạo trải nghiệm người dùng trực quan và hấp dẫn cho người tìm việc và nhà tuyển dụng
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mt-0.5">
+                <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
+              </div>
+              <span className="text-gray-700 dark:text-gray-300">
+                Triển khai kiến trúc MERN stack có thể mở rộng với tích hợp AI
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mt-0.5">
+                <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
+              </div>
+              <span className="text-gray-700 dark:text-gray-300">
+                Đảm bảo bảo mật cấp doanh nghiệp và quyền riêng tư cho dữ liệu nhạy cảm
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mt-0.5">
+                <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
+              </div>
+              <span className="text-gray-700 dark:text-gray-300">
+                Tối ưu hiệu suất trên tất cả thiết bị với thiết kế responsive
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        <div className="from-green-50 to-white dark:from-green-900/10 dark:to-gray-800 rounded-xl p-6 border border-green-100 dark:border-green-900/30">
+          <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+            Công Nghệ Nổi Bật
+          </h4>
+          <ul className="space-y-3">
+            <li className="flex items-start gap-3">
+              <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mt-0.5">
+                <div className="w-2 h-2 bg-green-600 dark:bg-green-400 rounded-full"></div>
+              </div>
+              <span className="text-gray-700 dark:text-gray-300">
+                MERN stack (MongoDB, Express, React, Node.js) với tích hợp Cloudinary
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mt-0.5">
+                <div className="w-2 h-2 bg-green-600 dark:bg-green-400 rounded-full"></div>
+              </div>
+              <span className="text-gray-700 dark:text-gray-300">
+                Tích hợp AI kép: OpenAI GPT-4 + Google Gemini cho kết hợp thông minh
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mt-0.5">
+                <div className="w-2 h-2 bg-green-600 dark:bg-green-400 rounded-full"></div>
+              </div>
+              <span className="text-gray-700 dark:text-gray-300">
+                Tính năng thời gian thực với WebSockets và push notifications
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mt-0.5">
+                <div className="w-2 h-2 bg-green-600 dark:bg-green-400 rounded-full"></div>
+              </div>
+              <span className="text-gray-700 dark:text-gray-300">
+                Bảo mật nâng cao với JWT, mã hóa và kiểm soát truy cập theo vai trò
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  )}
+
+  {/* Tab Tính Năng */}
+  {activeTab === "features" && (
+    <div>
+      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
+        Tính Năng Chính
+      </h3>
+      <div className="grid md:grid-cols-2 gap-6">
+        {project.features.map((feature, index) => (
+          <div
+            key={index}
+            className="group from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-lg"
+          >
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 from-blue-100 to-blue-200 dark:from-blue-900/30 dark:to-blue-800/30 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span className="text-2xl">{feature.icon}</span>
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                  {feature.title}
+                </h4>
+                <p className="text-gray-600 dark:text-gray-400">
+                  {feature.description}
                 </p>
               </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
 
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="  from-blue-50 to-white dark:from-blue-900/10 dark:to-gray-800 rounded-xl p-6 border border-blue-100 dark:border-blue-900/30">
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                    Key Objectives
-                  </h4>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center   mt-0.5">
-                        <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
-                      </div>
-                      <span className="text-gray-700 dark:text-gray-300">
-                        Create intuitive and engaging user experience for job
-                        seekers and employers
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center   mt-0.5">
-                        <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
-                      </div>
-                      <span className="text-gray-700 dark:text-gray-300">
-                        Implement scalable MERN stack architecture with AI
-                        integration
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center   mt-0.5">
-                        <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
-                      </div>
-                      <span className="text-gray-700 dark:text-gray-300">
-                        Ensure enterprise-grade security and privacy for
-                        sensitive data
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center   mt-0.5">
-                        <div className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
-                      </div>
-                      <span className="text-gray-700 dark:text-gray-300">
-                        Optimize performance across all devices with responsive
-                        design
-                      </span>
-                    </li>
-                  </ul>
+  {/* Tab Thách Thức */}
+  {activeTab === "challenges" && (
+    <div className="space-y-8">
+      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+        Thách Thức Kỹ Thuật & Giải Pháp
+      </h3>
+
+      <div className="space-y-6">
+        {project.challenges.map((challenge, index) => (
+          <div
+            key={index}
+            className="group from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300"
+          >
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 from-red-100 to-red-200 dark:from-red-900/30 dark:to-red-800/30 rounded-lg flex items-center justify-center">
+                <span className="text-red-600 dark:text-red-400 font-bold text-xl">
+                  !
+                </span>
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-sm font-medium rounded-full">
+                    Thách Thức {index + 1}
+                  </span>
                 </div>
 
-                <div className="  from-green-50 to-white dark:from-green-900/10 dark:to-gray-800 rounded-xl p-6 border border-green-100 dark:border-green-900/30">
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                    Technology Highlights
-                  </h4>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center   mt-0.5">
-                        <div className="w-2 h-2 bg-green-600 dark:bg-green-400 rounded-full"></div>
-                      </div>
-                      <span className="text-gray-700 dark:text-gray-300">
-                        MERN stack (MongoDB, Express, React, Node.js) với
-                        Cloudinary integration
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center   mt-0.5">
-                        <div className="w-2 h-2 bg-green-600 dark:bg-green-400 rounded-full"></div>
-                      </div>
-                      <span className="text-gray-700 dark:text-gray-300">
-                        Dual AI integration: OpenAI GPT-4 + Google Gemini for
-                        intelligent matching
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center   mt-0.5">
-                        <div className="w-2 h-2 bg-green-600 dark:bg-green-400 rounded-full"></div>
-                      </div>
-                      <span className="text-gray-700 dark:text-gray-300">
-                        Real-time features với WebSockets và push notifications
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center   mt-0.5">
-                        <div className="w-2 h-2 bg-green-600 dark:bg-green-400 rounded-full"></div>
-                      </div>
-                      <span className="text-gray-700 dark:text-gray-300">
-                        Advanced security với JWT, encryption, và role-based
-                        access
-                      </span>
-                    </li>
-                  </ul>
+                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                  {challenge.title}
+                </h4>
+
+                <div className="mb-4 p-4 bg-gray-100 dark:bg-gray-800/50 rounded-lg">
+                  <div className="text-sm text-gray-500 dark:text-gray-400 mb-1">
+                    Mô Tả Thách Thức:
+                  </div>
+                  <p className="text-gray-700 dark:text-gray-300">
+                    {challenge.description}
+                  </p>
+                </div>
+
+                <div className="p-4 from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-lg border border-blue-100 dark:border-blue-900/30">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Shield className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                    <div className="text-sm font-medium text-blue-700 dark:text-blue-300">
+                      Giải Pháp Đã Triển Khai:
+                    </div>
+                  </div>
+                  <p className="text-gray-700 dark:text-gray-300">
+                    {challenge.solution}
+                  </p>
                 </div>
               </div>
             </div>
-          )}
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
 
-          {/* Features Tab */}
-          {activeTab === "features" && (
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
-                Core Features
-              </h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                {project.features.map((feature, index) => (
-                  <div
-                    key={index}
-                    className="group   from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-lg"
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className="  w-12 h-12   from-blue-100 to-blue-200 dark:from-blue-900/30 dark:to-blue-800/30 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <span className="text-2xl">{feature.icon}</span>
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                          {feature.title}
-                        </h4>
-                        <p className="text-gray-600 dark:text-gray-400">
-                          {feature.description}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Challenges Tab */}
-          {activeTab === "challenges" && (
-            <div className="space-y-8">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Technical Challenges & Solutions
-              </h3>
-
-              <div className="space-y-6">
-                {project.challenges.map((challenge, index) => (
-                  <div
-                    key={index}
-                    className="group   from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300"
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className="  w-12 h-12   from-red-100 to-red-200 dark:from-red-900/30 dark:to-red-800/30 rounded-lg flex items-center justify-center">
-                        <span className="text-red-600 dark:text-red-400 font-bold text-xl">
-                          !
-                        </span>
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-4">
-                          <span className="px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-sm font-medium rounded-full">
-                            Challenge {index + 1}
-                          </span>
-                        </div>
-
-                        <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                          {challenge.title}
-                        </h4>
-
-                        <div className="mb-4 p-4 bg-gray-100 dark:bg-gray-800/50 rounded-lg">
-                          <div className="text-sm text-gray-500 dark:text-gray-400 mb-1">
-                            Challenge Description:
-                          </div>
-                          <p className="text-gray-700 dark:text-gray-300">
-                            {challenge.description}
-                          </p>
-                        </div>
-
-                        <div className="p-4   from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-lg border border-blue-100 dark:border-blue-900/30">
-                          <div className="flex items-center gap-2 mb-2">
-                            <Shield className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                            <div className="text-sm font-medium text-blue-700 dark:text-blue-300">
-                              Solution Implemented:
-                            </div>
-                          </div>
-                          <p className="text-gray-700 dark:text-gray-300">
-                            {challenge.solution}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Screenshots Tab */}
-          {activeTab === "screenshots" && (
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
-                Usecase + Sequenct Screenshots
-              </h3>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {project.screenshots.map((screenshot, index) => (
-                  <div
-                    key={index}
-                    className="group relative rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300"
-                  >
-                    <img
-                      src={screenshot.url}
-                      alt={screenshot.title}
-                      className="w-full h-48 sm:h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0   from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-end p-6">
-                      <div className="text-white text-center mb-4">
-                        <div className="font-semibold mb-1">
-                          {screenshot.title}
-                        </div>
-                        <div className="text-sm text-white/70">
-                          {screenshot.description}
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Architecture Tab */}
-          {activeTab === "architecture" && (
-            <div className="space-y-8">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                System Architecture
-              </h3>
-
-              <div className="  from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-2xl p-8 border border-gray-200 dark:border-gray-700">
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                  {Object.entries(project.architecture).map(([key, value]) => (
-                    <div key={key} className="text-center">
-                      <div className="text-sm text-gray-500 dark:text-gray-400 mb-2 capitalize">
-                        {key.replace(/([A-Z])/g, " $1")}
-                      </div>
-                      <div className="font-semibold text-gray-900 dark:text-white text-sm">
-                        {value}
-                      </div>
-                    </div>
-                  ))}
+  {/* Tab Ảnh Chụp Màn Hình */}
+  {activeTab === "screenshots" && (
+    <div>
+      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
+        Ảnh Chụp Màn Hình & Giao Diện
+      </h3>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {project.screenshots.map((screenshot, index) => (
+          <div
+            key={index}
+            className="group relative rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300"
+          >
+            <img
+              src={screenshot.url}
+              alt={screenshot.title}
+              className="w-full h-48 sm:h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-end p-6">
+              <div className="text-white text-center mb-4">
+                <div className="font-semibold mb-1">
+                  {screenshot.title}
                 </div>
-
-                <div className="relative h-64   from-blue-500/10 to-purple-500/10 dark:from-blue-500/5 dark:to-purple-500/5 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 flex items-center justify-center">
-                  <div className="text-center p-6">
-                    <div className="w-16 h-16   from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Cpu className="w-8 h-8 text-white" />
-                    </div>
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                      Architecture Diagram
-                    </h4>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">
-                      MERN stack với AI services và Cloudinary integration
-                    </p>
-                  </div>
+                <div className="text-sm text-white/70">
+                  {screenshot.description}
                 </div>
               </div>
+              <button className="px-3 py-1.5 bg-white/20 hover:bg-white/30 text-white text-sm rounded-lg backdrop-blur-sm transition-colors">
+                Xem Chi Tiết
+              </button>
             </div>
-          )}
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {/* Tab Kiến Trúc */}
+  {activeTab === "architecture" && (
+    <div className="space-y-8">
+      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+        Kiến Trúc Hệ Thống
+      </h3>
+
+      <div className="from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-2xl p-8 border border-gray-200 dark:border-gray-700">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          {Object.entries(project.architecture).map(([key, value]) => (
+            <div key={key} className="text-center">
+              <div className="text-sm text-gray-500 dark:text-gray-400 mb-2 capitalize">
+                {key.replace(/([A-Z])/g, " $1")}
+              </div>
+              <div className="font-semibold text-gray-900 dark:text-white text-sm">
+                {value}
+              </div>
+            </div>
+          ))}
         </div>
+
+        <div className="relative h-64 from-blue-500/10 to-purple-500/10 dark:from-blue-500/5 dark:to-purple-500/5 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 flex items-center justify-center">
+          <div className="text-center p-6">
+            <div className="w-16 h-16 from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Cpu className="w-8 h-8 text-white" />
+            </div>
+            <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+              Sơ Đồ Kiến Trúc
+            </h4>
+            <p className="text-gray-600 dark:text-gray-400 text-sm">
+              MERN stack với dịch vụ AI và tích hợp Cloudinary
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  )}
+</div>
       </div>
     </div>
   );
