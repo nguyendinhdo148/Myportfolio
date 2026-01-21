@@ -6,8 +6,8 @@ const navItems = [
   { name: "Giới thiệu", href: "#introduce" },
   { name: "Kỹ năng & công cụ", href: "#skills" },
   { name: "Dự án", href: "#projects" },
-  { name: "Chứng chỉ & CV", href: "#certificates" },
-  { name: "Liên hệ", href: "#contact" },
+  { name: "Chứng chỉ & CV", href: "#certificates-section" },
+  { name: "Kinh nghiệm làm việc", href: "#Work-experience" },
 ];
 
 export const Navbar = () => {

@@ -42,7 +42,7 @@ export const Project = () => {
       setShowBackToTop(window.scrollY > 300);
     };
     
-    // Simulate loading for mobile
+    // Giả lập loading cho mobile
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 1000);
@@ -54,16 +54,16 @@ export const Project = () => {
     };
   }, []);
 
-  // Project data với 3 project đầy đủ
+  // Dữ liệu dự án với 3 dự án đầy đủ
   const projectData = [
     {
       id: "job-portal-web",
       title: "VieJobs - Website tìm kiếm việc làm",
-      category: "Web Application",
-      status: "Live",
+      category: "Ứng dụng Web",
+      status: "Đang hoạt động",
       year: "2024",
-      description: "Ứng dụng web tìm kiếm việc làm với AI matching từ OpenAI/Gemini, real-time notifications và Cloudinary media hosting.",
-      longDescription: "Job Portal là nền tảng tìm kiếm việc làm thế hệ mới sử dụng MERN stack với AI integration từ OpenAI và Gemini. Hệ thống hỗ trợ real-time notifications, advanced search với filter đa chiều, Cloudinary cho media upload, và hệ thống tracking ứng tuyển từ A đến Z.",
+      description: "Ứng dụng web tìm kiếm việc làm với AI matching từ OpenAI/Gemini, thông báo thời gian thực và Cloudinary media hosting.",
+      longDescription: "Job Portal là nền tảng tìm kiếm việc làm thế hệ mới sử dụng MERN stack với tích hợp AI từ OpenAI và Gemini. Hệ thống hỗ trợ thông báo thời gian thực, tìm kiếm nâng cao với bộ lọc đa chiều, Cloudinary cho tải lên media và hệ thống theo dõi ứng tuyển từ A đến Z.",
       imageUrl: "/posterViejob-web.jpg",
       videoDemo: "/WebsiteFindJob.mp4",
       liveUrl: "https://vie-jobs.vercel.app/",
@@ -78,17 +78,17 @@ export const Project = () => {
         { name: "Gemini AI", icon: "🌟", color: "bg-yellow-100 dark:bg-yellow-900/30" }
       ],
       features: [
-        "AI-powered job matching",
-        "Real-time notifications",
-        "Cloudinary media management",
-        "Advanced search engine",
-        "Interview simulation",
-        "Analytics dashboard"
+        "Kết hợp việc làm bằng AI",
+        "Thông báo thời gian thực",
+        "Quản lý media với Cloudinary",
+        "Công cụ tìm kiếm nâng cao",
+        "Mô phỏng phỏng vấn",
+        "Bảng điều khiển phân tích"
       ],
       challenges: [
-        "AI Integration Complexity",
-        "Real-time Scalability",
-        "Media Processing Performance"
+        "Độ phức tạp tích hợp AI",
+        "Khả năng mở rộng thời gian thực",
+        "Hiệu suất xử lý media"
       ],
       platform: "Web",
       icon: <Globe className="w-6 h-6" />
@@ -96,11 +96,11 @@ export const Project = () => {
     {
       id: "job-portal-mobile",
       title: "VieJobs - Ứng dụng tìm kiếm việc làm",
-      category: "Mobile Application",
-      status: "In Development",
+      category: "Ứng dụng Di động",
+      status: "Đang phát triển",
       year: "2024",
-      description: "Ứng dụng di động tìm việc làm với Flutter, tích hợp AI recommendations, geolocation và push notifications.",
-      longDescription: "Mobile application built với Flutter và Dart, kết nối với MERN backend. Ứng dụng hỗ trợ location-based job search, push notifications, offline mode, và AI chat assistant. Tích hợp OpenAI và Gemini AI cho personalized job recommendations.",
+      description: "Ứng dụng di động tìm việc làm với Flutter, tích hợp AI recommendations, định vị và push notifications.",
+      longDescription: "Ứng dụng di động xây dựng với Flutter và Dart, kết nối với MERN backend. Ứng dụng hỗ trợ tìm kiếm việc làm theo vị trí, push notifications, chế độ offline và AI chat assistant. Tích hợp OpenAI và Gemini AI cho job recommendations cá nhân hóa.",
       imageUrl: "/mobieHome.jpg",
       videoDemo: "/videos/job-portal-mobile-demo.mp4",
       liveUrl: "https://expo.dev/@yourusername/job-portal-mobile",
@@ -114,17 +114,17 @@ export const Project = () => {
         { name: "Gemini AI", icon: "🌟", color: "bg-yellow-100 dark:bg-yellow-900/30" },
       ],
       features: [
-        "Location-based search",
-        "AI Career Assistant",
-        "Push notifications",
-        "Offline mode",
-        "AR company tours",
-        "Voice search"
+        "Tìm kiếm theo vị trí",
+        "Trợ lý nghề nghiệp AI",
+        "Thông báo đẩy",
+        "Chế độ offline",
+        "Tham quan công ty AR",
+        "Tìm kiếm bằng giọng nói"
       ],
       challenges: [
-        "Cross-platform Performance",
-        "Real-time Location Updates",
-        "AI Model Optimization"
+        "Hiệu suất đa nền tảng",
+        "Cập nhật vị trí thời gian thực",
+        "Tối ưu hóa mô hình AI"
       ],
       platform: "Mobile",
       icon: <Smartphone className="w-6 h-6" />
@@ -132,11 +132,11 @@ export const Project = () => {
     {
       id: "p2p-file-share",
       title: "VieCloud - Lưu trữ và chia sẻ file P2P",
-      category: "Web Application",
-      status: "Live",
+      category: "Ứng dụng Web",
+      status: "Đang hoạt động",
       year: "2024",
-      description: "Nền tảng chia sẻ file peer-to-peer với end-to-end encryption, Java Spring Boot backend và React frontend.",
-      longDescription: "Platform chia sẻ file sử dụng WebRTC cho direct P2P connections, với Spring Boot backend và React frontend. Hệ thống hỗ trợ end-to-end encryption, và real-time transfer tracking.",
+      description: "Nền tảng chia sẻ file peer-to-peer với mã hóa end-to-end, Java Spring Boot backend và React frontend.",
+      longDescription: "Nền tảng chia sẻ file sử dụng WebRTC cho kết nối P2P trực tiếp, với Spring Boot backend và React frontend. Hệ thống hỗ trợ mã hóa end-to-end và theo dõi chuyển dữ liệu thời gian thực.",
       imageUrl: "/dashViecloud.jpg",
       videoDemo: "/videos/p2p-file-share-demo.mp4",
       liveUrl: "https://p2p-fileshare-demo.vercel.app",
@@ -150,24 +150,24 @@ export const Project = () => {
         { name: "MongoDB", icon: "🍃", color: "bg-emerald-100 dark:bg-emerald-900/30" }
       ],
       features: [
-        "End-to-end encryption",
-        "Direct P2P transfer",
-        "Blockchain verification",
-        "Real-time tracking",
-        "No size limits",
-        "Digital signatures"
+        "Mã hóa end-to-end",
+        "Chuyển P2P trực tiếp",
+        "Xác minh blockchain",
+        "Theo dõi thời gian thực",
+        "Không giới hạn kích thước",
+        "Chữ ký số"
       ],
       challenges: [
-        "NAT Traversal Complexity",
-        "Transfer Reliability",
-        "Security Implementation"
+        "Độ phức tạp NAT Traversal",
+        "Độ tin cậy chuyển dữ liệu",
+        "Triển khai bảo mật"
       ],
       platform: "Web",
       icon: <Lock className="w-6 h-6" />
     }
   ];
 
-  // Filter projects based on active tab
+  // Lọc dự án dựa trên tab đang chọn
   const filteredProjects = activeTab === "all" 
     ? projectData 
     : projectData.filter(project => 
@@ -176,7 +176,7 @@ export const Project = () => {
       );
 
   // Tính toán số liệu thống kê
-  const liveProjectsCount = projectData.filter(p => p.status === 'Live').length;
+  const liveProjectsCount = projectData.filter(p => p.status === 'Đang hoạt động').length;
   const webProjectsCount = projectData.filter(p => p.platform === 'Web').length;
   const mobileProjectsCount = projectData.filter(p => p.platform === 'Mobile').length;
 
@@ -188,7 +188,7 @@ export const Project = () => {
     });
   };
 
-  // Hàm scroll đến projects section
+  // Hàm scroll đến section dự án
   const scrollToProjects = () => {
     const projectsSection = document.getElementById('projects-section');
     if (projectsSection) {
@@ -199,7 +199,7 @@ export const Project = () => {
   // Component cho Project Card trên mobile
   const MobileProjectCard = ({ project }) => (
     <div className="mb-6 bg-card rounded-xl border overflow-hidden shadow-sm">
-      {/* Project Image */}
+      {/* Hình ảnh dự án */}
       <div className="relative h-48">
         <img 
           src={project.imageUrl} 
@@ -209,21 +209,21 @@ export const Project = () => {
         />
         <div className="absolute top-3 right-3">
           <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
-            project.status === 'Live' 
+            project.status === 'Đang hoạt động' 
               ? 'bg-green-500 text-white' 
               : 'bg-yellow-500 text-white'
           }`}>
-            {project.status === 'Live' ? '🚀 Live' : '🛠️ In Progress'}
+            {project.status === 'Đang hoạt động' ? '🚀 Đang chạy' : '🛠️ Đang phát triển'}
           </span>
         </div>
         <div className="absolute top-3 left-3">
           <span className="px-2 py-1 bg-primary/90 text-primary-foreground text-xs font-semibold rounded-full flex items-center gap-1">
-            {project.platform === 'Mobile' ? '📱 Mobile' : '💻 Web'}
+            {project.platform === 'Mobile' ? '📱 Di động' : '💻 Web'}
           </span>
         </div>
       </div>
 
-      {/* Project Content */}
+      {/* Nội dung dự án */}
       <div className="p-4">
         <div className="flex items-center gap-3 mb-3">
           <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
@@ -261,7 +261,7 @@ export const Project = () => {
           </div>
         </div>
 
-        {/* Features Preview cho mobile */}
+        {/* Xem trước tính năng cho mobile */}
         <div className="mb-4">
           <div className="flex flex-wrap gap-1">
             {project.features.slice(0, 2).map((feature, index) => (
@@ -276,7 +276,7 @@ export const Project = () => {
           </div>
         </div>
 
-        {/* Action Buttons cho mobile */}
+        {/* Nút hành động cho mobile */}
         <div className="flex gap-2">
           <a 
             href={project.repoUrl}
@@ -285,7 +285,7 @@ export const Project = () => {
             className="flex-1 inline-flex items-center justify-center gap-1 px-3 py-2.5 bg-muted text-foreground text-sm rounded-lg transition-all active:scale-95"
           >
             <Github className="w-4 h-4" />
-            <span>Code</span>
+            <span>Mã nguồn</span>
           </a>
           
           {project.liveUrl && (
@@ -305,7 +305,7 @@ export const Project = () => {
             className="flex-1 inline-flex items-center justify-center gap-1 px-3 py-2.5 bg-accent text-foreground text-sm rounded-lg transition-all active:scale-95"
           >
             <ExternalLink className="w-4 h-4" />
-            <span>Details</span>
+            <span>Chi tiết</span>
           </Link>
         </div>
       </div>
@@ -319,7 +319,7 @@ export const Project = () => {
         <button
           onClick={scrollToTop}
           className="fixed bottom-8 right-8 z-50 w-12 h-12 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95"
-          aria-label="Back to top"
+          aria-label="Về đầu trang"
         >
           <ArrowUp className="w-6 h-6" />
         </button>
@@ -332,10 +332,10 @@ export const Project = () => {
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div>
                 <h1 className="text-2xl md:text-4xl font-bold text-foreground">
-                  My Projects
+                  Dự Án Của Tôi
                 </h1>
                 <p className="text-sm md:text-base text-muted-foreground mt-1 md:mt-2">
-                  Full-stack applications với modern technologies 
+                  Ứng dụng full-stack với công nghệ hiện đại 
                 </p>
               </div>
               
@@ -344,7 +344,7 @@ export const Project = () => {
                   onClick={scrollToProjects}
                   className="inline-flex items-center gap-2 px-3 py-2 md:px-4 md:py-2 bg-muted hover:bg-muted/80 text-foreground text-sm md:text-base font-medium rounded-lg transition-all hover:shadow-lg active:scale-95"
                 >
-                  <span>View Projects</span>
+                  <span>Xem Dự Án</span>
                 </button>
                 <a 
                   href="https://github.com/yourusername"
@@ -366,15 +366,15 @@ export const Project = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-12">
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 md:mb-4">
-              Crafting Digital Experiences
+              Kiến Tạo Trải Nghiệm Số
             </h2>
             <p className="text-base md:text-xl text-muted-foreground max-w-3xl mx-auto">
-              Explore my portfolio of full-stack applications built with modern technologies,
-              featuring AI integration, real-time features, and scalable architectures.
+              Khám phá portfolio ứng dụng full-stack của tôi được xây dựng với công nghệ hiện đại,
+              tích hợp AI, tính năng thời gian thực và kiến trúc có thể mở rộng.
             </p>
           </div>
 
-          {/* Stats Overview - Responsive grid */}
+          {/* Thống kê tổng quan - Responsive grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-12">
             <div className="bg-card rounded-xl p-4 md:p-6 border shadow-sm hover:shadow-lg transition-all duration-300">
               <div className="flex items-center gap-3 md:gap-4">
@@ -385,7 +385,7 @@ export const Project = () => {
                   <div className="text-xl md:text-2xl font-bold text-foreground">
                     {liveProjectsCount}
                   </div>
-                  <div className="text-sm md:text-base text-muted-foreground">Live Projects</div>
+                  <div className="text-sm md:text-base text-muted-foreground">Dự Án Đang Chạy</div>
                 </div>
               </div>
             </div>
@@ -399,7 +399,7 @@ export const Project = () => {
                   <div className="text-xl md:text-2xl font-bold text-foreground">
                     {webProjectsCount}
                   </div>
-                  <div className="text-sm md:text-base text-muted-foreground">Web Applications</div>
+                  <div className="text-sm md:text-base text-muted-foreground">Ứng Dụng Web</div>
                 </div>
               </div>
             </div>
@@ -413,7 +413,7 @@ export const Project = () => {
                   <div className="text-xl md:text-2xl font-bold text-foreground">
                     {mobileProjectsCount}
                   </div>
-                  <div className="text-sm md:text-base text-muted-foreground">Mobile Applications</div>
+                  <div className="text-sm md:text-base text-muted-foreground">Ứng Dụng Di Động</div>
                 </div>
               </div>
             </div>
@@ -425,7 +425,7 @@ export const Project = () => {
       <section className="py-6 md:py-8 bg-background border-y">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-6 md:mb-8">
-            <h3 className="text-lg md:text-2xl font-bold text-foreground mb-3 md:mb-4">Filter by Category</h3>
+            <h3 className="text-lg md:text-2xl font-bold text-foreground mb-3 md:mb-4">Lọc Theo Danh Mục</h3>
             <div className="flex flex-wrap gap-2 mb-4 md:mb-6 overflow-x-auto pb-2">
               <button
                 onClick={() => setActiveTab("all")}
@@ -435,7 +435,7 @@ export const Project = () => {
                     : "bg-muted text-muted-foreground hover:bg-muted/80"
                 }`}
               >
-                All ({projectData.length})
+                Tất Cả ({projectData.length})
               </button>
               <button
                 onClick={() => setActiveTab("web")}
@@ -457,43 +457,43 @@ export const Project = () => {
                 }`}
               >
                 <SmartphoneIcon className="w-4 h-4" />
-                <span>Mobile ({mobileProjectsCount})</span>
+                <span>Di động ({mobileProjectsCount})</span>
               </button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Main Content - Projects Grid */}
+      {/* Nội dung chính - Grid dự án */}
       <section id="projects-section" className="py-8 md:py-12 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Message khi không có project nào */}
+          {/* Thông báo khi không có dự án nào */}
           {filteredProjects.length === 0 ? (
             <div className="text-center py-8 md:py-12">
               <div className="w-16 h-16 md:w-24 md:h-24 mx-auto bg-muted rounded-full flex items-center justify-center mb-4 md:mb-6">
                 <SmartphoneIcon className="w-8 h-8 md:w-12 md:h-12 text-muted-foreground" />
               </div>
               <h3 className="text-lg md:text-xl font-bold text-foreground mb-2">
-                No Mobile Projects Available
+                Không Có Dự Án Di Động
               </h3>
               <p className="text-sm md:text-base text-muted-foreground mb-4 md:mb-6 max-w-md mx-auto">
-                Currently, there are no mobile projects in the portfolio. 
-                Check back later for new additions!
+                Hiện tại không có dự án di động trong portfolio. 
+                Hãy quay lại sau để xem các bổ sung mới!
               </p>
               <button
                 onClick={() => setActiveTab("all")}
                 className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-primary hover:bg-primary/90 text-primary-foreground text-sm md:text-base font-medium rounded-lg transition-all"
               >
-                View All Projects
+                Xem Tất Cả Dự Án
               </button>
             </div>
           ) : (
             <>
-              {/* Desktop view - Projects Grid */}
+              {/* Desktop view - Grid dự án */}
               <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                 {filteredProjects.map((project) => (
                   <div key={project.id} className="group relative bg-card rounded-2xl overflow-hidden border shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-                    {/* Project Header */}
+                    {/* Header dự án */}
                     <div className="relative h-48 overflow-hidden">
                       <img 
                         src={project.imageUrl} 
@@ -503,26 +503,26 @@ export const Project = () => {
                       />
                       <div className="absolute inset-0 from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                       
-                      {/* Status Badge */}
+                      {/* Badge trạng thái */}
                       <div className="absolute top-4 right-4">
                         <span className={`px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm ${
-                          project.status === 'Live' 
+                          project.status === 'Đang hoạt động' 
                             ? 'bg-green-500/90 text-white' 
                             : 'bg-yellow-500/90 text-white'
                         }`}>
-                          {project.status === 'Live' ? '🚀 Live' : '🛠️ In Progress'}
+                          {project.status === 'Đang hoạt động' ? '🚀 Đang chạy' : '🛠️ Đang phát triển'}
                         </span>
                       </div>
 
-                      {/* Platform Badge */}
+                      {/* Badge nền tảng */}
                       <div className="absolute top-4 left-4">
                         <span className="px-3 py-1 bg-primary/90 text-primary-foreground text-xs font-semibold rounded-full backdrop-blur-sm flex items-center gap-1">
-                          {project.platform === 'Mobile' ? '📱 Mobile' : '💻 Web'}
+                          {project.platform === 'Mobile' ? '📱 Di động' : '💻 Web'}
                         </span>
                       </div>
                     </div>
 
-                    {/* Project Content */}
+                    {/* Nội dung dự án */}
                     <div className="p-6">
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex items-center gap-3">
@@ -548,7 +548,7 @@ export const Project = () => {
 
                       {/* Tech Stack */}
                       <div className="mb-6">
-                        <h4 className="text-sm font-semibold text-foreground mb-3">Technology Stack</h4>
+                        <h4 className="text-sm font-semibold text-foreground mb-3">Công Nghệ Sử Dụng</h4>
                         <div className="flex flex-wrap gap-2">
                           {project.techStack.slice(0, 4).map((tech, index) => (
                             <span 
@@ -561,15 +561,15 @@ export const Project = () => {
                           ))}
                           {project.techStack.length > 4 && (
                             <span className="px-3 py-1.5 bg-muted text-muted-foreground text-xs font-medium rounded-lg">
-                              +{project.techStack.length - 4} more
+                              +{project.techStack.length - 4} công nghệ khác
                             </span>
                           )}
                         </div>
                       </div>
 
-                      {/* Features Preview */}
+                      {/* Xem trước tính năng */}
                       <div className="mb-6">
-                        <h4 className="text-sm font-semibold text-foreground mb-3">Key Features</h4>
+                        <h4 className="text-sm font-semibold text-foreground mb-3">Tính Năng Chính</h4>
                         <div className="space-y-2">
                           {project.features.slice(0, 3).map((feature, index) => (
                             <div key={index} className="flex items-start gap-2">
@@ -582,7 +582,7 @@ export const Project = () => {
                         </div>
                       </div>
 
-                      {/* Action Buttons */}
+                      {/* Nút hành động */}
                       <div className="flex flex-col gap-3">
                         <div className="flex gap-3">
                           <a 
@@ -592,7 +592,7 @@ export const Project = () => {
                             className="flex-1 group/code inline-flex items-center justify-center gap-2 px-4 py-3 bg-muted hover:bg-muted/80 text-foreground font-medium rounded-lg border transition-all duration-300 hover:shadow-lg active:scale-95"
                           >
                             <Github className="w-4 h-4 transition-transform group-hover/code:scale-110" />
-                            <span>Source Code</span>
+                            <span>Mã Nguồn</span>
                           </a>
                           
                           {project.liveUrl && (
@@ -603,7 +603,7 @@ export const Project = () => {
                               className="flex-1 group/live inline-flex items-center justify-center gap-2 px-4 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 active:scale-95"
                             >
                               <Globe className="w-4 h-4 transition-transform group-hover/live:scale-110" />
-                              <span>Live Demo</span>
+                              <span>Demo Trực Tuyến</span>
                             </a>
                           )}
                         </div>
@@ -612,7 +612,7 @@ export const Project = () => {
                           to={`/project-detail/${project.id}`}
                           className="w-full group/detail inline-flex items-center justify-center gap-2 px-4 py-3 bg-transparent hover:bg-accent text-foreground font-medium rounded-lg border transition-all duration-300 hover:border-primary active:scale-95"
                         >
-                          <span>View Project Details</span>
+                          <span>Xem Chi Tiết Dự Án</span>
                           <svg className="w-4 h-4 transition-transform group-hover/detail:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                           </svg>
@@ -641,4 +641,4 @@ export const Project = () => {
   );
 };
 
-export default Project;
+export default Project; 

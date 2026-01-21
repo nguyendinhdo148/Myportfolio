@@ -404,18 +404,17 @@ export const P2PFileShare = () => {
           {/* Right Column - Video Demo */}
           <div className="space-y-6">
             {/* Video Player - Sử dụng Google Drive embed */}
-            <div className="bg-gray-900 rounded-2xl overflow-hidden aspect-video border-2 border-gray-800 dark:border-gray-700 shadow-2xl">
-              <div className="relative w-full h-full">
-                <iframe
-                  src={project.videoDemo}
-                  className="w-full h-full"
-                  allow="autoplay"
-                  referrerPolicy="no-referrer"
-                  title="P2P Secure File Sharing Demo"
-                  allowFullScreen
-                ></iframe>
-              </div>
+            <div className="relative w-full pt-[56.25%] rounded-2xl overflow-hidden border-2 border-gray-800 dark:border-gray-700 shadow-2xl bg-black">
+              <iframe
+                src={project.videoDemo}
+                className="absolute top-0 left-0 w-full h-full"
+                allow="autoplay"
+                referrerPolicy="no-referrer"
+                title="Job Portal Website Demo"
+                allowFullScreen
+              />
             </div>
+
 
             {/* Resources Section */}
             <div className="  from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-xl p-6 border border-gray-200 dark:border-gray-700">

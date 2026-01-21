@@ -753,6 +753,7 @@ export const Certificate = () => {
       )}
 
       {/* Header */}
+       <section id="certificates-section">
       <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -776,7 +777,9 @@ export const Certificate = () => {
             </div>
           </div>
         </div>
+        
       </header>
+      </section>
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -884,7 +887,7 @@ export const Certificate = () => {
         </div>
 
         {/* Certificates Grid */}
-        <section id="certificates-section">
+       
           <div className="mb-8">
             <h3 className="text-2xl font-bold text-foreground mb-2 flex items-center gap-2">
               {activeSection === "certificates" ? <Award className="w-6 h-6" /> : <Trophy className="w-6 h-6" />}
@@ -921,7 +924,6 @@ export const Certificate = () => {
               ))}
             </div>
           )}
-        </section>
       </main>
     </div>
   );
