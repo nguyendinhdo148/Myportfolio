@@ -7,7 +7,7 @@ import { Project } from "@/component/Project";
 import { useEffect } from "react";
 import Certificate from "../component/Certificate";
 import WorkExperience from "../component/WorkExperience";
-import Footer from "../component/footter";
+import { Footer } from "@/component/Footter";
 
 
 export const Home = () => {
