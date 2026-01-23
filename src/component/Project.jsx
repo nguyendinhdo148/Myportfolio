@@ -104,7 +104,7 @@ export const Project = () => {
       imageUrl: "/mobieHome.jpg",
       videoDemo: "/videos/job-portal-mobile-demo.mp4",
       liveUrl: "https://expo.dev/@yourusername/job-portal-mobile",
-      repoUrl: "https://github.com/username/job-portal-mobile-flutter",
+      repoUrl: "https://github.com/nguyendinhdo148/VieClouds_mobie",
       techStack: [
         { name: "Flutter", icon: "📱", color: "bg-blue-100 dark:bg-blue-900/30" },
         { name: "Dart", icon: "🎯", color: "bg-cyan-100 dark:bg-cyan-900/30" },
@@ -140,7 +140,7 @@ export const Project = () => {
       imageUrl: "/dashViecloud.jpg",
       videoDemo: "/videos/p2p-file-share-demo.mp4",
       liveUrl: "https://p2p-fileshare-demo.vercel.app",
-      repoUrl: "https://github.com/username/p2p-file-share-system",
+      repoUrl: "https://github.com/nguyendinhdo148/VieClouds__BE",
       techStack: [
         { name: "Java", icon: "☕", color: "bg-red-100 dark:bg-red-900/30" },
         { name: "Spring Boot", icon: "🌱", color: "bg-green-100 dark:bg-green-900/30" },

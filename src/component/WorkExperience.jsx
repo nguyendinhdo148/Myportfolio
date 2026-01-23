@@ -21,7 +21,8 @@ import {
   BarChart,
   Settings,
   Image,
-  Link as LinkIcon
+  Link as LinkIcon,
+  Trello
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -346,32 +347,23 @@ const ExperienceCard = ({ experience, isExpanded, onToggleExpand }) => (
           </div>
         </div>
 
-        {/* Kỹ năng */}
+        {/* Kỹ năng - ĐÃ SỬA: Bỏ phần trăm */}
         <div className="mb-4 sm:mb-6">
           <h4 className="text-base sm:text-lg font-semibold text-foreground mb-3 sm:mb-4 flex items-center gap-2">
             <Zap className="w-4 h-4 sm:w-5 sm:h-5 text-purple-500" />
             Kỹ Năng Áp Dụng
           </h4>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+          <div className="flex flex-wrap gap-2 sm:gap-3">
             {experience.skills.map((skill, idx) => (
-              <div key={idx} className="space-y-1">
-                <div className="flex justify-between items-center">
-                  <span className="text-xs sm:text-sm font-medium text-foreground/80">
-                    {skill.name}
-                  </span>
-                  <span className="text-xs text-muted-foreground">
-                    {skill.level}%
-                  </span>
-                </div>
-                <div className="h-1.5 sm:h-2 bg-muted rounded-full overflow-hidden">
-                  <div 
-                    className={`h-full rounded-full ${
-                      skill.level >= 80 ? 'bg-green-500' :
-                      skill.level >= 60 ? 'bg-blue-500' : 'bg-yellow-500'
-                    }`}
-                    style={{ width: `${skill.level}%` }}
-                  ></div>
-                </div>
+              <div key={idx} className="flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-muted/50 rounded-lg border hover:bg-muted transition-colors">
+                {skill.icon && (
+                  <div className="text-muted-foreground">
+                    {skill.icon}
+                  </div>
+                )}
+                <span className="text-xs sm:text-sm font-medium text-foreground/80">
+                  {skill.name}
+                </span>
               </div>
             ))}
           </div>
@@ -428,25 +420,25 @@ export const WorkExperience = () => {
     }));
   };
 
-  // Dữ liệu kinh nghiệm làm việc
+  // Dữ liệu kinh nghiệm làm việc - ĐÃ SỬA: skills với icons
   const experiences = [
     {
       id: "tester-intern",
       company: "Công Ty Cây Xanh Công Minh",
       position: "Thực Tập Sinh Tester",
       period: "06/2023 - 09/2023",
-      location: "223/8 Đặng Thuỳ Trâm, Bình Thạch, TP.HCM",
-      workLocation: "223/8 Đặng Thuỳ Trâm, Phường 13, Quận Bình Thạch, TP.HCM",
+      location: "223/8 Đặng Thuỳ Trâm, Bình Thạnh, TP.HCM",
+      workLocation: "223/8 Đặng Thuỳ Trâm, Phường 13, Quận Bình Thạnh, TP.HCM",
       type: "Tester",
       description: "Thực tập tại công ty phần mềm, tham gia kiểm thử hệ thống ERP tích hợp đa chức năng: kế toán, hành chính, tài chính và báo cáo.",
       fullDescription: "Thực tập tại Công Ty Cây Xanh Công Minh - công ty phát triển phần mềm ERP chuyên về quản lý cây xanh đô thị. Sản phẩm là hệ thống ERP tích hợp với các module: Kế toán tài chính, Hành chính nhân sự, Quản lý tài sản, Báo cáo tổng hợp. Hệ thống hỗ trợ cả web và mobile, phục vụ các đô thị lớn trên toàn quốc.",
-      website: "https://www.example-cayxanh.com", // Thêm link website công ty nếu có
+      website: "https://www.example-cayxanh.com",
       responsibilities: [
         "Kiểm thử manual các tính năng kế toán: quản lý thu chi, công nợ, báo cáo tài chính",
         "Test các module hành chính: chấm công, tính lương, quản lý hợp đồng",
         "Kiểm thử tính năng báo cáo tổng hợp và dashboard thống kê",
         "Viết và thực thi test case cho giao diện web và mobile",
-        "Báo cáo bug trên hệ thống Jira, theo dõi quy trình fix bug",
+        "Báo cáo bug trên hệ thống Trello, theo dõi quy trình fix bug",
         "Tham gia review requirements và đóng góp ý kiến từ góc độ QA"
       ],
       achievements: [
@@ -456,12 +448,12 @@ export const WorkExperience = () => {
         "Góp phần cải thiện độ ổn định của phiên bản release"
       ],
       skills: [
-        { name: "Manual Testing", level: 85 },
-        { name: "Test Case Design", level: 80 },
-        { name: "Bug Reporting", level: 90 },
-        { name: "Jira", level: 75 },
-        { name: "Agile Methodology", level: 70 },
-        { name: "ERP System Testing", level: 75 }
+        { name: "Manual Testing", icon: <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4" /> },
+        { name: "Test Case Design", icon: <FileText className="w-3 h-3 sm:w-4 sm:h-4" /> },
+        { name: "Bug Reporting", icon: <Settings className="w-3 h-3 sm:w-4 sm:h-4" /> },
+        { name: "Trello", icon: <Trello className="w-3 h-3 sm:w-4 sm:h-4" /> },
+        { name: "Agile Methodology", icon: <Zap className="w-3 h-3 sm:w-4 sm:h-4" /> },
+        { name: "ERP System Testing", icon: <Database className="w-3 h-3 sm:w-4 sm:h-4" /> }
       ],
       projects: [
         {
@@ -470,17 +462,21 @@ export const WorkExperience = () => {
           role: "Tester thực tập"
         }
       ],
-      // Thêm hình ảnh minh họa
       images: [
         {
-          url: "/images/cayxanh-office.jpg", // Thay bằng link ảnh thực tế
-          title: "Văn phòng công ty",
-          description: "Môi trường làm việc chuyên nghiệp"
+          url: "/cxcm/1.png",
+          title: "Văn phòng công ty Cây Xanh Công Minh",
+          description: "Môi trường làm việc chuyên nghiệp và hiện đại"
         },
         {
-          url: "/images/cayxanh-system.jpg", // Thay bằng link ảnh thực tế
-          title: "Giao diện hệ thống ERP",
-          description: "Dashboard quản lý chính"
+          url: "/cxcm/3.png",
+          title: "Phòng họp và thảo luận dự án",
+          description: "Không gian làm việc tập trung và sáng tạo"
+        },
+        {
+          url: "/cxcm/2.png",
+          title: "Phòng họp và thảo luận dự án",
+          description: "Nơi diễn ra các buổi review requirements và test plan"
         }
       ],
       logoColor: "from-green-500 to-emerald-600",
@@ -490,12 +486,12 @@ export const WorkExperience = () => {
       id: "accounting-software",
       company: "Tự nghiên cứu & Thực hành",
       position: "Chuyên viên phần mềm kế toán",
-      period: "2021 - Hiện tại",
+      period: "2022 - Hiện tại",
       location: "TP.HCM, Việt Nam",
-      workLocation: "FUGU Dining Lounge - 13-15-17 Đồng Khởi, Bến Nghé, Quận 1, TP.HCM",
+      workLocation: " Fugu Modern Izakaya & Bar- 13-15-17 Đồng Khởi, Bến Nghé, Quận 1, TP.HCM",
       type: "Business Analyst",
       description: "Thành thạo phần mềm CukCuk và MISA Web, ứng dụng vào quản lý nhà hàng và nghiệp vụ kế toán thực tế.",
-      fullDescription: "Tự nghiên cứu và thực hành chuyên sâu về phần mềm CukCuk (quản lý nhà hàng) và MISA Web (kế toán trực tuyến). Làm việc tại FUGU Dining Lounge - sử dụng CukCuk hàng ngày để quản lý order, kho hàng và báo cáo doanh thu. Đồng thời nghiên cứu MISA Web cho nghiệp vụ kế toán tổng hợp, hóa đơn điện tử và báo cáo thuế.",
+      fullDescription: "Tự nghiên cứu và thực hành chuyên sâu về phần mềm CukCuk (quản lý nhà hàng) và MISA Web (kế toán trực tuyến). Làm việc tại  Fugu Modern Izakaya & Bar- sử dụng CukCuk hàng ngày để quản lý order, kho hàng và báo cáo doanh thu. Đồng thời nghiên cứu MISA Web cho nghiệp vụ kế toán tổng hợp, hóa đơn điện tử và báo cáo thuế.",
       responsibilities: [
         "Sử dụng CukCuk hàng ngày để quản lý order, thanh toán và kiểm soát kho hàng",
         "Phân tích báo cáo doanh thu, chi phí từ phần mềm CukCuk",
@@ -507,20 +503,20 @@ export const WorkExperience = () => {
       achievements: [
         "Thành thạo toàn bộ tính năng CukCuk: order, thanh toán, kho, báo cáo",
         "Sử dụng MISA Web cho kế toán tổng hợp và hóa đơn điện tử",
-        "Tối ưu quy trình order - thanh toán tại FUGU Dining Lounge với CukCuk",
+        "Tối ưu quy trình order - thanh toán tại  Fugu Modern Izakaya & Barvới CukCuk",
         "Đào tạo thành công 5+ nhân viên sử dụng phần mềm CukCuk"
       ],
       skills: [
-        { name: "CukCuk Software", level: 90 },
-        { name: "MISA Web", level: 80 },
-        { name: "Restaurant Management", level: 85 },
-        { name: "Accounting Process", level: 75 },
-        { name: "User Training", level: 80 },
-        { name: "System Optimization", level: 85 }
+        { name: "CukCuk Software", icon: <Globe className="w-3 h-3 sm:w-4 sm:h-4" /> },
+        { name: "MISA Web", icon: <Globe className="w-3 h-3 sm:w-4 sm:h-4" /> },
+        { name: "Restaurant Management", icon: <Briefcase className="w-3 h-3 sm:w-4 sm:h-4" /> },
+        { name: "Accounting Process", icon: <DollarSign className="w-3 h-3 sm:w-4 sm:h-4" /> },
+        { name: "User Training", icon: <Users className="w-3 h-3 sm:w-4 sm:h-4" /> },
+        { name: "System Optimization", icon: <Settings className="w-3 h-3 sm:w-4 sm:h-4" /> }
       ],
       projects: [
         {
-          name: "Quản lý Nhà hàng FUGU Dining Lounge với CukCuk",
+          name: "Quản lý Nhà hàng  Fugu Modern Izakaya & Barvới CukCuk",
           description: "Triển khai và tối ưu quy trình quản lý nhà hàng bằng CukCuk",
           role: "System Administrator"
         },
@@ -530,17 +526,31 @@ export const WorkExperience = () => {
           role: "Accounting Analyst"
         }
       ],
-      // Thêm hình ảnh minh họa
       images: [
         {
-          url: "/images/cukcuk-dashboard.jpg", // Thay bằng link ảnh thực tế
-          title: "Dashboard CukCuk",
-          description: "Giao diện quản lý nhà hàng"
+          url: "/fugu/4.png",
+          title: " Fugu Modern Izakaya & BarRestaurant",
+          description: "Nhà hàng nơi ứng dụng phần mềm CukCuk thực tế"
         },
         {
-          url: "/images/seilounge-restaurant.jpg", // Thay bằng link ảnh thực tế
-          title: "FUGU Dining Lounge Restaurant",
-          description: "Nơi làm việc thực tế"
+          url: "/fugu/1.png",
+          title: "Giao diện quản lý CukCuk Web",
+          description: "Dashboard quản lý order và doanh thu"
+        },
+        {
+          url: "/fugu/2.png",
+          title: "Quản lý hoá đơn",
+          description: "Tính năng và kiểm soát hoá đơn điện tử"
+        },
+        {
+          url: "/fugu/3.png",
+          title: "Báo cáo doanh thu chi tiết",
+          description: "Phân tích doanh thu theo thời gian thực"
+        },
+        {
+          url: "/fugu/5.png",
+          title: "Ứng dụng CukCuk",
+          description: "Giao diện cho nhân viên order"
         }
       ],
       logoColor: "from-blue-500 to-cyan-600",

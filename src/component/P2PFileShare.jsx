@@ -40,7 +40,7 @@ export const P2PFileShare = () => {
     // Sử dụng Google Drive embed URL
     videoDemo: "https://drive.google.com/file/d/1nidcukXGAEE2VXYitfgHK8PyYuL9kAel/preview",
     liveUrl: "https://p2p-fileshare-demo.vercel.app",
-    repoUrl: "https://github.com/username/p2p-file-share-system",
+    repoUrl: "https://github.com/nguyendinhdo148/VieClouds__BE",
     techStack: [
       { name: "Java", icon: "☕", component: <Code className="w-5 h-5" /> },
       {

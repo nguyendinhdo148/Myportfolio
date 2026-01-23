@@ -7,6 +7,8 @@ import { Project } from "@/component/Project";
 import { useEffect } from "react";
 import Certificate from "../component/Certificate";
 import WorkExperience from "../component/WorkExperience";
+import Footer from "../component/footter";
+
 
 export const Home = () => {
   useEffect(() => {
@@ -38,9 +40,11 @@ export const Home = () => {
         <Project />
         <Certificate/>
         <WorkExperience />
+        
       </main>
 
       {/* Footer */}
+      <Footer/>
       {/* <Footer /> */}
     </div>
   );
