@@ -37,7 +37,7 @@ export const JobPortalWeb = () => {
     imageUrl:
       "https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
     // Sử dụng Google Drive embed URL
-    videoDemo: "https://drive.google.com/file/d/1dmzEUhyC3s2gzhfqtxQH1577Ygt_ryI4/preview",
+    videoDemo: "https://drive.google.com/file/d/1NCCX5FDE_G7LgsDh2K4jBcwxs6R76BkQ/preview",
     liveUrl: "https://vie-jobs.vercel.app/",
     repoUrl:
       "https://github.com/nguyendinhdo148/Nhom3-DACS-CNPM-WebsiteTimKiemViecLam",
