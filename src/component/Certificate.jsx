@@ -155,7 +155,7 @@ const CVPreviewModal = ({ isOpen, onClose, cvData }) => {
 
           <div className="flex-1 overflow-hidden">
             <iframe
-              src="https://drive.google.com/file/d/1MChc_8u8wOE9gQRZxKS68vVMUPGp1ZkZ/preview"
+              src="https://drive.google.com/file/d/1b48dZLPBzUvrfm_YCZZTXwxtTmY7lH5t/preview"
               className="w-full h-full border-0"
               allow="autoplay"
               title="CV Preview"
@@ -416,7 +416,7 @@ const CVSection = ({ cvData, onPreviewCV }) => {
                 
                 {/* CV Preview Image */}
                 <img
-                  src="https://drive.google.com/thumbnail?id=1MChc_8u8wOE9gQRZxKS68vVMUPGp1ZkZ&sz=w1000"
+                  src="https://drive.google.com/thumbnail?id=1b48dZLPBzUvrfm_YCZZTXwxtTmY7lH5t&sz=w1000"
                   alt="CV Preview"
                   className={`w-full h-full object-cover transition-opacity duration-500 ${
                     imageLoaded ? 'opacity-100' : 'opacity-0'
@@ -711,8 +711,8 @@ export const Certificate = () => {
   ];
 
   const cvData = {
-    previewUrl: "https://drive.google.com/file/d/1MChc_8u8wOE9gQRZxKS68vVMUPGp1ZkZ/preview",
-    downloadUrl: "https://drive.google.com/uc?export=download&id=1MChc_8u8wOE9gQRZxKS68vVMUPGp1ZkZ",
+    previewUrl: "https://drive.google.com/file/d/1b48dZLPBzUvrfm_YCZZTXwxtTmY7lH5t/preview",
+    downloadUrl: "https://drive.google.com/uc?export=download&id=1b48dZLPBzUvrfm_YCZZTXwxtTmY7lH5t",
     lastUpdated: "Tháng 12, 2024",
     experience: "< 1 năm",
     skills: ["Business Analysis", "Data Analysis", "Project Management", "Team Collaboration"]
