@@ -77,7 +77,7 @@ export const Introduce = () => {
             <span className="text-primary font-semibold mx-1 md:mx-2">
               Business Analyst
             </span>
-            Intern
+            Fresher
           </p>
           <div className="text-base md:text-lg text-foreground/80 space-y-1">
             <div>
