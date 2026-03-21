@@ -155,7 +155,7 @@ const CVPreviewModal = ({ isOpen, onClose, cvData }) => {
 
           <div className="flex-1 overflow-hidden">
             <iframe
-              src="https://drive.google.com/file/d/1b48dZLPBzUvrfm_YCZZTXwxtTmY7lH5t/preview"
+              src="https://drive.google.com/file/d/1bJIm24PcoricKYMGnB3wWMyecX3DuxsK/preview"
               className="w-full h-full border-0"
               allow="autoplay"
               title="CV Preview"
@@ -416,7 +416,7 @@ const CVSection = ({ cvData, onPreviewCV }) => {
                 
                 {/* CV Preview Image */}
                 <img
-                  src="https://drive.google.com/thumbnail?id=1mNb9VKkAGgto4mIs8vNGKDp2lYNcAIww&sz=w1000"
+                  src="https://drive.google.com/thumbnail?id=1bJIm24PcoricKYMGnB3wWMyecX3DuxsK&sz=w1000"
                   alt="CV Preview"
                   className={`w-full h-full object-cover transition-opacity duration-500 ${
                     imageLoaded ? 'opacity-100' : 'opacity-0'
@@ -606,7 +606,7 @@ export const Certificate = () => {
       id: "english-b2",
       title: "Chứng chỉ tiếng Anh B2",
       issuer: "Đại học HUTECH",
-      issueDate: "2024",
+      issueDate: "2025",
       description: "Chứng chỉ tiếng Anh trình độ B2 đánh giá khả năng sử dụng tiếng Anh độc lập trong các tình huống đa dạng.",
       imageUrl: "/english-b2.jpg",
       skills: ["Tiếng Anh", "Giao tiếp", "Đọc hiểu", "Nghe hiểu", "Viết"],
@@ -618,7 +618,7 @@ export const Certificate = () => {
       id: "teamwork",
       title: "Chứng chỉ Làm việc nhóm",
       issuer: "HUTECH University",
-      issueDate: "2023",
+      issueDate: "2025",
       description: "Chứng nhận kỹ năng làm việc nhóm hiệu quả, hợp tác và phối hợp trong các dự án học thuật và thực tế.",
       imageUrl: "/teamwork.jpg",
       skills: ["Teamwork", "Collaboration", "Communication", "Leadership", "Project Management"],
@@ -634,7 +634,7 @@ export const Certificate = () => {
       id: "full-business-analyst",
       title: "Certificate Full Business Analyst",
       issuer: "FPT Aptech",
-      issueDate: "Tháng 11, 2024",
+      issueDate: "Tháng 11, 2025",
       description: "Hoàn thành khóa học Full Business Analyst với các kỹ năng phân tích nghiệp vụ, quản lý yêu cầu và tư vấn giải pháp công nghệ.",
       imageUrl: "/FULLBA.jpg",
       skills: ["Business Analysis", "Requirement Analysis", "UML", "BPMN", "SQL"],
@@ -647,7 +647,7 @@ export const Certificate = () => {
       id: "it-got-talent",
       title: "IT Got Talent",
       issuer: "HUTECH IT Club",
-      issueDate: "Tháng 10, 2024",
+      issueDate: "Tháng 10, 2025",
       description: "Giải thưởng dành cho sinh viên có tài năng và đóng góp xuất sắc trong lĩnh vực Công nghệ Thông tin.",
       imageUrl: "/ITGOTTAILENT.jpg",
       skills: ["IT Skills", "Innovation", "Technical Excellence", "Leadership"],
