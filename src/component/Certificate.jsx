@@ -416,7 +416,7 @@ const CVSection = ({ cvData, onPreviewCV }) => {
                 
                 {/* CV Preview Image */}
                 <img
-                  src="https://drive.google.com/thumbnail?id=1b48dZLPBzUvrfm_YCZZTXwxtTmY7lH5t&sz=w1000"
+                  src="https://drive.google.com/thumbnail?id=1mNb9VKkAGgto4mIs8vNGKDp2lYNcAIww&sz=w1000"
                   alt="CV Preview"
                   className={`w-full h-full object-cover transition-opacity duration-500 ${
                     imageLoaded ? 'opacity-100' : 'opacity-0'
