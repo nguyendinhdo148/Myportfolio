@@ -711,11 +711,11 @@ export const Certificate = () => {
   ];
 
   const cvData = {
-    previewUrl: "https://drive.google.com/file/d/1b48dZLPBzUvrfm_YCZZTXwxtTmY7lH5t/preview",
-    downloadUrl: "https://drive.google.com/uc?export=download&id=1b48dZLPBzUvrfm_YCZZTXwxtTmY7lH5t",
-    lastUpdated: "Tháng 12, 2024",
-    experience: "< 1 năm",
-    skills: ["Business Analysis", "Data Analysis", "Project Management", "Team Collaboration"]
+    previewUrl: "https://drive.google.com/file/d/1mNb9VKkAGgto4mIs8vNGKDp2lYNcAIww/preview",
+    downloadUrl: "https://drive.google.com/uc?export=download&id=1mNb9VKkAGgto4mIs8vNGKDp2lYNcAIww",
+    lastUpdated: "Tháng 3, 2026",
+    experience: "> 1 năm",
+    skills: ["Business Analysis", "Team Collaboration"]
   };
 
   const totalCertificates = certificatesData.length;
