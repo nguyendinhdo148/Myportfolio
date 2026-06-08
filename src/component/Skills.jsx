@@ -23,6 +23,7 @@ export const Skills = () => {
     };
   }, []);
 
+  // Giữ nguyên toàn bộ logo và công nghệ cũ
   const technicalSkills = [
     { name: "SQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
     { name: "PostgreSQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
@@ -40,61 +41,28 @@ export const Skills = () => {
     { name: "Visual Studio 2022", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg" },
   ];
 
-  const baTools = [
-    { 
-      name: "ERD Diagrams", 
-      description: "Thiết kế mô hình thực thể-quan hệ cho cơ sở dữ liệu" 
-    },
-    { 
-      name: "Sequence Diagrams", 
-      description: "Mô hình hóa luồng tương tác giữa các thành phần hệ thống" 
-    },
-    { 
-      name: "Use Case Diagrams", 
-      description: "Xác định chức năng hệ thống từ góc nhìn người dùng" 
-    },
-    { 
-      name: "BPMN", 
-      description: "Mô hình hóa quy trình nghiệp vụ với ký hiệu tiêu chuẩn" 
-    },
-    { 
-      name: "User Stories", 
-      description: "Đặc tả yêu cầu theo format: Là <role>, tôi muốn <feature> để <benefit>" 
-    },
-    { 
-      name: "Wireframes", 
-      description: "Thiết kế layout và flow giao diện người dùng" 
-    },
-  ];
-
+  // Cập nhật dịch vụ kinh doanh (Phần mềm + Máy in + Máy chấm công/Quét mã vạch)
   const baCoreSkills = [
     {
-      title: "Requirements Elicitation",
-      description: "Phỏng vấn stakeholders, workshops, brainstorming để thu thập yêu cầu",
-      techniques: ["Interviews", "Workshops", "Questionnaires", "Observation"]
+      title: "Phần Mềm Theo Yêu Cầu",
+      description: "Tư vấn, thiết kế và lập trình phần mềm quản lý, ứng dụng đáp ứng chính xác nghiệp vụ của từng doanh nghiệp.",
+      techniques: ["Web App", "Mobile App", "Phần mềm quản lý", "Tích hợp hệ thống"]
     },
     {
-      title: "Requirements Analysis",
-      description: "Phân tích, làm rõ và ưu tiên hóa yêu cầu nghiệp vụ",
-      techniques: ["MoSCoW", "SWOT", "Gap Analysis", "Root Cause"]
+      title: "Cung Cấp Thiết Bị & Máy In",
+      description: "Phân phối máy in văn phòng, máy in hóa đơn (bill), máy in/quét mã vạch, máy chấm công và thiết bị POS.",
+      techniques: ["Máy chấm công", "Máy quét mã vạch", "Máy in mã vạch", "Máy in bill"]
     },
     {
-      title: "Solution Design",
-      description: "Thiết kế giải pháp đáp ứng yêu cầu và constraints",
-      techniques: ["Process Modeling", "Data Modeling", "Interface Design"]
+      title: "Thay Mực & Bảo Dưỡng",
+      description: "Dịch vụ bơm mực, thay mực máy in chất lượng cao và bảo dưỡng định kỳ giúp hệ thống máy móc vận hành bền bỉ.",
+      techniques: ["Thay mực in", "Vệ sinh máy", "Bảo trì định kỳ", "Hỗ trợ tận nơi"]
     },
     {
-      title: "Stakeholder Management",
-      description: "Quản lý communication và expectations của các bên liên quan",
-      techniques: ["RACI Matrix", "Communication Plan", "Status Reporting"]
+      title: "Sửa Chữa & Thay Thế Linh Kiện",
+      description: "Khắc phục triệt để lỗi thiết bị, nhận thay thế đầu in mã vạch, rulo, cụm sấy và các linh kiện chính hãng khác.",
+      techniques: ["Thay đầu in", "Sửa lỗi phần cứng", "Reset chip mực", "Xử lý kẹt giấy"]
     },
-  ];
-
-  const methodologies = [
-    { name: "Agile/Scrum", description: "Phát triển lặp và tăng trưởng" },
-    { name: "Waterfall", description: "Phát triển tuần tự theo phases" },
-    { name: "Kanban", description: "Quản lý workflow trực quan" },
-    { name: "Lean", description: "Tối ưu hóa và loại bỏ lãng phí" },
   ];
 
   // Skeleton loader cho mobile
@@ -103,7 +71,7 @@ export const Skills = () => {
       <section id="skills" className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Title Skeleton */}
-          <div className="h-12 bg-gray-200 dark:bg-gray-800 rounded-lg w-48 mx-auto mb-8 animate-pulse"></div>
+          <div className="h-12 bg-gray-200 dark:bg-gray-800 rounded-lg w-64 mx-auto mb-8 animate-pulse"></div>
           
           {/* Skills Grid Skeleton */}
           <div className="grid md:grid-cols-2 gap-6 mb-12">
@@ -112,7 +80,7 @@ export const Skills = () => {
                 key={item}
                 className="bg-gray-100 dark:bg-gray-800 rounded-xl p-6"
               >
-                <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded-lg w-32 mb-4 animate-pulse"></div>
+                <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded-lg w-40 mb-4 animate-pulse"></div>
                 <div className="space-y-3">
                   <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-full animate-pulse"></div>
                   <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-4/5 animate-pulse"></div>
@@ -124,7 +92,7 @@ export const Skills = () => {
           {/* Technical Skills Skeleton */}
           <div className="mb-12">
             <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded-lg w-40 mb-6 animate-pulse"></div>
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-7 gap-4">
               {[1,2,3,4,5,6,7,8,9,10,11,12,13,14].map((item) => (
                 <div key={item} className="aspect-square bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse"></div>
               ))}
@@ -141,17 +109,14 @@ export const Skills = () => {
         {/* Title */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground/80 mb-4">
-            Kỹ Năng Chuyên Môn
+            Dịch Vụ & Chuyên Môn
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Tổng hợp các kỹ năng và công cụ thiết yếu của một Business Analyst trong lĩnh vực IT
-          </p>
         </div>
 
-        {/* Core BA Skills */}
+        {/* Core Skills (Services) */}
         <div className="mb-20">
           <h3 className="text-2xl md:text-3xl font-bold text-foreground/80 mb-10 text-center">
-            Core Business Analysis Skills
+            Giải Pháp Phần Mềm & Thiết Bị
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {baCoreSkills.map((skill, index) => (
@@ -210,7 +175,7 @@ export const Skills = () => {
                   </span>
                 </div>
                 {/* Tooltip */}
-                <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 px-3 py-2 bg-gray-900 dark:bg-gray-700 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
+                <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 px-3 py-2 bg-gray-900 dark:bg-gray-700 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none z-10">
                   {skill.name}
                   <div className="absolute left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-gray-900 dark:border-t-gray-700"></div>
                 </div>
@@ -219,92 +184,6 @@ export const Skills = () => {
           </div>
         </div>
 
-        {/* BA Tools & Techniques */}
-        <div className="mb-20">
-          <h3 className="text-2xl md:text-3xl font-bold text-foreground/80 mb-10 text-center">
-            Công Cụ Mô Hình Hóa
-          </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {baTools.map((tool, index) => (
-              <div
-                key={index}
-                className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all duration-300 hover:shadow-lg dark:hover:shadow-purple-900/20"
-              >
-                <div className="flex items-start gap-4">
-                  <div className=" ">
-                    <div className="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
-                      <svg className="w-5 h-5 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                      {tool.name}
-                    </h4>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">
-                      {tool.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Methodologies */}
-        <div>
-          <h3 className="text-2xl md:text-3xl font-bold text-foreground/80 mb-10 text-center">
-            Phương Pháp Luận
-          </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {methodologies.map((method, index) => (
-              <div
-                key={index}
-                className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-green-500 dark:hover:border-green-500 transition-all duration-300"
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className={`w-3 h-3 rounded-full ${
-                    index === 0 ? 'bg-blue-500' :
-                    index === 1 ? 'bg-green-500' :
-                    index === 2 ? 'bg-purple-500' : 'bg-yellow-500'
-                  }`}></div>
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
-                    {method.name}
-                  </h4>
-                </div>
-                <p className="text-gray-600 dark:text-gray-400 text-sm">
-                  {method.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Key Deliverables */}
-        <div className="mt-20 pt-12 border-t border-gray-200 dark:border-gray-800">
-          <h3 className="text-2xl md:text-3xl font-bold text-foreground/80 mb-8 text-center">
-            Key Deliverables
-          </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="text-center p-4">
-              <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-2">BRD</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Business Requirements Document</div>
-            </div>
-            <div className="text-center p-4">
-              <div className="text-2xl font-bold text-green-600 dark:text-green-400 mb-2">FRD</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Functional Requirements Document</div>
-            </div>
-            <div className="text-center p-4">
-              <div className="text-2xl font-bold text-purple-600 dark:text-purple-400 mb-2">SRS</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Software Requirements Specification</div>
-            </div>
-            <div className="text-center p-4">
-              <div className="text-2xl font-bold text-yellow-600 dark:text-yellow-400 mb-2">UAT</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">User Acceptance Testing</div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );

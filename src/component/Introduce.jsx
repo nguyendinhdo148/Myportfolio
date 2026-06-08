@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ArrowRight, Github, MessageSquare, Facebook, Mail } from "lucide-react";
+import { ArrowRight, Github, MessageSquare, Facebook} from "lucide-react";
 
 export const Introduce = () => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
@@ -25,7 +25,6 @@ export const Introduce = () => {
     { icon: Github, href: "https://github.com/nguyendinhdo148", label: "GitHub" },
     { icon: Facebook, href: "https://www.facebook.com/nguyen.inh.o.284334/", label: "Facebook" },
     { icon: MessageSquare, href: "https://zalo.me/0869122385", label: "Zalo" },
-    { icon: Mail, href: "mailto:nguyendinhdo2k4@gmail.com", label: "Email" },
   ];
 
   // Skeleton cho mobile
@@ -58,7 +57,7 @@ export const Introduce = () => {
           </div>
           <div className="absolute -bottom-3 -right-3 md:-bottom-4 md:-right-4 bg-gray-900 px-3 md:px-4 py-1.5 md:py-2 rounded-full shadow-lg flex items-center gap-1.5 md:gap-2 animate-float" style={{ animationDelay: '0.3s' }}>
             <div className="w-2 h-2 md:w-2.5 md:h-2.5 bg-green-500 rounded-full"></div>
-            <span className="text-xs md:text-sm font-semibold text-white">Business Analyst</span>
+            <span className="text-xs md:text-sm font-semibold text-white">IT Support & Software Solutions</span>
           </div>
         </div>
       </div>
@@ -75,9 +74,8 @@ export const Introduce = () => {
           <p className="text-base md:text-lg lg:text-xl mb-2 text-foreground/80">
             Tôi là một
             <span className="text-primary font-semibold mx-1 md:mx-2">
-              Business Analyst
+              IT Phần cứng và Phần mềm
             </span>
-            Fresher
           </p>
           <div className="text-base md:text-lg text-foreground/80 space-y-1">
             <div>
@@ -131,9 +129,8 @@ export const Introduce = () => {
 
         {/* Additional Info */}
         <div className="mt-6 md:mt-8 text-xs md:text-sm text-foreground/60 space-y-1">
-          <p>✓ Đại học Công Nghệ Thành Phố Hồ Chí Minh</p>
-          <p>✓ Khoa Công Nghệ Thông Tin</p>
-          <p>✓ GPA 3.24</p>
+          <p>✓ Kỹ Sư Công Nghệ Thông Tin</p>
+          <p>✓ GPA 3.3</p>
         </div>
       </div>
     </section>

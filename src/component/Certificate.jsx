@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
-import { Download, Eye, Calendar, Award, Sparkles, ArrowUp, Clock, Users, Trophy, Star, Maximize2, FileCheck, UserCheck, Brain, Target, X, GraduationCap, Briefcase, Zap } from "lucide-react";
+import { Download, Eye, Calendar, Award, Sparkles, ArrowUp, Clock, Users, Trophy, Star, Maximize2, FileCheck, UserCheck, Brain, Target, X, GraduationCap, Briefcase, Zap, Lock } from "lucide-react";
 
 // Enhanced Image Modal với Preloading
 const EnhancedImageModal = ({ isOpen, onClose, imageUrl, title, issuer, details }) => {
@@ -148,14 +148,14 @@ const CVPreviewModal = ({ isOpen, onClose, cvData }) => {
             <div>
               <h3 className="text-2xl font-bold text-foreground mb-2">Xem trước CV</h3>
               <p className="text-sm text-muted-foreground">
-                Phiên bản CV mới nhất cập nhật tháng 12, 2024
+                Phiên bản CV mới nhất cập nhật {cvData.lastUpdated}
               </p>
             </div>
           </div>
 
           <div className="flex-1 overflow-hidden">
             <iframe
-              src="https://drive.google.com/file/d/1bJIm24PcoricKYMGnB3wWMyecX3DuxsK/preview"
+              src={cvData.previewUrl}
               className="w-full h-full border-0"
               allow="autoplay"
               title="CV Preview"
@@ -168,15 +168,6 @@ const CVPreviewModal = ({ isOpen, onClose, cvData }) => {
                 CV được thiết kế chuyên nghiệp cho vị trí Business Analyst
               </div>
               <div className="flex gap-3">
-                <a
-                  href={cvData.viewUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 px-6 py-3 bg-muted hover:bg-muted/80 text-foreground font-medium rounded-lg transition-all hover:shadow-lg active:scale-95"
-                >
-                  <Eye className="w-5 h-5" />
-                  <span>Xem trên Google Drive</span>
-                </a>
                 <a
                   href={cvData.downloadUrl}
                   download="CV-Nguyen-Dinh-Do.pdf"
@@ -391,14 +382,36 @@ const EnhancedCertificateCard = ({ item, isRecognition = false, onClick }) => {
   );
 };
 
-// CV Section Component với Preview
-const CVSection = ({ cvData, onPreviewCV }) => {
+// CV Section Component với Overlay Khóa
+const CVSection = ({ cvData }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
-    <div className="mb-12">
-      <div className="bg-card rounded-xl p-6 border shadow-sm">
-        <div className="flex flex-col lg:flex-row gap-8">
+    <div className="mb-12 relative">
+      <div className="bg-card rounded-xl p-6 border shadow-sm relative overflow-hidden">
+        
+        {/* LỚP PHỦ LÀM MỜ VÀ CHẶN TƯƠNG TÁC */}
+        <div className="absolute inset-0 z-20 backdrop-blur-[6px] bg-background/50 flex items-center justify-center p-4 text-center">
+          <div className="bg-card p-6 md:p-8 rounded-2xl shadow-2xl border max-w-2xl transform transition-transform hover:scale-105 duration-300">
+            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 shadow-inner">
+              <Briefcase className="w-8 h-8 text-primary" />
+            </div>
+            <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3">
+              Thông báo công việc
+            </h3>
+            <p className="text-base md:text-lg text-foreground/80 leading-relaxed mb-5">
+              Hiện tại tôi đang làm việc tại <br className="hidden md:block" />
+              <span className="font-bold text-primary text-lg md:text-xl block mt-2">Công ty TNHH Thương mại Dịch vụ & Phát triển Thị trường Tân Phát</span>
+            </p>
+            <div className="inline-flex items-center gap-2 px-4 py-2.5 bg-muted rounded-full text-sm font-medium text-muted-foreground shadow-inner">
+              <Lock className="w-4 h-4" />
+              <span>Chưa có nhu cầu tuyển dụng - CV tạm khóa</span>
+            </div>
+          </div>
+        </div>
+
+        {/* NỘI DUNG CV BỊ LÀM MỜ Ở DƯỚI (Vô hiệu hóa click) */}
+        <div className="flex flex-col lg:flex-row gap-8 select-none pointer-events-none opacity-40">
           {/* CV Preview Image */}
           <div className="lg:w-2/5">
             <div className="mb-4">
@@ -413,8 +426,6 @@ const CVSection = ({ cvData, onPreviewCV }) => {
                 {!imageLoaded && (
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5 animate-pulse"></div>
                 )}
-                
-                {/* CV Preview Image */}
                 <img
                   src="https://drive.google.com/thumbnail?id=1bJIm24PcoricKYMGnB3wWMyecX3DuxsK&sz=w1000"
                   alt="CV Preview"
@@ -423,21 +434,7 @@ const CVSection = ({ cvData, onPreviewCV }) => {
                   }`}
                   onLoad={() => setImageLoaded(true)}
                 />
-                
-                {/* Preview Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <button
-                    onClick={onPreviewCV}
-                    className="transform -translate-y-4 group"
-                  >
-                    <div className="bg-white/20 backdrop-blur-sm rounded-full p-4 mb-3 group-hover:scale-110 transition-transform">
-                      <Eye className="w-8 h-8 text-white" />
-                    </div>
-                    <span className="text-white font-medium text-sm">Xem trước CV</span>
-                  </button>
-                </div>
               </div>
-              
               <div className="p-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
@@ -507,31 +504,16 @@ const CVSection = ({ cvData, onPreviewCV }) => {
               </div>
             </div>
             
+            {/* Các nút (fake - không bấm được do overlay) */}
             <div className="flex flex-col sm:flex-row gap-3">
-              <button
-                onClick={onPreviewCV}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-lg transition-all hover:shadow-lg active:scale-95"
-              >
+              <div className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-medium rounded-lg">
                 <Eye className="w-5 h-5" />
                 <span>Xem trước CV</span>
-              </button>
-              <a 
-                href={cvData.viewUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-muted hover:bg-muted/80 text-foreground font-medium rounded-lg border transition-all hover:shadow-lg active:scale-95"
-              >
-                <Eye className="w-5 h-5" />
-                <span>Xem trên Drive</span>
-              </a>
-              <a 
-                href={cvData.downloadUrl}
-                download="CV-Nguyen-Dinh-Do.pdf"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition-all hover:shadow-lg active:scale-95"
-              >
+              </div>
+              <div className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-600 text-white font-medium rounded-lg">
                 <Download className="w-5 h-5" />
                 <span>Tải CV</span>
-              </a>
+              </div>
             </div>
           </div>
         </div>
@@ -590,10 +572,6 @@ export const Certificate = () => {
 
   const closeImageModal = useCallback(() => {
     setModalState(prev => ({ ...prev, isOpen: false }));
-  }, []);
-
-  const openCVPreview = useCallback(() => {
-    setShowCVPreview(true);
   }, []);
 
   const closeCVPreview = useCallback(() => {
@@ -711,8 +689,8 @@ export const Certificate = () => {
   ];
 
   const cvData = {
-    previewUrl: "https://drive.google.com/file/d/1mNb9VKkAGgto4mIs8vNGKDp2lYNcAIww/preview",
-    downloadUrl: "https://drive.google.com/uc?export=download&id=1mNb9VKkAGgto4mIs8vNGKDp2lYNcAIww",
+    previewUrl: "https://drive.google.com/file/d/1bJIm24PcoricKYMGnB3wWMyecX3DuxsK/preview",
+    downloadUrl: "https://drive.google.com/uc?export=download&id=1bJIm24PcoricKYMGnB3wWMyecX3DuxsK",
     lastUpdated: "Tháng 3, 2026",
     experience: "> 1 năm",
     skills: ["Business Analysis", "Team Collaboration"]
@@ -764,16 +742,6 @@ export const Certificate = () => {
               <p className="text-muted-foreground mt-1 text-sm md:text-base">
                 Hồ sơ năng lực, bằng cấp và thành tích chuyên môn
               </p>
-            </div>
-            
-            <div className="flex items-center gap-3">
-              <button
-                onClick={openCVPreview}
-                className="inline-flex items-center gap-2 px-4 py-2.5 bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-lg transition-all hover:shadow-lg active:scale-95 text-sm md:text-base"
-              >
-                <Eye className="w-4 h-4" />
-                <span>Xem CV</span>
-              </button>
             </div>
           </div>
         </div>
@@ -855,8 +823,8 @@ export const Certificate = () => {
           </div>
         </div>
 
-        {/* CV Section với Preview */}
-        <CVSection cvData={cvData} onPreviewCV={openCVPreview} />
+        {/* CV Section bị khóa */}
+        <CVSection cvData={cvData} />
 
         {/* Navigation Tabs */}
         <div className="mb-8">
@@ -887,43 +855,42 @@ export const Certificate = () => {
         </div>
 
         {/* Certificates Grid */}
-       
-          <div className="mb-8">
-            <h3 className="text-2xl font-bold text-foreground mb-2 flex items-center gap-2">
-              {activeSection === "certificates" ? <Award className="w-6 h-6" /> : <Trophy className="w-6 h-6" />}
-              {activeSection === "certificates" ? "Chứng chỉ Chính thức" : "Giấy chứng nhận & Thành tích"}
+        <div className="mb-8">
+          <h3 className="text-2xl font-bold text-foreground mb-2 flex items-center gap-2">
+            {activeSection === "certificates" ? <Award className="w-6 h-6" /> : <Trophy className="w-6 h-6" />}
+            {activeSection === "certificates" ? "Chứng chỉ Chính thức" : "Giấy chứng nhận & Thành tích"}
+          </h3>
+          <p className="text-muted-foreground">
+            {activeSection === "certificates" 
+              ? "Các chứng chỉ ngôn ngữ và kỹ năng chuyên môn từ các tổ chức giáo dục"
+              : "Các giấy chứng nhận tham gia, giải thưởng và thành tích đạt được"}
+          </p>
+        </div>
+        
+        {currentData.length === 0 ? (
+          <div className="text-center py-12">
+            <div className="w-24 h-24 mx-auto bg-card rounded-full flex items-center justify-center mb-6">
+              <Award className="w-12 h-12 text-muted-foreground" />
+            </div>
+            <h3 className="text-xl font-bold text-foreground mb-2">
+              Không tìm thấy
             </h3>
             <p className="text-muted-foreground">
-              {activeSection === "certificates" 
-                ? "Các chứng chỉ ngôn ngữ và kỹ năng chuyên môn từ các tổ chức giáo dục"
-                : "Các giấy chứng nhận tham gia, giải thưởng và thành tích đạt được"}
+              Hiện không có dữ liệu thuộc loại này.
             </p>
           </div>
-          
-          {currentData.length === 0 ? (
-            <div className="text-center py-12">
-              <div className="w-24 h-24 mx-auto bg-card rounded-full flex items-center justify-center mb-6">
-                <Award className="w-12 h-12 text-muted-foreground" />
-              </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">
-                Không tìm thấy
-              </h3>
-              <p className="text-muted-foreground">
-                Hiện không có dữ liệu thuộc loại này.
-              </p>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {currentData.map((item) => (
-                <EnhancedCertificateCard
-                  key={item.id}
-                  item={item}
-                  isRecognition={activeSection === "recognitions"}
-                  onClick={() => openImageModal(item.imageUrl, item.title, item.issuer, item)}
-                />
-              ))}
-            </div>
-          )}
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {currentData.map((item) => (
+              <EnhancedCertificateCard
+                key={item.id}
+                item={item}
+                isRecognition={activeSection === "recognitions"}
+                onClick={() => openImageModal(item.imageUrl, item.title, item.issuer, item)}
+              />
+            ))}
+          </div>
+        )}
       </main>
     </div>
   );

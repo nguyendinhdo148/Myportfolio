@@ -23,7 +23,6 @@ const MobileSkeleton = () => (
           <div className="flex gap-2">
             <div className="flex-1 h-10 bg-muted rounded-lg"></div>
             <div className="flex-1 h-10 bg-muted rounded-lg"></div>
-            <div className="flex-1 h-10 bg-muted rounded-lg"></div>
           </div>
         </div>
       </div>
@@ -54,7 +53,7 @@ export const Project = () => {
     };
   }, []);
 
-  // Dữ liệu dự án với 3 dự án đầy đủ
+  // Dữ liệu dự án đầy đủ
   const projectData = [
     {
       id: "job-portal-web",
@@ -67,7 +66,6 @@ export const Project = () => {
       imageUrl: "/posterViejob-web.jpg",
       videoDemo: "/WebsiteFindJob.mp4",
       liveUrl: "https://vie-jobs.vercel.app/",
-      repoUrl: "https://github.com/nguyendinhdo148/Nhom3-DACS-CNPM-WebsiteTimKiemViecLam",
       techStack: [
         { name: "React", icon: "⚛️", color: "bg-blue-100 dark:bg-blue-900/30" },
         { name: "Node.js", icon: "🟢", color: "bg-green-100 dark:bg-green-900/30" },
@@ -104,7 +102,6 @@ export const Project = () => {
       imageUrl: "/mobieHome.jpg",
       videoDemo: "/videos/job-portal-mobile-demo.mp4",
       liveUrl: "https://expo.dev/@yourusername/job-portal-mobile",
-      repoUrl: "https://github.com/nguyendinhdo148/VieClouds_mobie",
       techStack: [
         { name: "Flutter", icon: "📱", color: "bg-blue-100 dark:bg-blue-900/30" },
         { name: "Dart", icon: "🎯", color: "bg-cyan-100 dark:bg-cyan-900/30" },
@@ -130,6 +127,159 @@ export const Project = () => {
       icon: <Smartphone className="w-6 h-6" />
     },
     {
+      id: "hr-management-system",
+      title: "Hệ Thống Quản Lý Nhân Sự",
+      category: "Ứng dụng Web / HRM",
+      status: "Đang hoạt động",
+      year: "2026",
+      description: "Phần mềm đồng bộ máy chấm công, tự động hóa tính lương, OT, thuế TNCN, BHXH và gửi phiếu lương tự động.",
+      longDescription: "Hệ thống quản lý nhân sự toàn diện cho phép đẩy dữ liệu trực tiếp từ máy chấm công. Tự động hóa quá trình chấm công, tính OT (Overtime) và Clear OT. Hệ thống tự động tính toán bảo hiểm xã hội (BHXH), thuế thu nhập cá nhân (TNCN), đồng thời tự động gửi phiếu lương hàng tháng qua email và lưu trữ thông tin hồ sơ nhân viên an toàn.",
+      imageUrl: "/hr-management-cover.png",
+      videoDemo: "",
+      liveUrl: "https://quan-ly-nhan-su-yzpf.onrender.com/",
+      techStack: [
+        { name: "React", icon: "⚛️", color: "bg-blue-100 dark:bg-blue-900/30" },
+        { name: "Node.js", icon: "🟢", color: "bg-green-100 dark:bg-green-900/30" },
+        { name: "MongoDB", icon: "🍃", color: "bg-emerald-100 dark:bg-emerald-900/30" },
+        { name: "Express", icon: "🚂", color: "bg-gray-100 dark:bg-gray-800" },
+        { name: "Nodemailer", icon: "📧", color: "bg-red-100 dark:bg-red-900/30" }
+      ],
+      features: [
+        "Đồng bộ máy chấm công",
+        "Tự động tính OT / Clear OT",
+        "Gửi phiếu lương qua email",
+        "Tính toán BHXH & TNCN",
+        "Quản lý hồ sơ nhân sự",
+        "Phân quyền bảo mật"
+      ],
+      challenges: [
+        "Xử lý khối lượng lớn dữ liệu chấm công",
+        "Logic tính lương và thuế phức tạp",
+        "Đồng bộ dữ liệu thời gian thực"
+      ],
+      platform: "Web",
+      icon: <Database className="w-6 h-6" />
+    },
+    {
+      id: "fugu-dining-lounge",
+      title: "Fugu Dining Lounge",
+      category: "Landing Page / Web",
+      status: "Đang hoạt động",
+      year: "2025",
+      description: "Website giới thiệu nhà hàng cao cấp Fugu Dining Lounge với giao diện sang trọng, tối ưu trải nghiệm.",
+      longDescription: "Website giới thiệu thương hiệu nhà hàng cao cấp Fugu Dining Lounge. Tập trung mạnh vào UI/UX sang trọng, thiết kế hình ảnh sắc nét, mượt mà nhằm thu hút thực khách và tối ưu hóa SEO trên các công cụ tìm kiếm.",
+      imageUrl: "/fugu/fugu-cover.png",
+      videoDemo: "",
+      liveUrl: "https://fugudininglounge.vercel.app/",
+      techStack: [
+        { name: "React", icon: "⚛️", color: "bg-blue-100 dark:bg-blue-900/30" },
+        { name: "Tailwind CSS", icon: "🎨", color: "bg-cyan-100 dark:bg-cyan-900/30" },
+        { name: "Vercel", icon: "▲", color: "bg-gray-200 dark:bg-gray-700" }
+      ],
+      features: [
+        "Thiết kế sang trọng, hiện đại",
+        "Tối ưu UI/UX",
+        "Hiệu ứng cuộn mượt mà",
+        "Tương thích mọi thiết bị di động"
+      ],
+      challenges: [
+        "Tối ưu hình ảnh dung lượng lớn",
+        "Tăng tốc độ tải trang"
+      ],
+      platform: "Web",
+      icon: <Globe className="w-6 h-6" />
+    },
+    {
+      id: "eldoko-restaurant",
+      title: "Eldoko Restaurant",
+      category: "Landing Page / Web",
+      status: "Đang hoạt động",
+      year: "2025",
+      description: "Website giới thiệu nhà hàng Eldoko, thể hiện thực đơn độc đáo và không gian đặc trưng của quán.",
+      longDescription: "Trang web chính thức của nhà hàng Eldoko. Hiển thị thực đơn trực quan, phòng trưng bày không gian quán và cung cấp thông tin liên hệ, đặt bàn một cách dễ dàng và nhanh chóng nhất cho khách hàng.",
+      imageUrl: "/eldoko-cover.png",
+      videoDemo: "",
+      liveUrl: "https://eldoko.vercel.app/",
+      techStack: [
+        { name: "React", icon: "⚛️", color: "bg-blue-100 dark:bg-blue-900/30" },
+        { name: "Tailwind CSS", icon: "🎨", color: "bg-cyan-100 dark:bg-cyan-900/30" },
+        { name: "Vercel", icon: "▲", color: "bg-gray-200 dark:bg-gray-700" }
+      ],
+      features: [
+        "Trưng bày thực đơn đặc sắc",
+        "Thư viện hình ảnh sắc nét",
+        "Tích hợp bản đồ & liên hệ",
+        "Responsive trên mọi màn hình"
+      ],
+      challenges: [
+        "Thiết kế mang tính bản sắc thương hiệu",
+        "SEO Onpage"
+      ],
+      platform: "Web",
+      icon: <Globe className="w-6 h-6" />
+    },
+    {
+      id: "finance-management",
+      title: "Hệ Thống Báo Cáo Tài Chính",
+      category: "Ứng dụng Web / Dashboard",
+      status: "Đang hoạt động",
+      year: "2026",
+      description: "Phần mềm quản lý tài chính nội bộ, theo dõi dòng tiền, thu chi và xuất báo cáo tự động.",
+      longDescription: "Hệ thống quản trị tài chính nội bộ dành riêng cho doanh nghiệp. Cho phép theo dõi sát sao dòng tiền vào ra, phân loại các khoản thu chi, và tự động tạo các báo cáo tài chính trực quan thông qua hệ thống biểu đồ chi tiết.",
+      imageUrl: "/finance-cover.png",
+      videoDemo: "",
+      liveUrl: "https://pm-privatee.onrender.com/",
+      techStack: [
+        { name: "React", icon: "⚛️", color: "bg-blue-100 dark:bg-blue-900/30" },
+        { name: "Node.js", icon: "🟢", color: "bg-green-100 dark:bg-green-900/30" },
+        { name: "MongoDB", icon: "🍃", color: "bg-emerald-100 dark:bg-emerald-900/30" },
+        { name: "Chart.js", icon: "📊", color: "bg-pink-100 dark:bg-pink-900/30" }
+      ],
+      features: [
+        "Dashboard tổng quan tài chính",
+        "Quản lý thu / chi chi tiết",
+        "Tạo báo cáo tự động",
+        "Biểu đồ phân tích dữ liệu",
+        "Phân quyền nội bộ bảo mật"
+      ],
+      challenges: [
+        "Bảo mật và toàn vẹn dữ liệu tài chính",
+        "Hiển thị biểu đồ dữ liệu lớn mượt mà"
+      ],
+      platform: "Web",
+      icon: <Shield className="w-6 h-6" />
+    },
+    {
+      id: "vietour-booking",
+      title: "Vietour - Nền tảng Đặt bàn Nhà hàng",
+      category: "Ứng dụng Web",
+      status: "Đang hoạt động",
+      year: "2026",
+      description: "Website chuyên cung cấp dịch vụ tìm kiếm, đánh giá và đặt bàn tại các hệ thống quán ăn, nhà hàng.",
+      longDescription: "Vietour là nền tảng kết nối thực khách với các nhà hàng, quán ăn. Cung cấp các tính năng tìm kiếm theo khu vực, xem menu trực tuyến, đánh giá từ khách hàng và đặc biệt là hệ thống booking đặt chỗ trước vô cùng tiện lợi.",
+      imageUrl: "/vietour-cover.png",
+      videoDemo: "",
+      liveUrl: "https://vietour-fe.onrender.com/",
+      techStack: [
+        { name: "React", icon: "⚛️", color: "bg-blue-100 dark:bg-blue-900/30" },
+        { name: "Node.js", icon: "🟢", color: "bg-green-100 dark:bg-green-900/30" },
+        { name: "Express", icon: "🚂", color: "bg-gray-100 dark:bg-gray-800" },
+        { name: "MongoDB", icon: "🍃", color: "bg-emerald-100 dark:bg-emerald-900/30" }
+      ],
+      features: [
+        "Tìm kiếm và lọc nhà hàng",
+        "Hệ thống đặt bàn trực tuyến",
+        "Chức năng review, đánh giá",
+        "Quản lý trạng thái Booking cho chủ nhà hàng"
+      ],
+      challenges: [
+        "Xử lý xung đột lịch đặt bàn",
+        "Tối ưu trải nghiệm tìm kiếm"
+      ],
+      platform: "Web",
+      icon: <Globe className="w-6 h-6" />
+    },
+    {
       id: "p2p-file-share",
       title: "VieCloud - Lưu trữ và chia sẻ file P2P",
       category: "Ứng dụng Web",
@@ -140,7 +290,6 @@ export const Project = () => {
       imageUrl: "/dashViecloud.jpg",
       videoDemo: "/videos/p2p-file-share-demo.mp4",
       liveUrl: "https://p2p-fileshare-demo.vercel.app",
-      repoUrl: "https://github.com/nguyendinhdo148/VieClouds__BE",
       techStack: [
         { name: "Java", icon: "☕", color: "bg-red-100 dark:bg-red-900/30" },
         { name: "Spring Boot", icon: "🌱", color: "bg-green-100 dark:bg-green-900/30" },
@@ -211,9 +360,9 @@ export const Project = () => {
           <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
             project.status === 'Đang hoạt động' 
               ? 'bg-green-500 text-white' 
-              : 'bg-yellow-500 text-white'
+              : project.status === 'Đang phát triển' ? 'bg-yellow-500 text-white' : 'bg-gray-500 text-white'
           }`}>
-            {project.status === 'Đang hoạt động' ? '🚀 Đang chạy' : '🛠️ Đang phát triển'}
+            {project.status === 'Đang hoạt động' ? '🚀 Đang chạy' : project.status === 'Đang phát triển' ? '🛠️ Đang phát triển' : '⏸️ Tạm dừng'}
           </span>
         </div>
         <div className="absolute top-3 left-3">
@@ -278,16 +427,6 @@ export const Project = () => {
 
         {/* Nút hành động cho mobile */}
         <div className="flex gap-2">
-          <a 
-            href={project.repoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1 inline-flex items-center justify-center gap-1 px-3 py-2.5 bg-muted text-foreground text-sm rounded-lg transition-all active:scale-95"
-          >
-            <Github className="w-4 h-4" />
-            <span>Mã nguồn</span>
-          </a>
-          
           {project.liveUrl && (
             <a 
               href={project.liveUrl}
@@ -368,10 +507,6 @@ export const Project = () => {
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 md:mb-4">
               Kiến Tạo Trải Nghiệm Số
             </h2>
-            <p className="text-base md:text-xl text-muted-foreground max-w-3xl mx-auto">
-              Khám phá portfolio ứng dụng full-stack của tôi được xây dựng với công nghệ hiện đại,
-              tích hợp AI, tính năng thời gian thực và kiến trúc có thể mở rộng.
-            </p>
           </div>
 
           {/* Thống kê tổng quan - Responsive grid */}
@@ -474,10 +609,10 @@ export const Project = () => {
                 <SmartphoneIcon className="w-8 h-8 md:w-12 md:h-12 text-muted-foreground" />
               </div>
               <h3 className="text-lg md:text-xl font-bold text-foreground mb-2">
-                Không Có Dự Án Di Động
+                Không Có Dự Án
               </h3>
               <p className="text-sm md:text-base text-muted-foreground mb-4 md:mb-6 max-w-md mx-auto">
-                Hiện tại không có dự án di động trong portfolio. 
+                Hiện tại không có dự án trong danh mục này. 
                 Hãy quay lại sau để xem các bổ sung mới!
               </p>
               <button
@@ -508,9 +643,9 @@ export const Project = () => {
                         <span className={`px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm ${
                           project.status === 'Đang hoạt động' 
                             ? 'bg-green-500/90 text-white' 
-                            : 'bg-yellow-500/90 text-white'
+                            : project.status === 'Đang phát triển' ? 'bg-yellow-500/90 text-white' : 'bg-gray-500/90 text-white'
                         }`}>
-                          {project.status === 'Đang hoạt động' ? '🚀 Đang chạy' : '🛠️ Đang phát triển'}
+                          {project.status === 'Đang hoạt động' ? '🚀 Đang chạy' : project.status === 'Đang phát triển' ? '🛠️ Đang phát triển' : '⏸️ Tạm dừng'}
                         </span>
                       </div>
 
@@ -585,16 +720,6 @@ export const Project = () => {
                       {/* Nút hành động */}
                       <div className="flex flex-col gap-3">
                         <div className="flex gap-3">
-                          <a 
-                            href={project.repoUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex-1 group/code inline-flex items-center justify-center gap-2 px-4 py-3 bg-muted hover:bg-muted/80 text-foreground font-medium rounded-lg border transition-all duration-300 hover:shadow-lg active:scale-95"
-                          >
-                            <Github className="w-4 h-4 transition-transform group-hover/code:scale-110" />
-                            <span>Mã Nguồn</span>
-                          </a>
-                          
                           {project.liveUrl && (
                             <a 
                               href={project.liveUrl}
@@ -641,4 +766,4 @@ export const Project = () => {
   );
 };
 
-export default Project; 
+export default Project;
