@@ -17,7 +17,7 @@ export const HRManagementDetail = () => {
     longDescription: "Hệ thống quản lý nhân sự toàn diện cho phép đẩy dữ liệu trực tiếp từ máy chấm công. Tự động hóa quá trình chấm công, tính OT (Overtime) và Clear OT. Hệ thống tự động tính toán bảo hiểm xã hội (BHXH), thuế thu nhập cá nhân (TNCN), đồng thời tự động gửi phiếu lương hàng tháng qua email và lưu trữ thông tin hồ sơ nhân viên an toàn.",
     liveUrl: "https://quan-ly-nhan-su-yzpf.onrender.com/",
     platform: "Web",
-    videoDemo: "", // Chèn link video demo vào đây
+    videoDemo: "https://drive.google.com/file/d/1dP4H-GUkE3FWVNHjoH7QwPfRankV-WxN/preview", // Chèn link video demo vào đây
   };
 
   return (

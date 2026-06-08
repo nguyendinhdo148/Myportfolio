@@ -17,7 +17,7 @@ export const FinanceManagementDetail = () => {
     longDescription: "Hệ thống quản trị tài chính nội bộ dành riêng cho doanh nghiệp. Cho phép theo dõi sát sao dòng tiền vào ra, phân loại các khoản thu chi, và tự động tạo các báo cáo tài chính trực quan thông qua hệ thống biểu đồ chi tiết.",
     liveUrl: "https://pm-privatee.onrender.com/",
     platform: "Web",
-    videoDemo: "", // Chèn link video demo vào đây
+    videoDemo: "https://drive.google.com/file/d/1mL-hEZR36jc2keUYHOvP21CZSmiqlDEA/preview", // Chèn link video demo vào đây
   };
 
   return (

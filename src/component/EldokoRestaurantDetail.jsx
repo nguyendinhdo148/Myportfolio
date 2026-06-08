@@ -17,7 +17,7 @@ export const EldokoRestaurantDetail = () => {
     longDescription: "Trang web chính thức của nhà hàng Eldoko. Hiển thị thực đơn trực quan, phòng trưng bày không gian quán và cung cấp thông tin liên hệ, đặt bàn một cách dễ dàng và nhanh chóng nhất cho khách hàng.",
     liveUrl: "https://eldoko.vercel.app/",
     platform: "Web",
-    videoDemo: "", // Chèn link video demo vào đây
+    videoDemo: "https://drive.google.com/file/d/1pzJoU0uBsnDMsqR4LCHbosTREhvt87pm/preview", // Chèn link video demo vào đây
   };
 
   return (

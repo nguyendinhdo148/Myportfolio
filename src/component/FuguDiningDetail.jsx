@@ -17,7 +17,7 @@ export const FuguDiningDetail = () => {
     longDescription: "Website giới thiệu thương hiệu nhà hàng cao cấp Fugu Dining Lounge. Tập trung mạnh vào UI/UX sang trọng, thiết kế hình ảnh sắc nét, mượt mà nhằm thu hút thực khách và tối ưu hóa SEO trên các công cụ tìm kiếm.",
     liveUrl: "https://fugudininglounge.vercel.app/",
     platform: "Web",
-    videoDemo: "", // Chèn link video demo vào đây
+    videoDemo: "https://drive.google.com/file/d/1L5f4pLa18Ee6J74JsT-9gs6oPUx0IHJx/preview", // Chèn link video demo vào đây
   };
 
   return (
