@@ -229,7 +229,7 @@ const OptimizedImage = ({ src, alt, className, onLoad, priority = false }) => {
   );
 };
 
-// Enhanced Certificate Card với Intersection Observer
+// Enhanced Certificate Card
 const EnhancedCertificateCard = ({ item, isRecognition = false, onClick }) => {
   const cardRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -288,7 +288,6 @@ const EnhancedCertificateCard = ({ item, isRecognition = false, onClick }) => {
       }}
     >
       <div className="bg-card rounded-xl overflow-hidden border shadow-sm hover:shadow-md transition-all duration-300">
-        {/* Image Container */}
         <div className="relative h-48 overflow-hidden bg-muted/50">
           <OptimizedImage
             src={item.imageUrl}
@@ -297,7 +296,6 @@ const EnhancedCertificateCard = ({ item, isRecognition = false, onClick }) => {
             priority={false}
           />
           
-          {/* Badges */}
           <div className="absolute top-3 left-3 flex flex-col gap-2">
             <span className={`px-3 py-1.5 rounded-full text-xs font-semibold text-white ${
               levelColors[item.level] || levelColors.Participation
@@ -315,7 +313,6 @@ const EnhancedCertificateCard = ({ item, isRecognition = false, onClick }) => {
           </div>
         </div>
 
-        {/* Content */}
         <div className="p-4">
           <div className="mb-3">
             <h3 className="text-lg font-bold text-foreground mb-2 line-clamp-2">
@@ -343,7 +340,6 @@ const EnhancedCertificateCard = ({ item, isRecognition = false, onClick }) => {
             </div>
           )}
 
-          {/* Skills */}
           <div className="mb-4">
             <div className="flex flex-wrap gap-2">
               {item.skills.slice(0, 3).map((skill, index) => (
@@ -357,7 +353,6 @@ const EnhancedCertificateCard = ({ item, isRecognition = false, onClick }) => {
             </div>
           </div>
 
-          {/* Action Buttons */}
           <div className="flex gap-2">
             <button
               onClick={onClick}
@@ -382,36 +377,16 @@ const EnhancedCertificateCard = ({ item, isRecognition = false, onClick }) => {
   );
 };
 
-// CV Section Component với Overlay Khóa
-const CVSection = ({ cvData }) => {
+// ĐÃ MỞ KHÓA - CV Section Component 
+const CVSection = ({ cvData, onPreviewClick }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
     <div className="mb-12 relative">
       <div className="bg-card rounded-xl p-6 border shadow-sm relative overflow-hidden">
         
-        {/* LỚP PHỦ LÀM MỜ VÀ CHẶN TƯƠNG TÁC */}
-        <div className="absolute inset-0 z-20 backdrop-blur-[6px] bg-background/50 flex items-center justify-center p-4 text-center">
-          <div className="bg-card p-6 md:p-8 rounded-2xl shadow-2xl border max-w-2xl transform transition-transform hover:scale-105 duration-300">
-            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 shadow-inner">
-              <Briefcase className="w-8 h-8 text-primary" />
-            </div>
-            <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3">
-              Thông báo công việc
-            </h3>
-            <p className="text-base md:text-lg text-foreground/80 leading-relaxed mb-5">
-              Hiện tại tôi đang làm việc tại <br className="hidden md:block" />
-              <span className="font-bold text-primary text-lg md:text-xl block mt-2">Công ty TNHH Thương mại Dịch vụ & Phát triển Thị trường Tân Phát</span>
-            </p>
-            <div className="inline-flex items-center gap-2 px-4 py-2.5 bg-muted rounded-full text-sm font-medium text-muted-foreground shadow-inner">
-              <Lock className="w-4 h-4" />
-              <span>Chưa có nhu cầu tuyển dụng - CV tạm khóa</span>
-            </div>
-          </div>
-        </div>
-
-        {/* NỘI DUNG CV BỊ LÀM MỜ Ở DƯỚI (Vô hiệu hóa click) */}
-        <div className="flex flex-col lg:flex-row gap-8 select-none pointer-events-none opacity-40">
+        {/* NỘI DUNG CV - Đã gỡ bỏ lớp mờ và khóa click */}
+        <div className="flex flex-col lg:flex-row gap-8">
           {/* CV Preview Image */}
           <div className="lg:w-2/5">
             <div className="mb-4">
@@ -427,7 +402,7 @@ const CVSection = ({ cvData }) => {
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5 animate-pulse"></div>
                 )}
                 <img
-                  src="https://drive.google.com/thumbnail?id=1bJIm24PcoricKYMGnB3wWMyecX3DuxsK&sz=w1000"
+                  src="https://drive.google.com/thumbnail?id=1ce6YvMcGt4-cjuEXDR1Km9J5R5CTkhuF&sz=w1000"
                   alt="CV Preview"
                   className={`w-full h-full object-cover transition-opacity duration-500 ${
                     imageLoaded ? 'opacity-100' : 'opacity-0'
@@ -459,10 +434,10 @@ const CVSection = ({ cvData }) => {
                 </h3>
                 <div className="flex flex-wrap gap-2 mt-2">
                   <span className="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">
-                    Business Analyst
+                    IT Software
                   </span>
                   <span className="px-3 py-1 bg-purple-500/10 text-purple-600 dark:text-purple-400 text-sm font-medium rounded-full">
-                    Data Analyst
+                    IT Heldesk
                   </span>
                 </div>
               </div>
@@ -485,7 +460,7 @@ const CVSection = ({ cvData }) => {
                 <Target className="w-5 h-5 text-purple-500" />
                 <div>
                   <div className="font-medium text-foreground">Mục tiêu rõ ràng</div>
-                  <div className="text-sm text-muted-foreground">Định hướng BA/DA</div>
+                  <div className="text-sm text-muted-foreground">Định hướng SoftWare/HardWare</div>
                 </div>
               </div>
               <div className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
@@ -504,16 +479,23 @@ const CVSection = ({ cvData }) => {
               </div>
             </div>
             
-            {/* Các nút (fake - không bấm được do overlay) */}
+            {/* Các nút tương tác */}
             <div className="flex flex-col sm:flex-row gap-3">
-              <div className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-medium rounded-lg">
+              <button
+                onClick={onPreviewClick}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-lg transition-all active:scale-95 cursor-pointer"
+              >
                 <Eye className="w-5 h-5" />
                 <span>Xem trước CV</span>
-              </div>
-              <div className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-600 text-white font-medium rounded-lg">
+              </button>
+              <a
+                href={cvData.downloadUrl}
+                download="CV-Nguyen-Dinh-Do.pdf"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition-all active:scale-95 cursor-pointer"
+              >
                 <Download className="w-5 h-5" />
                 <span>Tải CV</span>
-              </div>
+              </a>
             </div>
           </div>
         </div>
@@ -535,7 +517,6 @@ export const Certificate = () => {
   });
   const [showCVPreview, setShowCVPreview] = useState(false);
 
-  // Back to top với throttle
   useEffect(() => {
     let ticking = false;
     
@@ -578,7 +559,6 @@ export const Certificate = () => {
     setShowCVPreview(false);
   }, []);
 
-  // Data chứng chỉ
   const certificatesData = [
     {
       id: "english-b2",
@@ -606,7 +586,6 @@ export const Certificate = () => {
     }
   ];
 
-  // Data giấy chứng nhận
   const recognitionsData = [
     {
       id: "full-business-analyst",
@@ -689,8 +668,8 @@ export const Certificate = () => {
   ];
 
   const cvData = {
-    previewUrl: "https://drive.google.com/file/d/1bJIm24PcoricKYMGnB3wWMyecX3DuxsK/preview",
-    downloadUrl: "https://drive.google.com/uc?export=download&id=1bJIm24PcoricKYMGnB3wWMyecX3DuxsK",
+    previewUrl: "https://drive.google.com/file/d/1ce6YvMcGt4-cjuEXDR1Km9J5R5CTkhuF/preview",
+    downloadUrl: "https://drive.google.com/uc?export=download&id=1ce6YvMcGt4-cjuEXDR1Km9J5R5CTkhuF",
     lastUpdated: "Tháng 3, 2026",
     experience: "> 1 năm",
     skills: ["Business Analysis", "Team Collaboration"]
@@ -731,22 +710,21 @@ export const Certificate = () => {
       )}
 
       {/* Header */}
-       <section id="certificates-section">
-      <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div>
-              <h1 className="text-2xl md:text-3xl font-bold text-foreground">
-                Chứng chỉ & Giấy chứng nhận
-              </h1>
-              <p className="text-muted-foreground mt-1 text-sm md:text-base">
-                Hồ sơ năng lực, bằng cấp và thành tích chuyên môn
-              </p>
+      <section id="certificates-section">
+        <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-sm border-b">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div>
+                <h1 className="text-2xl md:text-3xl font-bold text-foreground">
+                  Chứng chỉ & Giấy chứng nhận
+                </h1>
+                <p className="text-muted-foreground mt-1 text-sm md:text-base">
+                  Hồ sơ năng lực, bằng cấp và thành tích chuyên môn
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-        
-      </header>
+        </header>
       </section>
 
       {/* Main Content */}
@@ -823,8 +801,11 @@ export const Certificate = () => {
           </div>
         </div>
 
-        {/* CV Section bị khóa */}
-        <CVSection cvData={cvData} />
+        {/* CV Section Đã Mở Khóa */}
+        <CVSection 
+          cvData={cvData} 
+          onPreviewClick={() => setShowCVPreview(true)} 
+        />
 
         {/* Navigation Tabs */}
         <div className="mb-8">
