@@ -73,12 +73,12 @@ export const Footer = () => {
                   Nguyễn Đình Đô
                 </h3>
                 <p className="text-sm text-blue-300">
-                  Business Analyst Intern
+                  Chuyên viên phân tích yêu cầu & tối ưu quy trình
                 </p>
               </div>
             </div>
             <p className="text-sm text-blue-200 leading-relaxed">
-              Sinh viên ngành Công Nghệ Thông Tin, chuyên phân tích yêu cầu, tối ưu quy trình và đề xuất giải pháp công nghệ.
+             Công Nghệ Thông Tin, chuyên phân tích yêu cầu, tối ưu quy trình và đề xuất giải pháp công nghệ.
             </p>
           </div>
 

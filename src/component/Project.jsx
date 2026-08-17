@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Github, Globe, Smartphone, Cpu, Database, Shield, SmartphoneIcon, Lock, ArrowUp, ExternalLink, Award } from "lucide-react";
+import { Github, Globe, Smartphone, Cpu, Database, Shield, Lock, ArrowUp, ExternalLink } from "lucide-react";
 
 // Component cho mobile skeleton
 const MobileSkeleton = () => (
@@ -56,8 +56,43 @@ export const Project = () => {
   // Dữ liệu dự án đầy đủ
   const projectData = [
     {
+      id: "bptech-ecommerce",
+      title: "BPTech - Giải Pháp Công Nghệ",
+      category: "Website Bán Hàng / E-commerce",
+      status: "Đang hoạt động",
+      year: "2026",
+      description: "Nền tảng thương mại điện tử bán các sản phẩm công nghệ, máy in,máy chấm công, máy in mã vạch, phụ kiện với đầy đủ tính năng giỏ hàng, thanh toán và quản lý đơn hàng.",
+      longDescription: "BPTech là website bán hàng chuyên cung cấp các sản phẩm công nghệ, máy in,máy chấm công, máy in mã vạch, linh kiện và phụ kiện. Hệ thống được xây dựng trên MERN Stack với đầy đủ tính năng: quản lý sản phẩm, giỏ hàng, thanh toán trực tuyến, quản lý đơn hàng, và bảng điều khiển cho admin. Giao diện hiện đại, thân thiện với người dùng, tối ưu trải nghiệm mua sắm trên mọi thiết bị.",
+      imageUrl: "/ecom.png",
+      videoDemo: "",
+      liveUrl: "https://bptech-store.vercel.app",
+      techStack: [
+        { name: "React", icon: "⚛️", color: "bg-blue-100 dark:bg-blue-900/30" },
+        { name: "Node.js", icon: "🟢", color: "bg-green-100 dark:bg-green-900/30" },
+        { name: "MongoDB", icon: "🍃", color: "bg-emerald-100 dark:bg-emerald-900/30" },
+        { name: "Express", icon: "🚂", color: "bg-gray-100 dark:bg-gray-800" },
+        { name: "Tailwind CSS", icon: "🎨", color: "bg-cyan-100 dark:bg-cyan-900/30" },
+        { name: "JWT", icon: "🔐", color: "bg-purple-100 dark:bg-purple-900/30" }
+      ],
+      features: [
+        "Quản lý sản phẩm động",
+        "Giỏ hàng thông minh",
+        "Thanh toán trực tuyến",
+        "Quản lý đơn hàng",
+        "Dashboard Admin",
+        "Xác thực JWT bảo mật"
+      ],
+      challenges: [
+        "Xử lý thanh toán an toàn",
+        "Quản lý tồn kho thời gian thực",
+        "Tối ưu hiệu suất tải sản phẩm"
+      ],
+      platform: "Web",
+      icon: <Globe className="w-6 h-6" />
+    },
+    {
       id: "job-portal-web",
-      title: "VieJobs - Website tìm kiếm việc làm",
+      title: "Tuyển Dụng Đồng Nai",
       category: "Ứng dụng Web",
       status: "Đang hoạt động",
       year: "2024",
@@ -65,7 +100,7 @@ export const Project = () => {
       longDescription: "Job Portal là nền tảng tìm kiếm việc làm thế hệ mới sử dụng MERN stack với tích hợp AI từ OpenAI và Gemini. Hệ thống hỗ trợ thông báo thời gian thực, tìm kiếm nâng cao với bộ lọc đa chiều, Cloudinary cho tải lên media và hệ thống theo dõi ứng tuyển từ A đến Z.",
       imageUrl: "/posterViejob-web.jpg",
       videoDemo: "/WebsiteFindJob.mp4",
-      liveUrl: "https://vie-jobs.vercel.app/",
+      liveUrl: "https://www.tuyendungdongnai.com/",
       techStack: [
         { name: "React", icon: "⚛️", color: "bg-blue-100 dark:bg-blue-900/30" },
         { name: "Node.js", icon: "🟢", color: "bg-green-100 dark:bg-green-900/30" },
@@ -591,7 +626,7 @@ export const Project = () => {
                     : "bg-muted text-muted-foreground hover:bg-muted/80"
                 }`}
               >
-                <SmartphoneIcon className="w-4 h-4" />
+                <Smartphone className="w-4 h-4" />
                 <span>Di động ({mobileProjectsCount})</span>
               </button>
             </div>
@@ -606,7 +641,7 @@ export const Project = () => {
           {filteredProjects.length === 0 ? (
             <div className="text-center py-8 md:py-12">
               <div className="w-16 h-16 md:w-24 md:h-24 mx-auto bg-muted rounded-full flex items-center justify-center mb-4 md:mb-6">
-                <SmartphoneIcon className="w-8 h-8 md:w-12 md:h-12 text-muted-foreground" />
+                <Smartphone className="w-8 h-8 md:w-12 md:h-12 text-muted-foreground" />
               </div>
               <h3 className="text-lg md:text-xl font-bold text-foreground mb-2">
                 Không Có Dự Án

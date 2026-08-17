@@ -40,7 +40,7 @@ export const JobPortalWeb = () => {
 
   const project = {
     id: "job-portal-web",
-    title: "VieJobs - Website tìm kiếm việc làm",
+    title: "Tuyển Dụng Đồng Nai",
     category: "Full-stack Web Application",
     status: "Live",
     year: "2025",
@@ -52,7 +52,7 @@ export const JobPortalWeb = () => {
       "https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
     // Sử dụng Google Drive embed URL
     videoDemo: "https://drive.google.com/file/d/194QGIYoJ_CXCHFz5x7lygWmI5YXiVn4U/preview",
-    liveUrl: "https://vie-jobs.vercel.app/",
+    liveUrl: "https://www.tuyendungdongnai.com/",
     repoUrl:
       "https://github.com/nguyendinhdo148/Nhom3-DACS-CNPM-WebsiteTimKiemViecLam",
     techStack: [
