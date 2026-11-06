@@ -579,7 +579,7 @@ export const WorkExperience = () => {
 
 
   return (
-    <div className="min-h-screen">
+    <div id="Work-experience" className="min-h-screen scroll-mt-20">
       {/* Header */}
       <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-md border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
