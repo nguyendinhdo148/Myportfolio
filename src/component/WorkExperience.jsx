@@ -221,71 +221,95 @@ const ExperienceCard = ({ experience, isExpanded, onToggleExpand }) => (
           </div>
         )}
 
-        {/* CukCuk và MISA Web cho kinh nghiệm BA */}
-        {experience.id === "accounting-software" && (
+        {/* Các mảng công việc tại Maxim Saigon */}
+        {experience.id === "maxim-operations" && (
           <div className="mb-4 sm:mb-6">
             <h4 className="text-base sm:text-lg font-semibold text-foreground mb-2 sm:mb-3 flex items-center gap-2">
               <Database className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500" />
-              Phần Mềm Đã Sử Dụng Thành Thạo
+              Phạm Vi Công Việc
             </h4>
-            
-            <div className="grid sm:grid-cols-2 gap-3 sm:gap-4 mb-4">
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-4">
               <div className="bg-card border rounded-lg p-3">
                 <div className="flex items-center gap-2 mb-2">
                   <Globe className="w-4 h-4 text-blue-500" />
-                  <h5 className="font-medium text-foreground text-sm">CukCuk Restaurant Management</h5>
+                  <h5 className="font-medium text-foreground text-sm">Website & SEO</h5>
                 </div>
-                <p className="text-xs text-muted-foreground mb-3">
-                  Phần mềm quản lý nhà hàng chuyên nghiệp
-                </p>
-                <ul className="space-y-1 text-xs text-muted-foreground mb-3">
-                  <li className="flex items-center gap-1">
-                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
-                    Quản lý order & thanh toán
-                  </li>
-                  <li className="flex items-center gap-1">
-                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
-                    Kiểm soát kho hàng
-                  </li>
-                  <li className="flex items-center gap-1">
-                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
-                    Báo cáo doanh thu
-                  </li>
+                <ul className="space-y-1 text-xs text-muted-foreground">
+                  <li>• Xây dựng và quản trị website</li>
+                  <li>• Tối ưu SEO On-page</li>
+                  <li>• Sitemap, canonical, Schema</li>
+                  <li>• Theo dõi Google indexing</li>
                 </ul>
-                
+                <a
+                  href="https://www.maximsaigon.vn/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 mt-3 text-xs text-primary hover:underline"
+                >
+                  <LinkIcon className="w-3 h-3" />
+                  maximsaigon.vn
+                </a>
               </div>
 
               <div className="bg-card border rounded-lg p-3">
                 <div className="flex items-center gap-2 mb-2">
-                  <Globe className="w-4 h-4 text-green-500" />
-                  <h5 className="font-medium text-foreground text-sm">MISA Web</h5>
+                  <FileText className="w-4 h-4 text-green-500" />
+                  <h5 className="font-medium text-foreground text-sm">Báo Giá</h5>
                 </div>
-                <p className="text-xs text-muted-foreground mb-3">
-                  Phần mềm kế toán trực tuyến
-                </p>
                 <ul className="space-y-1 text-xs text-muted-foreground">
-                  <li className="flex items-center gap-1">
-                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
-                    Kế toán tổng hợp
-                  </li>
-                  <li className="flex items-center gap-1">
-                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
-                    Quản lý hóa đơn điện tử
-                  </li>
-                  <li className="flex items-center gap-1">
-                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
-                    Báo cáo thuế trực tuyến
-                  </li>
+                  <li>• Tổng hợp thông tin hàng hóa, dịch vụ</li>
+                  <li>• Đối chiếu báo giá nhà cung cấp</li>
+                  <li>• Theo dõi và cập nhật dữ liệu báo giá</li>
                 </ul>
-                <a 
-                  href="https://seilounge.cukcuk.vn/#index" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1 text-xs text-primary hover:underline"
-                >
-                  <LinkIcon className="w-3 h-3" />
-                  <span>seilounge.cukcuk.vn</span>
-                </a>
+              </div>
+
+              <div className="bg-card border rounded-lg p-3">
+                <div className="flex items-center gap-2 mb-2">
+                  <Settings className="w-4 h-4 text-purple-500" />
+                  <h5 className="font-medium text-foreground text-sm">IT Helpdesk</h5>
+                </div>
+                <ul className="space-y-1 text-xs text-muted-foreground">
+                  <li>• Hỗ trợ máy tính và thiết bị văn phòng</li>
+                  <li>• Xử lý lỗi phần mềm cơ bản</li>
+                  <li>• Hỗ trợ tài khoản và kết nối</li>
+                </ul>
+              </div>
+
+              <div className="bg-card border rounded-lg p-3">
+                <div className="flex items-center gap-2 mb-2">
+                  <BarChart className="w-4 h-4 text-orange-500" />
+                  <h5 className="font-medium text-foreground text-sm">Doanh Thu & Báo Cáo</h5>
+                </div>
+                <ul className="space-y-1 text-xs text-muted-foreground">
+                  <li>• Tổng hợp dữ liệu doanh thu</li>
+                  <li>• Theo dõi báo cáo vận hành</li>
+                  <li>• Hỗ trợ kiểm tra số liệu</li>
+                </ul>
+              </div>
+
+              <div className="bg-card border rounded-lg p-3">
+                <div className="flex items-center gap-2 mb-2">
+                  <DollarSign className="w-4 h-4 text-cyan-500" />
+                  <h5 className="font-medium text-foreground text-sm">Công Nợ</h5>
+                </div>
+                <ul className="space-y-1 text-xs text-muted-foreground">
+                  <li>• Theo dõi dữ liệu công nợ</li>
+                  <li>• Đối chiếu và cập nhật thông tin</li>
+                  <li>• Hỗ trợ tổng hợp báo cáo liên quan</li>
+                </ul>
+              </div>
+
+              <div className="bg-card border rounded-lg p-3">
+                <div className="flex items-center gap-2 mb-2">
+                  <Users className="w-4 h-4 text-pink-500" />
+                  <h5 className="font-medium text-foreground text-sm">Hồ Sơ Nhân Sự</h5>
+                </div>
+                <ul className="space-y-1 text-xs text-muted-foreground">
+                  <li>• Cập nhật thông tin hồ sơ nhân sự</li>
+                  <li>• Sắp xếp và quản lý dữ liệu</li>
+                  <li>• Hỗ trợ tra cứu thông tin nội bộ</li>
+                </ul>
               </div>
             </div>
 
@@ -483,78 +507,68 @@ export const WorkExperience = () => {
       icon: <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6" />
     },
     {
-      id: "accounting-software",
-      company: "Tự nghiên cứu & Thực hành",
-      position: "Chuyên viên phần mềm kế toán",
-      period: "2022 - Hiện tại",
-      location: "TP.HCM, Việt Nam",
-      workLocation: " Fugu Modern Izakaya & Bar- 13-15-17 Đồng Khởi, Bến Nghé, Quận 1, TP.HCM",
-      type: "Business Analyst",
-      description: "Thành thạo phần mềm CukCuk và MISA Web, ứng dụng vào quản lý nhà hàng và nghiệp vụ kế toán thực tế.",
-      fullDescription: "Tự nghiên cứu và thực hành chuyên sâu về phần mềm CukCuk (quản lý nhà hàng) và MISA Web (kế toán trực tuyến). Làm việc tại  Fugu Modern Izakaya & Bar- sử dụng CukCuk hàng ngày để quản lý order, kho hàng và báo cáo doanh thu. Đồng thời nghiên cứu MISA Web cho nghiệp vụ kế toán tổng hợp, hóa đơn điện tử và báo cáo thuế.",
+      id: "maxim-operations",
+      company: "Maxim Saigon",
+      position: "Nhân viên tổng hợp vận hành",
+      period: "2025 - Hiện tại",
+      location: "Quận 1, TP.HCM",
+      workLocation: "Maxim Saigon - 13-15-17 Đồng Khởi, Bến Nghé, Quận 1, TP.HCM",
+      type: "Operations & Digital",
+      description: "Phụ trách các công việc vận hành tổng hợp, quản trị website và triển khai SEO; hỗ trợ IT, báo giá và các phần mềm quản lý nội bộ.",
+      fullDescription: "Tham gia công việc tổng hợp vận hành tại Maxim Saigon, trực tiếp xây dựng và quản trị website https://www.maximsaigon.vn/, triển khai các hạng mục SEO và theo dõi tình trạng hiển thị trên công cụ tìm kiếm. Bên cạnh đó, phụ trách hỗ trợ báo giá, xử lý các yêu cầu IT cơ bản và hỗ trợ sử dụng phần mềm phục vụ quản lý doanh thu, công nợ và hồ sơ nhân sự.",
+      website: "https://www.maximsaigon.vn/",
       responsibilities: [
-        "Sử dụng CukCuk hàng ngày để quản lý order, thanh toán và kiểm soát kho hàng",
-        "Phân tích báo cáo doanh thu, chi phí từ phần mềm CukCuk",
-        "Nghiên cứu và thực hành MISA Web cho nghiệp vụ kế toán",
-        "Quản lý hóa đơn điện tử và báo cáo thuế trên MISA Web",
-        "Đào tạo nhân viên sử dụng phần mềm CukCuk hiệu quả",
-        "Kết nối yêu cầu nghiệp vụ với tính năng phần mềm, đề xuất cải tiến"
+        "Trực tiếp xây dựng, cập nhật nội dung và quản trị website https://www.maximsaigon.vn/",
+        "Triển khai SEO On-page: tối ưu nội dung, tiêu đề, mô tả, liên kết và cấu trúc trang",
+        "Thiết lập và kiểm tra sitemap, canonical, structured data (Schema) và hỗ trợ lập chỉ mục trên Google",
+        "Chuẩn bị, tổng hợp và theo dõi các hạng mục báo giá, thông tin sản phẩm và nhà cung cấp",
+        "Hỗ trợ IT nội bộ: xử lý sự cố máy tính, phần mềm, thiết bị văn phòng và các vấn đề kỹ thuật thường gặp",
+        "Sử dụng và hỗ trợ phần mềm quản lý, tổng hợp dữ liệu doanh thu và báo cáo vận hành",
+        "Theo dõi dữ liệu công nợ, hồ sơ nhân sự và cập nhật thông tin trên hệ thống quản lý",
+        "Phối hợp với các bộ phận để xử lý công việc phát sinh và cải thiện quy trình vận hành"
       ],
       achievements: [
-        "Thành thạo toàn bộ tính năng CukCuk: order, thanh toán, kho, báo cáo",
-        "Sử dụng MISA Web cho kế toán tổng hợp và hóa đơn điện tử",
-        "Tối ưu quy trình order - thanh toán tại  Fugu Modern Izakaya & Barvới CukCuk",
-        "Đào tạo thành công 5+ nhân viên sử dụng phần mềm CukCuk"
+        "Trực tiếp xây dựng và đưa website Maxim Saigon vào hoạt động",
+        "Triển khai các cấu hình SEO kỹ thuật và SEO On-page cho website",
+        "Hỗ trợ chuẩn hóa, tổng hợp thông tin báo giá và dữ liệu vận hành",
+        "Hỗ trợ các bộ phận xử lý những vấn đề IT và phần mềm trong quá trình làm việc"
       ],
       skills: [
-        { name: "CukCuk Software", icon: <Globe className="w-3 h-3 sm:w-4 sm:h-4" /> },
-        { name: "MISA Web", icon: <Globe className="w-3 h-3 sm:w-4 sm:h-4" /> },
-        { name: "Restaurant Management", icon: <Briefcase className="w-3 h-3 sm:w-4 sm:h-4" /> },
-        { name: "Accounting Process", icon: <DollarSign className="w-3 h-3 sm:w-4 sm:h-4" /> },
-        { name: "User Training", icon: <Users className="w-3 h-3 sm:w-4 sm:h-4" /> },
-        { name: "System Optimization", icon: <Settings className="w-3 h-3 sm:w-4 sm:h-4" /> }
+        { name: "Website Management", icon: <Globe className="w-3 h-3 sm:w-4 sm:h-4" /> },
+        { name: "SEO On-page", icon: <Target className="w-3 h-3 sm:w-4 sm:h-4" /> },
+        { name: "Technical SEO", icon: <Settings className="w-3 h-3 sm:w-4 sm:h-4" /> },
+        { name: "IT Support", icon: <Smartphone className="w-3 h-3 sm:w-4 sm:h-4" /> },
+        { name: "Quotation & Procurement Support", icon: <FileText className="w-3 h-3 sm:w-4 sm:h-4" /> },
+        { name: "Revenue & Debt Tracking", icon: <DollarSign className="w-3 h-3 sm:w-4 sm:h-4" /> },
+        { name: "HR Records Management", icon: <Users className="w-3 h-3 sm:w-4 sm:h-4" /> },
+        { name: "Business Operations", icon: <Briefcase className="w-3 h-3 sm:w-4 sm:h-4" /> }
       ],
       projects: [
         {
-          name: "Quản lý Nhà hàng  Fugu Modern Izakaya & Barvới CukCuk",
-          description: "Triển khai và tối ưu quy trình quản lý nhà hàng bằng CukCuk",
-          role: "System Administrator"
+          name: "Website & SEO - Maxim Saigon",
+          description: "Xây dựng, quản trị website và triển khai các hạng mục SEO cho website doanh nghiệp",
+          role: "Website & SEO"
         },
         {
-          name: "Nghiệp vụ kế toán với MISA Web",
-          description: "Nghiên cứu và ứng dụng MISA Web vào thực tế doanh nghiệp",
-          role: "Accounting Analyst"
+          name: "Hỗ trợ hệ thống vận hành nội bộ",
+          description: "Hỗ trợ báo giá, IT và dữ liệu trên các phần mềm quản lý doanh thu, công nợ, hồ sơ nhân sự",
+          role: "Operations Support"
         }
       ],
       images: [
         {
           url: "/fugu/4.png",
-          title: " Fugu Modern Izakaya & BarRestaurant",
-          description: "Nhà hàng nơi ứng dụng phần mềm CukCuk thực tế"
+          title: "Không gian nhà hàng",
+          description: "Hình ảnh môi trường hoạt động thuộc hệ thống nhà hàng"
         },
         {
           url: "/fugu/1.png",
-          title: "Giao diện quản lý CukCuk Web",
-          description: "Dashboard quản lý order và doanh thu"
-        },
-        {
-          url: "/fugu/2.png",
-          title: "Quản lý hoá đơn",
-          description: "Tính năng và kiểm soát hoá đơn điện tử"
-        },
-        {
-          url: "/fugu/3.png",
-          title: "Báo cáo doanh thu chi tiết",
-          description: "Phân tích doanh thu theo thời gian thực"
-        },
-        {
-          url: "/fugu/5.png",
-          title: "Ứng dụng CukCuk",
-          description: "Giao diện cho nhân viên order"
+          title: "Giao diện phần mềm quản lý",
+          description: "Minh họa công việc sử dụng phần mềm trong vận hành"
         }
       ],
       logoColor: "from-blue-500 to-cyan-600",
-      icon: <BookOpen className="w-5 h-5 sm:w-6 sm:h-6" />
+      icon: <Briefcase className="w-5 h-5 sm:w-6 sm:h-6" />
     }
   ];
 
@@ -562,37 +576,7 @@ export const WorkExperience = () => {
     ? experiences 
     : experiences.filter(exp => exp.type === activeTab);
 
-  // Thống kê
-  const stats = [
-    {
-      label: "Kinh Nghiệm Tester",
-      value: "3 tháng",
-      description: "ERP System Testing",
-      icon: <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6" />,
-      color: "from-green-500 to-emerald-600"
-    },
-    {
-      label: "Kinh Nghiệm Phần Mềm",
-      value: "3+ năm",
-      description: "CukCuk & MISA",
-      icon: <BookOpen className="w-5 h-5 sm:w-6 sm:h-6" />,
-      color: "from-blue-500 to-cyan-600"
-    },
-    {
-      label: "Module Đã Test",
-      value: "5+",
-      description: "Kế toán, HCNS, Tài chính",
-      icon: <Settings className="w-5 h-5 sm:w-6 sm:h-6" />,
-      color: "from-purple-500 to-pink-600"
-    },
-    {
-      label: "Dự Án Tham Gia",
-      value: 1,
-      description: "Tổng số",
-      icon: <Briefcase className="w-5 h-5 sm:w-6 sm:h-6" />,
-      color: "from-orange-500 to-red-600"
-    }
-  ];
+
 
   return (
     <div className="min-h-screen">
@@ -605,7 +589,7 @@ export const WorkExperience = () => {
                 Kinh Nghiệm Làm Việc
               </h1>
               <p className="text-sm sm:text-base text-muted-foreground mt-1 sm:mt-2">
-                Kết hợp kinh nghiệm Tester ERP và chuyên môn phần mềm quản lý
+                Kết hợp kinh nghiệm kiểm thử phần mềm và vận hành doanh nghiệp
               </p>
             </div>
             
@@ -621,45 +605,6 @@ export const WorkExperience = () => {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section id="Work-experience" className="py-6 sm:py-8 md:py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-6 sm:mb-8 md:mb-12">
-            <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">
-              Chuyên Viên Phần Mềm Thực Tế
-            </h2>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-3xl mx-auto">
-              Thành thạo CukCuk & MISA Web từ trải nghiệm làm việc thực tế
-            </p>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-6 sm:mb-8 md:mb-12">
-            {stats.map((stat, idx) => (
-              <div key={idx} className="bg-card rounded-lg sm:rounded-xl p-3 sm:p-4 border shadow-sm hover:shadow-md transition-all duration-300">
-                <div className="flex items-center gap-3">
-                  <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-lg ${stat.color} flex items-center justify-center shadow-md flex-shrink-0`}>
-                    <div className="text-white">
-                      {stat.icon}
-                    </div>
-                  </div>
-                  <div className="min-w-0">
-                    <div className="text-base sm:text-xl font-bold text-foreground truncate">
-                      {stat.value}
-                    </div>
-                    <div className="text-xs sm:text-sm font-medium text-foreground truncate">
-                      {stat.label}
-                    </div>
-                    <div className="text-xs text-muted-foreground truncate">
-                      {stat.description}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Filter Section */}
       <section className="py-4 sm:py-6 border-y">
@@ -691,15 +636,15 @@ export const WorkExperience = () => {
                 <span>Kinh Nghiệm Tester</span>
               </button>
               <button
-                onClick={() => setActiveTab("Business Analyst")}
+                onClick={() => setActiveTab("Operations & Digital")}
                 className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all flex-shrink-0 flex items-center gap-1.5 ${
-                  activeTab === "Business Analyst"
+                  activeTab === "Operations & Digital"
                     ? "bg-blue-600 text-white shadow-md"
                     : "bg-muted text-muted-foreground hover:bg-muted/80"
                 }`}
               >
                 <BookOpen className="w-3 h-3 sm:w-4 sm:h-4" />
-                <span>Chuyên Môn CukCuk & MISA</span>
+                <span>Vận Hành & Digital</span>
               </button>
             </div>
           </div>

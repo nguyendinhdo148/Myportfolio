@@ -8,14 +8,14 @@ export const FuguDiningDetail = () => {
   }, []);
 
   const project = {
-    id: "fugu-dining-lounge",
-    title: "Fugu Dining Lounge",
+    id: "maxim-saigon",
+    title: "Maxim Saigon",
     category: "Landing Page / Web",
     status: "Đang hoạt động",
     year: "2025",
-    description: "Website giới thiệu nhà hàng cao cấp Fugu Dining Lounge với giao diện sang trọng, tối ưu trải nghiệm.",
-    longDescription: "Website giới thiệu thương hiệu nhà hàng cao cấp Fugu Dining Lounge. Tập trung mạnh vào UI/UX sang trọng, thiết kế hình ảnh sắc nét, mượt mà nhằm thu hút thực khách và tối ưu hóa SEO trên các công cụ tìm kiếm.",
-    liveUrl: "https://fugudininglounge.vercel.app/",
+    description: "Website giới thiệu nhà hàng cao cấp Maxim Saigon với giao diện sang trọng, tối ưu trải nghiệm.",
+    longDescription: "Website giới thiệu thương hiệu nhà hàng cao cấp Maxim Saigon. Tập trung mạnh vào UI/UX sang trọng, thiết kế hình ảnh sắc nét, mượt mà nhằm thu hút thực khách và tối ưu hóa SEO trên các công cụ tìm kiếm.",
+    liveUrl: "https://www.maximsaigon.vn/",
     platform: "Web",
     videoDemo: "https://drive.google.com/file/d/1L5f4pLa18Ee6J74JsT-9gs6oPUx0IHJx/preview", // Chèn link video demo vào đây
   };

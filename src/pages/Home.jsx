@@ -38,7 +38,7 @@ export const Home = () => {
         <Introduce />
         <Skills />
         <Project />
-        <Certificate/>
+        {/* <Certificate/> */}
         <WorkExperience />
         
       </main>

@@ -4,25 +4,25 @@ import { Github, Globe, Smartphone, Cpu, Database, Shield, Lock, ArrowUp, Extern
 
 // Component cho mobile skeleton
 const MobileSkeleton = () => (
-  <div className="md:hidden space-y-4">
+  <div className="md:hidden grid grid-cols-3 gap-2 sm:gap-3">
     {[1, 2, 3].map((item) => (
       <div key={item} className="bg-card rounded-xl border overflow-hidden shadow-sm animate-pulse">
-        <div className="h-48 bg-muted"></div>
-        <div className="p-4">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 bg-muted rounded-lg"></div>
+        <div className="h-20 sm:h-28 bg-muted"></div>
+        <div className="p-2">
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-6 h-6 bg-muted rounded"></div>
             <div className="flex-1">
-              <div className="h-5 bg-muted rounded w-3/4 mb-2"></div>
-              <div className="h-4 bg-muted rounded w-1/2"></div>
+              <div className="h-3 bg-muted rounded w-3/4 mb-1"></div>
+              <div className="h-2 bg-muted rounded w-1/2"></div>
             </div>
           </div>
-          <div className="space-y-2 mb-4">
-            <div className="h-4 bg-muted rounded w-full"></div>
-            <div className="h-4 bg-muted rounded w-2/3"></div>
+          <div className="space-y-1 mb-2">
+            <div className="h-2 bg-muted rounded w-full"></div>
+            <div className="h-2 bg-muted rounded w-2/3"></div>
           </div>
-          <div className="flex gap-2">
-            <div className="flex-1 h-10 bg-muted rounded-lg"></div>
-            <div className="flex-1 h-10 bg-muted rounded-lg"></div>
+          <div className="flex gap-1">
+            <div className="flex-1 h-6 bg-muted rounded"></div>
+            <div className="flex-1 h-6 bg-muted rounded"></div>
           </div>
         </div>
       </div>
@@ -196,16 +196,16 @@ export const Project = () => {
       icon: <Database className="w-6 h-6" />
     },
     {
-      id: "fugu-dining-lounge",
-      title: "Fugu Dining Lounge",
+      id: "maxim-saigon",
+      title: "Maxim Saigon",
       category: "Landing Page / Web",
       status: "Đang hoạt động",
       year: "2025",
-      description: "Website giới thiệu nhà hàng cao cấp Fugu Dining Lounge với giao diện sang trọng, tối ưu trải nghiệm.",
-      longDescription: "Website giới thiệu thương hiệu nhà hàng cao cấp Fugu Dining Lounge. Tập trung mạnh vào UI/UX sang trọng, thiết kế hình ảnh sắc nét, mượt mà nhằm thu hút thực khách và tối ưu hóa SEO trên các công cụ tìm kiếm.",
+      description: "Website giới thiệu nhà hàng cao cấp Maxim Saigon với giao diện sang trọng, tối ưu trải nghiệm.",
+      longDescription: "Website giới thiệu thương hiệu nhà hàng cao cấp Maxim Saigon. Tập trung mạnh vào UI/UX sang trọng, thiết kế hình ảnh sắc nét, mượt mà nhằm thu hút thực khách và tối ưu hóa SEO trên các công cụ tìm kiếm.",
       imageUrl: "/fugu/fugu-cover.png",
       videoDemo: "",
-      liveUrl: "https://fugudininglounge.vercel.app/",
+      liveUrl: "https://www.maximsaigon.vn/",
       techStack: [
         { name: "React", icon: "⚛️", color: "bg-blue-100 dark:bg-blue-900/30" },
         { name: "Tailwind CSS", icon: "🎨", color: "bg-cyan-100 dark:bg-cyan-900/30" },
@@ -360,7 +360,7 @@ export const Project = () => {
       );
 
   // Tính toán số liệu thống kê
-  const liveProjectsCount = projectData.filter(p => p.status === 'Đang hoạt động').length;
+  // const liveProjectsCount = projectData.filter(p => p.status === 'Đang hoạt động').length;
   const webProjectsCount = projectData.filter(p => p.platform === 'Web').length;
   const mobileProjectsCount = projectData.filter(p => p.platform === 'Mobile').length;
 
@@ -380,106 +380,67 @@ export const Project = () => {
     }
   };
 
-  // Component cho Project Card trên mobile
+  // Project Card mobile: bố cục gọn, hiển thị 3 cột (3 x N)
   const MobileProjectCard = ({ project }) => (
-    <div className="mb-6 bg-card rounded-xl border overflow-hidden shadow-sm">
-      {/* Hình ảnh dự án */}
-      <div className="relative h-48">
-        <img 
-          src={project.imageUrl} 
+    <div className="min-w-0 bg-card rounded-lg border overflow-hidden shadow-sm flex flex-col">
+      <div className="relative h-20 sm:h-28">
+        <img
+          src={project.imageUrl}
           alt={project.title}
           className="w-full h-full object-cover"
           loading="lazy"
         />
-        <div className="absolute top-3 right-3">
-          <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
-            project.status === 'Đang hoạt động' 
-              ? 'bg-green-500 text-white' 
-              : project.status === 'Đang phát triển' ? 'bg-yellow-500 text-white' : 'bg-gray-500 text-white'
-          }`}>
-            {project.status === 'Đang hoạt động' ? '🚀 Đang chạy' : project.status === 'Đang phát triển' ? '🛠️ Đang phát triển' : '⏸️ Tạm dừng'}
-          </span>
-        </div>
-        <div className="absolute top-3 left-3">
-          <span className="px-2 py-1 bg-primary/90 text-primary-foreground text-xs font-semibold rounded-full flex items-center gap-1">
-            {project.platform === 'Mobile' ? '📱 Di động' : '💻 Web'}
-          </span>
-        </div>
+        <span className={`absolute top-1 right-1 px-1 py-0.5 rounded text-[8px] leading-tight font-semibold ${
+          project.status === "Đang hoạt động"
+            ? "bg-green-500 text-white"
+            : project.status === "Đang phát triển" ? "bg-yellow-500 text-white" : "bg-gray-500 text-white"
+        }`}>
+          {project.status === "Đang hoạt động" ? "Đang chạy" : project.status === "Đang phát triển" ? "Phát triển" : "Tạm dừng"}
+        </span>
+        <span className="absolute bottom-1 left-1 px-1 py-0.5 bg-primary/90 text-primary-foreground text-[8px] leading-tight rounded">
+          {project.platform === "Mobile" ? "📱 App" : "💻 Web"}
+        </span>
       </div>
 
-      {/* Nội dung dự án */}
-      <div className="p-4">
-        <div className="flex items-center gap-3 mb-3">
-          <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
-            {project.icon}
-          </div>
-          <div>
-            <h3 className="font-bold text-foreground">{project.title}</h3>
-            <div className="flex items-center gap-1 mt-1">
-              <span className="text-xs text-muted-foreground">{project.category}</span>
-              <span className="text-muted-foreground mx-1">•</span>
-              <span className="text-xs text-muted-foreground">{project.year}</span>
-            </div>
-          </div>
+      <div className="p-1.5 sm:p-2 flex flex-col flex-1">
+        <h3 className="text-[10px] sm:text-xs font-bold text-foreground leading-tight line-clamp-2 min-h-[2rem]">
+          {project.title}
+        </h3>
+        <p className="text-[9px] sm:text-[10px] text-muted-foreground mt-1 line-clamp-3 leading-snug flex-1">
+          {project.description}
+        </p>
+
+        <div className="flex flex-wrap gap-1 mt-2">
+          {project.techStack.slice(0, 2).map((tech, index) => (
+            <span key={index} className="max-w-full px-1 py-0.5 bg-muted text-[8px] sm:text-[9px] rounded truncate">
+              {tech.icon} {tech.name}
+            </span>
+          ))}
+          {project.techStack.length > 2 && (
+            <span className="px-1 py-0.5 bg-muted text-[8px] sm:text-[9px] text-muted-foreground rounded">
+              +{project.techStack.length - 2}
+            </span>
+          )}
         </div>
 
-        <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
-
-        {/* Tech Stack cho mobile */}
-        <div className="mb-4">
-          <div className="flex flex-wrap gap-1">
-            {project.techStack.slice(0, 3).map((tech, index) => (
-              <span 
-                key={index}
-                className="px-2 py-1 bg-muted text-xs rounded flex items-center gap-1"
-              >
-                <span>{tech.icon}</span>
-                <span>{tech.name}</span>
-              </span>
-            ))}
-            {project.techStack.length > 3 && (
-              <span className="px-2 py-1 bg-muted text-xs text-muted-foreground rounded">
-                +{project.techStack.length - 3}
-              </span>
-            )}
-          </div>
-        </div>
-
-        {/* Xem trước tính năng cho mobile */}
-        <div className="mb-4">
-          <div className="flex flex-wrap gap-1">
-            {project.features.slice(0, 2).map((feature, index) => (
-              <span 
-                key={index}
-                className="px-2 py-1 bg-primary/10 text-primary text-xs rounded flex items-center gap-1"
-              >
-                <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                {feature}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Nút hành động cho mobile */}
-        <div className="flex gap-2">
+        <div className="flex gap-1 mt-2">
           {project.liveUrl && (
-            <a 
+            <a
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 inline-flex items-center justify-center gap-1 px-3 py-2.5 bg-primary text-primary-foreground text-sm rounded-lg transition-all active:scale-95"
+              aria-label={`Xem demo ${project.title}`}
+              className="flex-1 inline-flex items-center justify-center gap-1 px-1 py-1.5 bg-primary text-primary-foreground text-[9px] sm:text-xs rounded transition-all active:scale-95"
             >
-              <Globe className="w-4 h-4" />
-              <span>Demo</span>
+              <Globe className="w-3 h-3" /> Demo
             </a>
           )}
-          
-          <Link 
+          <Link
             to={`/project-detail/${project.id}`}
-            className="flex-1 inline-flex items-center justify-center gap-1 px-3 py-2.5 bg-accent text-foreground text-sm rounded-lg transition-all active:scale-95"
+            aria-label={`Xem chi tiết ${project.title}`}
+            className="flex-1 inline-flex items-center justify-center gap-1 px-1 py-1.5 bg-accent text-foreground text-[9px] sm:text-xs rounded transition-all active:scale-95"
           >
-            <ExternalLink className="w-4 h-4" />
-            <span>Chi tiết</span>
+            <ExternalLink className="w-3 h-3" /> Chi tiết
           </Link>
         </div>
       </div>
@@ -536,60 +497,7 @@ export const Project = () => {
       </section>
 
       {/* Hero Section - Giới thiệu */}
-      <section className="py-8 md:py-12 from-background to-muted/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 md:mb-4">
-              Kiến Tạo Trải Nghiệm Số
-            </h2>
-          </div>
-
-          {/* Thống kê tổng quan - Responsive grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-12">
-            <div className="bg-card rounded-xl p-4 md:p-6 border shadow-sm hover:shadow-lg transition-all duration-300">
-              <div className="flex items-center gap-3 md:gap-4">
-                <div className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Cpu className="w-5 h-5 md:w-6 md:h-6 text-primary" />
-                </div>
-                <div>
-                  <div className="text-xl md:text-2xl font-bold text-foreground">
-                    {liveProjectsCount}
-                  </div>
-                  <div className="text-sm md:text-base text-muted-foreground">Dự Án Đang Chạy</div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-card rounded-xl p-4 md:p-6 border shadow-sm hover:shadow-lg transition-all duration-300">
-              <div className="flex items-center gap-3 md:gap-4">
-                <div className="w-10 h-10 md:w-12 md:h-12 bg-green-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Database className="w-5 h-5 md:w-6 md:h-6 text-green-500" />
-                </div>
-                <div>
-                  <div className="text-xl md:text-2xl font-bold text-foreground">
-                    {webProjectsCount}
-                  </div>
-                  <div className="text-sm md:text-base text-muted-foreground">Ứng Dụng Web</div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-card rounded-xl p-4 md:p-6 border shadow-sm hover:shadow-lg transition-all duration-300 sm:col-span-2 lg:col-span-1">
-              <div className="flex items-center gap-3 md:gap-4">
-                <div className="w-10 h-10 md:w-12 md:h-12 bg-purple-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Shield className="w-5 h-5 md:w-6 md:h-6 text-purple-500" />
-                </div>
-                <div>
-                  <div className="text-xl md:text-2xl font-bold text-foreground">
-                    {mobileProjectsCount}
-                  </div>
-                  <div className="text-sm md:text-base text-muted-foreground">Ứng Dụng Di Động</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+     
 
       {/* Filter Section */}
       <section className="py-6 md:py-8 bg-background border-y">
@@ -788,9 +696,11 @@ export const Project = () => {
                 {isLoading ? (
                   <MobileSkeleton />
                 ) : (
-                  filteredProjects.map((project) => (
-                    <MobileProjectCard key={project.id} project={project} />
-                  ))
+                  <div className="grid grid-cols-3 gap-2 sm:gap-3">
+                    {filteredProjects.map((project) => (
+                      <MobileProjectCard key={project.id} project={project} />
+                    ))}
+                  </div>
                 )}
               </div>
             </>
