@@ -123,16 +123,16 @@ export const Skills = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-foreground/80 mb-4">
             Kỹ Năng & Chuyên Môn
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+          {/* <p className="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             Kết hợp kỹ năng công nghệ, quản trị website, hỗ trợ IT và nghiệp vụ vận hành doanh nghiệp.
-          </p>
+          </p> */}
         </div>
 
         {/* Nghiệp vụ và chuyên môn */}
         <div className="mb-20">
-          <h3 className="text-2xl md:text-3xl font-bold text-foreground/80 mb-10 text-center">
+          {/* <h3 className="text-2xl md:text-3xl font-bold text-foreground/80 mb-10 text-center">
             Chuyên Môn & Nghiệp Vụ
-          </h3>
+          </h3> */}
           <div className="grid grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4">
             {baCoreSkills.map((skill, index) => (
               <div
